@@ -26,7 +26,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <StatsStrip />
-      <Recognition />
       <BrandMoment />
       <Features />
       <HowItWorks />
@@ -34,6 +33,7 @@ export default function Home() {
       <PilotSection />
       <FAQ />
       <About />
+      <Recognition />
       <Contact />
       <Footer />
     </main>

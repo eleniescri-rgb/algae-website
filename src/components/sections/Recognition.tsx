@@ -2,148 +2,162 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Trophy } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-
-const awards = [
-  {
-    title: { en: "IE Venture Lab Sustainability Award", es: "Premio IE Venture Lab de Sostenibilidad" },
-    year: "2024",
-  },
-  {
-    title: { en: "Best Startup — IE University", es: "Mejor Startup — IE University" },
-    year: "2024",
-  },
-];
 
 export default function Recognition() {
   const { t } = useTranslation();
 
   return (
-    <section
-      className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8"
-      style={{ backgroundColor: "#093349" }}
-    >
-      {/* Subtle top glow */}
+    <section className="relative overflow-hidden" style={{ backgroundColor: "#041820" }}>
+
+      {/* Full-bleed photo layer */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/awards-collage.png"
+          alt="Alga.e team winning IE awards"
+          fill
+          className="object-cover object-center"
+          priority={false}
+        />
+        {/* Dark overlay — keeps photo as texture, text fully legible */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, #041820f5 0%, #041820cc 50%, #04182099 100%)",
+          }}
+        />
+      </div>
+
+      {/* Ghost "2024" numeral — editorial depth */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, #FF751F40, transparent)" }}
-      />
+        className="pointer-events-none absolute right-0 bottom-0 font-display font-black leading-none select-none"
+        style={{
+          fontSize: "clamp(8rem, 22vw, 22rem)",
+          color: "#47AECC08",
+          lineHeight: 0.85,
+          letterSpacing: "-0.05em",
+        }}
+        aria-hidden="true"
+      >
+        2024
+      </div>
 
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
 
-          {/* LEFT — award text */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 flex flex-col"
-          >
-            <span className="section-label-light">
+        {/* Label */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <div className="flex items-center gap-3">
+            <div className="h-px w-10" style={{ background: "#FF751F" }} />
+            <span
+              className="text-[0.65rem] font-bold uppercase tracking-[0.22em]"
+              style={{ color: "#FF751F" }}
+            >
               {t({ en: "Recognition", es: "Reconocimiento" })}
             </span>
+          </div>
+        </motion.div>
 
-            <h2
-              className="font-display text-3xl font-black leading-[1.0] tracking-[-0.03em] sm:text-4xl mb-8"
-              style={{ color: "#CCE6EA" }}
-            >
-              {t({
-                en: "Award-Winning from Day One.",
-                es: "Premiados desde el Primer Día.",
-              })}
-            </h2>
-
-            <div className="flex flex-col gap-4">
-              {awards.map((award, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.45, delay: i * 0.1 }}
-                  className="flex items-start gap-4 rounded-xl px-5 py-4"
-                  style={{
-                    background: "#063D57",
-                    border: "1px solid #FF751F26",
-                    boxShadow: "0 2px 12px #00000020",
-                  }}
-                >
-                  <div
-                    className="shrink-0 mt-0.5 p-2 rounded-lg"
-                    style={{
-                      background: "linear-gradient(135deg, #FF751F, #F4AE5B)",
-                      boxShadow: "0 2px 8px #FF751F40",
-                    }}
-                  >
-                    <Trophy size={14} className="text-white" />
-                  </div>
-                  <div>
-                    <p
-                      className="font-display text-sm font-black tracking-[-0.01em] leading-snug"
-                      style={{ color: "#CCE6EA" }}
-                    >
-                      {t(award.title)}
-                    </p>
-                    <span
-                      className="text-xs font-semibold uppercase tracking-[0.12em] mt-0.5 block"
-                      style={{ color: "#47AECC" }}
-                    >
-                      {award.year}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
+        {/* Award names — oversized stacked display */}
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <p
-              className="mt-6 text-sm leading-relaxed"
-              style={{ color: "#729DB9" }}
+              className="font-display font-black leading-[0.92] tracking-[-0.04em] mb-2"
+              style={{
+                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                color: "#CCE6EA",
+              }}
             >
               {t({
-                en: "Selected from hundreds of student ventures at IE University's annual competition for innovation and sustainability.",
-                es: "Seleccionados entre cientos de iniciativas estudiantiles en la competición anual de IE University por innovación y sostenibilidad.",
+                en: "IE Venture Lab",
+                es: "IE Venture Lab",
+              })}
+            </p>
+            <p
+              className="font-display font-black leading-[0.92] tracking-[-0.04em]"
+              style={{
+                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                color: "#FF751F",
+              }}
+            >
+              {t({
+                en: "Sustainability Award",
+                es: "Premio Sostenibilidad",
               })}
             </p>
           </motion.div>
 
-          {/* RIGHT — photo collage */}
+          {/* Divider */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="my-7 h-px origin-left"
+            style={{ background: "linear-gradient(to right, #47AECC60, transparent)" }}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-2xl overflow-hidden"
+            <p
+              className="font-display font-black leading-[0.92] tracking-[-0.04em] mb-2"
               style={{
-                boxShadow: "0 24px 64px #00000050, 0 0 0 1px #FF751F1a, 0 0 40px #FF751F0a",
+                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                color: "#CCE6EA",
               }}
             >
-              <Image
-                src="/images/awards-collage.png"
-                alt="Alga.e team winning IE Venture Lab Sustainability Award and Best Startup IEU 2024"
-                width={1400}
-                height={788}
-                className="w-full h-auto"
-                priority={false}
-              />
-              {/* Subtle vignette */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top, #09334940 0%, transparent 40%)",
-                }}
-              />
-            </motion.div>
+              {t({
+                en: "Best Startup",
+                es: "Mejor Startup",
+              })}
+            </p>
+            <p
+              className="font-display font-black leading-[0.92] tracking-[-0.04em]"
+              style={{
+                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                color: "#FF751F",
+              }}
+            >
+              {t({
+                en: "IE University — 2024",
+                es: "IE University — 2024",
+              })}
+            </p>
           </motion.div>
-
         </div>
+
+        {/* Bottom caption */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 text-sm max-w-sm leading-relaxed"
+          style={{ color: "#729DB9" }}
+        >
+          {t({
+            en: "Recognised across IE University's annual innovation competitions for sustainability impact and venture viability.",
+            es: "Reconocidos en las competiciones anuales de IE University por impacto en sostenibilidad y viabilidad empresarial.",
+          })}
+        </motion.p>
       </div>
+
     </section>
   );
 }
