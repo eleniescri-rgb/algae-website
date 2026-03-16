@@ -1,0 +1,74 @@
+{
+  "sectionTitle": {
+    "en": "How to Get Involved",
+    "es": "Cómo Participar"
+  },
+  "sectionDescription": {
+    "en": "We are validating our first deployment with a limited number of beachfront properties. Choose the level of engagement that fits where you are right now.",
+    "es": "Estamos validando nuestro primer despliegue con un número limitado de propiedades costeras. Elige el nivel de participación que mejor se adapte a tu momento actual."
+  },
+  "tiers": [
+    {
+      "id": "learn",
+      "badge": { "en": "Learn", "es": "Conocer" },
+      "title": { "en": "Research Access", "es": "Acceso a Investigación" },
+      "description": {
+        "en": "Understand the scope of the sargassum problem and how on-site processing compares to traditional removal. No commitment.",
+        "es": "Comprende el alcance del problema del sargazo y cómo el procesamiento in situ se compara con la remoción tradicional. Sin compromiso."
+      },
+      "features": [
+        { "en": "Sargassum operational impact summary", "es": "Resumen del impacto operativo del sargazo" },
+        { "en": "On-site processing feasibility overview", "es": "Panorama de viabilidad del procesamiento in situ" },
+        { "en": "Circular bioeconomy opportunity brief", "es": "Resumen de oportunidad de bioeconomía circular" },
+        { "en": "Cost-benefit analysis framework", "es": "Marco de análisis costo-beneficio" },
+        { "en": "No commitment required", "es": "Sin compromiso" }
+      ],
+      "ctaText": { "en": "Get Research Summary", "es": "Recibir Resumen" },
+      "interestValue": "research",
+      "highlighted": false,
+      "icon": "BookOpen"
+    },
+    {
+      "id": "pilot",
+      "badge": { "en": "Pilot", "es": "Piloto" },
+      "title": { "en": "Full Pilot Program", "es": "Programa Piloto Completo" },
+      "description": {
+        "en": "Join our first cohort of hotel partners. We deploy on-site, measure performance, and build the data case together — at zero upfront cost to you.",
+        "es": "Únete a nuestra primera cohorte de hoteles asociados. Desplegamos in situ, medimos el rendimiento y construimos el caso de datos juntos, sin costo inicial para ti."
+      },
+      "features": [
+        { "en": "On-site system deployment", "es": "Despliegue del sistema in situ" },
+        { "en": "Zero upfront capital investment", "es": "Cero inversión de capital inicial" },
+        { "en": "Up to 95% sargassum volume reduction", "es": "Hasta 95% de reducción de volumen de sargazo" },
+        { "en": "Standardized biomass output reports", "es": "Informes de producción de biomasa estandarizada" },
+        { "en": "Dedicated pilot support team", "es": "Equipo de soporte dedicado al piloto" },
+        { "en": "90-day structured pilot period", "es": "Período piloto estructurado de 90 días" }
+      ],
+      "ctaText": { "en": "Request Pilot Information", "es": "Solicitar Información del Piloto" },
+      "interestValue": "pilot",
+      "highlighted": true,
+      "icon": "ClipboardList"
+    },
+    {
+      "id": "partner",
+      "badge": { "en": "Partner", "es": "Socio" },
+      "title": { "en": "Strategic Partnership", "es": "Alianza Estratégica" },
+      "description": {
+        "en": "For hospitality groups and coastal operators interested in co-developing the model across multiple properties and shaping the product roadmap.",
+        "es": "Para grupos hoteleros y operadores costeros interesados en codesarrollar el modelo en múltiples propiedades y definir la hoja de ruta del producto."
+      },
+      "features": [
+        { "en": "Everything in Pilot program", "es": "Todo del programa Piloto" },
+        { "en": "Multi-property rollout roadmap", "es": "Hoja de ruta para múltiples propiedades" },
+        { "en": "Revenue share on biomass output", "es": "Participación en ingresos de la biomasa" },
+        { "en": "Co-development agreement", "es": "Acuerdo de codesarrollo" },
+        { "en": "Early mover branding rights", "es": "Derechos de marca como adoptador temprano" },
+        { "en": "Direct research team access", "es": "Acceso directo al equipo de investigación" }
+      ],
+      "ctaText": { "en": "Start a Conversation", "es": "Iniciar una Conversación" },
+      "interestValue": "partnership",
+      "highlighted": false,
+      "icon": "Users2"
+    }
+  ]
+}

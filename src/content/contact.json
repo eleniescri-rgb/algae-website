@@ -1,0 +1,205 @@
+{
+  "sectionTitle": {
+    "en": "Request Pilot Information",
+    "es": "Solicitar Información del Piloto"
+  },
+  "sectionDescription": {
+    "en": "Tell us about your property. We'll review your submission and follow up directly to discuss whether Alga.e is a fit for your operation.",
+    "es": "Cuéntanos sobre tu propiedad. Revisaremos tu envío y te contactaremos directamente para evaluar si Alga.e es una buena opción para tu operación."
+  },
+  "form": {
+    "fields": [
+      {
+        "name": "name",
+        "type": "text",
+        "label": {
+          "en": "Full Name",
+          "es": "Nombre completo"
+        },
+        "placeholder": {
+          "en": "Your full name",
+          "es": "Tu nombre completo"
+        },
+        "required": true
+      },
+      {
+        "name": "company",
+        "type": "text",
+        "label": {
+          "en": "Hotel / Company Name",
+          "es": "Hotel / Nombre de la empresa"
+        },
+        "placeholder": {
+          "en": "Your hotel or company name",
+          "es": "Nombre de tu hotel o empresa"
+        },
+        "required": true
+      },
+      {
+        "name": "role",
+        "type": "text",
+        "label": {
+          "en": "Your Role",
+          "es": "Tu cargo"
+        },
+        "placeholder": {
+          "en": "e.g. Sustainability Manager, Operations Director",
+          "es": "ej. Gerente de Sostenibilidad, Director de Operaciones"
+        },
+        "required": true
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "label": {
+          "en": "Email",
+          "es": "Correo electrónico"
+        },
+        "placeholder": {
+          "en": "your.email@hotel.com",
+          "es": "tu.email@hotel.com"
+        },
+        "required": true
+      },
+      {
+        "name": "location",
+        "type": "text",
+        "label": {
+          "en": "Property Location",
+          "es": "Ubicación de la propiedad"
+        },
+        "placeholder": {
+          "en": "e.g. Tulum, Mexico / Punta Cana, Dominican Republic",
+          "es": "ej. Tulum, México / Punta Cana, República Dominicana"
+        },
+        "required": true
+      },
+      {
+        "name": "propertyType",
+        "type": "select",
+        "label": {
+          "en": "Property Type",
+          "es": "Tipo de propiedad"
+        },
+        "placeholder": {
+          "en": "Select your property type",
+          "es": "Selecciona el tipo de propiedad"
+        },
+        "required": true,
+        "options": [
+          {
+            "value": "boutique_hotel",
+            "label": { "en": "Boutique hotel (under 50 rooms)", "es": "Hotel boutique (menos de 50 habitaciones)" }
+          },
+          {
+            "value": "mid_hotel",
+            "label": { "en": "Mid-size hotel (50–200 rooms)", "es": "Hotel mediano (50–200 habitaciones)" }
+          },
+          {
+            "value": "large_resort",
+            "label": { "en": "Large resort (200+ rooms)", "es": "Resort grande (200+ habitaciones)" }
+          },
+          {
+            "value": "hotel_group",
+            "label": { "en": "Hotel group / multiple properties", "es": "Grupo hotelero / múltiples propiedades" }
+          },
+          {
+            "value": "other",
+            "label": { "en": "Other coastal operation", "es": "Otra operación costera" }
+          }
+        ]
+      },
+      {
+        "name": "sargassumBurden",
+        "type": "select",
+        "label": {
+          "en": "Estimated Monthly Sargassum Burden",
+          "es": "Carga mensual estimada de sargazo"
+        },
+        "placeholder": {
+          "en": "Select an estimate",
+          "es": "Selecciona una estimación"
+        },
+        "required": false,
+        "options": [
+          {
+            "value": "light",
+            "label": { "en": "Light — occasional accumulation", "es": "Leve — acumulación ocasional" }
+          },
+          {
+            "value": "moderate",
+            "label": { "en": "Moderate — regular seasonal arrivals", "es": "Moderada — llegadas estacionales regulares" }
+          },
+          {
+            "value": "heavy",
+            "label": { "en": "Heavy — significant year-round arrivals", "es": "Intensa — llegadas significativas durante todo el año" }
+          },
+          {
+            "value": "severe",
+            "label": { "en": "Severe — major operational impact", "es": "Severa — impacto operativo importante" }
+          },
+          {
+            "value": "unknown",
+            "label": { "en": "Not sure / need to assess", "es": "No estoy seguro / necesito evaluarlo" }
+          }
+        ]
+      },
+      {
+        "name": "interestType",
+        "type": "select",
+        "label": {
+          "en": "I'm interested in",
+          "es": "Me interesa"
+        },
+        "placeholder": {
+          "en": "Select your interest",
+          "es": "Selecciona tu interés"
+        },
+        "required": true,
+        "options": [
+          {
+            "value": "pilot",
+            "label": { "en": "Pilot program — deploy the system at my property", "es": "Programa piloto — instalar el sistema en mi propiedad" }
+          },
+          {
+            "value": "research",
+            "label": { "en": "Research summary — learn more before deciding", "es": "Resumen de investigación — aprender más antes de decidir" }
+          },
+          {
+            "value": "partnership",
+            "label": { "en": "Partnership conversation — co-develop or collaborate", "es": "Conversación de alianza — codesarrollar o colaborar" }
+          },
+          {
+            "value": "informed",
+            "label": { "en": "Stay informed — follow the project", "es": "Mantenerme informado — seguir el proyecto" }
+          }
+        ]
+      },
+      {
+        "name": "challenge",
+        "type": "textarea",
+        "label": {
+          "en": "What is your biggest current challenge with sargassum? (optional)",
+          "es": "¿Cuál es tu mayor desafío actual con el sargazo? (opcional)"
+        },
+        "placeholder": {
+          "en": "Tell us about your situation — cleanup costs, logistics, guest complaints, disposal...",
+          "es": "Cuéntanos sobre tu situación — costos de limpieza, logística, quejas de huéspedes, disposición..."
+        },
+        "required": false,
+        "rows": 4
+      }
+    ],
+    "submitText": {
+      "en": "Submit Request",
+      "es": "Enviar Solicitud"
+    }
+  },
+  "contactInfo": {
+    "email": "algaerenewable@gmail.com",
+    "responseTime": {
+      "en": "We typically respond within 48 hours",
+      "es": "Normalmente respondemos en 48 horas"
+    }
+  }
+}

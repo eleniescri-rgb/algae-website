@@ -1,0 +1,138 @@
+{
+  "sectionTitle": {
+    "en": "Flexible Service Partnerships",
+    "es": "Alianzas de Servicio Flexibles"
+  },
+  "sectionDescription": {
+    "en": "No equipment purchase. No upfront capital. Alga.e operates as a service partner — pricing is structured around processing capacity and your property's needs.",
+    "es": "Sin compra de equipos. Sin capital inicial. Alga.e opera como socio de servicio — el precio se estructura según la capacidad de procesamiento y las necesidades de tu propiedad."
+  },
+  "tiers": [
+    {
+      "name": {
+        "en": "Pilot Partner",
+        "es": "Socio Piloto"
+      },
+      "price": "Free",
+      "period": {
+        "en": "during validation phase",
+        "es": "durante la fase de validación"
+      },
+      "description": {
+        "en": "For hotels joining early validation. Help shape the system and be first to benefit.",
+        "es": "Para hoteles que se unen a la validación inicial. Ayuda a definir el sistema y sé el primero en beneficiarte."
+      },
+      "features": [
+        {
+          "en": "On-site system installation",
+          "es": "Instalación del sistema in situ"
+        },
+        {
+          "en": "Full operational support from Alga.e team",
+          "es": "Soporte operativo completo del equipo Alga.e"
+        },
+        {
+          "en": "Biomass collection and logistics handled",
+          "es": "Recolección y logística de biomasa gestionada"
+        },
+        {
+          "en": "Impact reporting for ESG documentation",
+          "es": "Informes de impacto para documentación ESG"
+        }
+      ],
+      "ctaText": {
+        "en": "Apply for the Pilot",
+        "es": "Aplicar al Piloto"
+      },
+      "highlighted": false
+    },
+    {
+      "name": {
+        "en": "Service Agreement",
+        "es": "Acuerdo de Servicio"
+      },
+      "price": "Custom",
+      "period": {
+        "en": "based on capacity",
+        "es": "según capacidad"
+      },
+      "description": {
+        "en": "Full service partnership for hotels ready to scale. Pricing based on sargassum volume and processing needs.",
+        "es": "Alianza de servicio completa para hoteles listos para escalar. Precio según volumen de sargazo y necesidades de procesamiento."
+      },
+      "features": [
+        {
+          "en": "Everything in Pilot Partner",
+          "es": "Todo lo del Socio Piloto"
+        },
+        {
+          "en": "Capacity-based service agreement",
+          "es": "Acuerdo de servicio basado en capacidad"
+        },
+        {
+          "en": "Dedicated account manager",
+          "es": "Gestor de cuenta dedicado"
+        },
+        {
+          "en": "Potential revenue share from biomass sales",
+          "es": "Participación potencial en ingresos por ventas de biomasa"
+        },
+        {
+          "en": "Quarterly impact and valorization reports",
+          "es": "Informes trimestrales de impacto y valorización"
+        }
+      ],
+      "ctaText": {
+        "en": "Request a Quote",
+        "es": "Solicitar Cotización"
+      },
+      "highlighted": true
+    },
+    {
+      "name": {
+        "en": "Multi-Property",
+        "es": "Multi-Propiedad"
+      },
+      "price": "Enterprise",
+      "period": {
+        "en": "contact us",
+        "es": "contáctanos"
+      },
+      "description": {
+        "en": "For hospitality groups managing multiple beachfront properties across coastal regions.",
+        "es": "Para grupos hoteleros que gestionan múltiples propiedades costeras en distintas regiones."
+      },
+      "features": [
+        {
+          "en": "Everything in Service Agreement",
+          "es": "Todo lo del Acuerdo de Servicio"
+        },
+        {
+          "en": "Multi-site deployment coordination",
+          "es": "Coordinación de despliegue en múltiples sitios"
+        },
+        {
+          "en": "Consolidated impact reporting across properties",
+          "es": "Informes de impacto consolidados para todas las propiedades"
+        },
+        {
+          "en": "Priority access to new processing technology",
+          "es": "Acceso prioritario a nueva tecnología de procesamiento"
+        },
+        {
+          "en": "Custom biomass valorization strategy",
+          "es": "Estrategia personalizada de valorización de biomasa"
+        },
+        {
+          "en": "Joint sustainability communications support",
+          "es": "Apoyo conjunto en comunicaciones de sostenibilidad"
+        }
+      ],
+      "ctaText": {
+        "en": "Contact Us",
+        "es": "Contáctanos"
+      },
+      "highlighted": false
+    }
+  ]
+}

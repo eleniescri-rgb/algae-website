@@ -1,0 +1,58 @@
+{
+  "sectionTitle": {
+    "en": "Frequently Asked Questions",
+    "es": "Preguntas Frecuentes"
+  },
+  "questions": [
+    {
+      "question": {
+        "en": "Why is sargassum such a problem for hotels?",
+        "es": "¿Por qué el sargazo es un problema tan grave para los hoteles?"
+      },
+      "answer": {
+        "en": "When sargassum arrives in large quantities, it decomposes quickly on the beach, releasing hydrogen sulfide — an unpleasant odor similar to rotten eggs. This drives away guests, generates negative reviews, and forces hotels to invest heavily in repeated manual cleanup, transport, and disposal. For many beachfront properties, it has become a recurring operational and reputational cost.",
+        "es": "Cuando el sargazo llega en grandes cantidades, se descompone rápidamente en la playa liberando sulfuro de hidrógeno — un olor desagradable similar al huevo podrido. Esto ahuyenta a los huéspedes, genera reseñas negativas y obliga a los hoteles a invertir repetidamente en limpieza manual, transporte y disposición. Para muchas propiedades costeras, se ha convertido en un costo operativo y reputacional recurrente."
+      }
+    },
+    {
+      "question": {
+        "en": "How is Alga.e different from current cleanup methods?",
+        "es": "¿En qué se diferencia Alga.e de los métodos de limpieza actuales?"
+      },
+      "answer": {
+        "en": "Most existing solutions focus only on collecting and removing sargassum from the beach. The problem is that raw, wet sargassum is heavy and bulky, making transport and disposal expensive. Alga.e adds an on-site processing step that reduces the biomass volume by up to 95% before it leaves your property — cutting logistics costs and creating a standardized output with actual industrial value.",
+        "es": "La mayoría de las soluciones actuales se centran únicamente en recolectar y retirar el sargazo de la playa. El problema es que el sargazo crudo y húmedo es pesado y voluminoso, lo que encarece el transporte y la disposición. Alga.e añade un paso de procesamiento in situ que reduce el volumen de la biomasa hasta un 95% antes de que salga de tu propiedad, reduciendo los costos logísticos y creando un producto estandarizado con valor industrial real."
+      }
+    },
+    {
+      "question": {
+        "en": "Does the hotel need to purchase any equipment?",
+        "es": "¿El hotel necesita comprar algún equipo?"
+      },
+      "answer": {
+        "en": "No. The Alga.e model is designed as a service partnership — the hotel does not purchase or own the processing unit. There is no upfront capital expenditure. The system is provided and maintained by Alga.e as part of the service agreement, and pricing is structured around processing capacity rather than equipment sales.",
+        "es": "No. El modelo de Alga.e está diseñado como una alianza de servicio — el hotel no compra ni es propietario de la unidad de procesamiento. No hay inversión de capital inicial. El sistema es provisto y mantenido por Alga.e como parte del acuerdo de servicio, y el precio se estructura en torno a la capacidad de procesamiento, no a la venta de equipos."
+      }
+    },
+    {
+      "question": {
+        "en": "What happens to the processed biomass?",
+        "es": "¿Qué pasa con la biomasa procesada?"
+      },
+      "answer": {
+        "en": "Once washed and dehydrated, the dry biomass is collected by Alga.e's downstream industrial partners for applications such as soil amendment in agriculture, bio-based materials, or other circular bioeconomy uses. Hotels participating in the partnership may also benefit from a revenue share as biomass valorization scales.",
+        "es": "Una vez lavada y deshidratada, la biomasa seca es recogida por los socios industriales de Alga.e para aplicaciones como enmienda de suelo en agricultura, materiales de base biológica u otros usos en la bioeconomía circular. Los hoteles participantes también podrían beneficiarse de una participación en los ingresos a medida que escala la valorización de la biomasa."
+      }
+    },
+    {
+      "question": {
+        "en": "Is the system already deployed at hotels?",
+        "es": "¿El sistema ya está instalado en algún hotel?"
+      },
+      "answer": {
+        "en": "Alga.e is currently in the concept validation and pilot development stage. We are actively seeking beachfront hotel partners to participate in the first deployment phase. If your property faces a sargassum challenge, we invite you to apply to the pilot program — your feedback will directly shape the final system design.",
+        "es": "Alga.e se encuentra actualmente en la fase de validación del concepto y desarrollo del piloto. Estamos buscando activamente hoteles costeros para participar en la primera fase de despliegue. Si tu propiedad enfrenta un desafío con el sargazo, te invitamos a aplicar al programa piloto — tu retroalimentación influirá directamente en el diseño final del sistema."
+      }
+    }
+  ]
+}

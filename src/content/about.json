@@ -1,0 +1,62 @@
+{
+  "sectionTitle": {
+    "en": "About Alga.e",
+    "es": "Acerca de Alga.e"
+  },
+  "story": {
+    "title": {
+      "en": "A Crisis Turned Into an Opportunity",
+      "es": "Una Crisis Convertida en Oportunidad"
+    },
+    "content": [
+      {
+        "en": "Sargassum accumulation has become one of the most pressing operational challenges for beachfront hotels across the Caribbean, Mexico, and Atlantic coastal regions. Mass arrivals create foul odors, harm guest experience, and drive up disposal costs — with no scalable solution in sight.",
+        "es": "La acumulación de sargazo se ha convertido en uno de los mayores desafíos operativos para los hoteles costeros del Caribe, México y las costas atlánticas. Las llegadas masivas generan olores desagradables, perjudican la experiencia del huésped y elevan los costos de disposición, sin soluciones escalables a la vista."
+      },
+      {
+        "en": "Alga.e was developed as part of a university business and sustainability initiative with a different premise: what if sargassum could be processed where it lands? Through interviews with hotel operators, surveys with travelers, and consultation with circular economy and technical experts, we designed a compact on-site system that washes and dehydrates the biomass directly at the property — reducing volume by up to 95% and creating a standardized output for industrial reuse.",
+        "es": "Alga.e fue desarrollado como parte de una iniciativa universitaria de negocios y sostenibilidad con una premisa diferente: ¿y si el sargazo pudiera procesarse donde llega? A través de entrevistas con operadores hoteleros, encuestas a viajeros y consultas con expertos en economía circular y técnicos, diseñamos un sistema compacto in situ que lava y deshidrata la biomasa directamente en la propiedad, reduciendo el volumen hasta un 95% y generando un producto estandarizado para reutilización industrial."
+      },
+      {
+        "en": "We're now in the pilot development stage, working closely with coastal hospitality partners to validate the model. Our goal is to make every coastal hotel a node in a circular resource system — where sargassum stops being a cost center and starts generating value for coastal communities, downstream industries, and the planet.",
+        "es": "Actualmente estamos en la fase de desarrollo del piloto, trabajando estrechamente con socios del sector hotelero costero para validar el modelo. Nuestro objetivo es que cada hotel costero se convierta en un nodo de un sistema de recursos circulares, donde el sargazo deje de ser un centro de costos y comience a generar valor para las comunidades costeras, las industrias aguas abajo y el planeta."
+      }
+    ]
+  },
+  "valuesTitle": {
+    "en": "Our Principles",
+    "es": "Nuestros Principios"
+  },
+  "values": [
+    {
+      "title": {
+        "en": "Circular by Design",
+        "es": "Circular por Diseño"
+      },
+      "description": {
+        "en": "Every decision we make is guided by circular economy principles. Waste is a resource in the wrong place — and we're building the infrastructure to move it to the right one.",
+        "es": "Cada decisión que tomamos está guiada por principios de economía circular. Los residuos son recursos en el lugar equivocado — y estamos construyendo la infraestructura para llevarlos al lugar correcto."
+      }
+    },
+    {
+      "title": {
+        "en": "Operationally Grounded",
+        "es": "Arraigados en la Operación"
+      },
+      "description": {
+        "en": "We design for real hotel operations — not ideal conditions. Our model integrates with existing workflows and avoids placing extra burden on hotel staff or budgets.",
+        "es": "Diseñamos para operaciones hoteleras reales, no para condiciones ideales. Nuestro modelo se integra con los flujos de trabajo existentes y evita cargar al personal o los presupuestos del hotel."
+      }
+    },
+    {
+      "title": {
+        "en": "Science-Driven",
+        "es": "Basados en la Ciencia"
+      },
+      "description": {
+        "en": "Our approach is grounded in research — informed by technical experts, coastal tourism analysis, and direct feedback from the people closest to the problem.",
+        "es": "Nuestro enfoque está fundamentado en la investigación, informado por expertos técnicos, análisis del turismo costero y la retroalimentación directa de quienes están más cerca del problema."
+      }
+    }
+  ]
+}

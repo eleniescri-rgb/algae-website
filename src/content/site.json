@@ -1,0 +1,80 @@
+{
+  "brand": {
+    "name": "Alga.e",
+    "description": {
+      "en": "Compact on-site system that processes sargassum directly at beachfront hotels, reducing volume by up to 95% and creating reusable biomass for downstream industries.",
+      "es": "Sistema compacto de procesamiento in situ que trata el sargazo directamente en hoteles costeros, reduciendo el volumen hasta un 95% y generando biomasa reutilizable para industrias."
+    }
+  },
+  "tagline": {
+    "en": "Turn sargassum from a hotel cost into a usable resource.",
+    "es": "Convierte el sargazo de un costo hotelero en un recurso aprovechable."
+  },
+  "navigation": [
+    {
+      "label": {
+        "en": "Home",
+        "es": "Inicio"
+      },
+      "href": "/"
+    },
+    {
+      "label": {
+        "en": "How It Works",
+        "es": "Cómo Funciona"
+      },
+      "href": "#how-it-works"
+    },
+    {
+      "label": {
+        "en": "Benefits",
+        "es": "Beneficios"
+      },
+      "href": "#features"
+    },
+    {
+      "label": {
+        "en": "FAQ",
+        "es": "Preguntas"
+      },
+      "href": "#faq"
+    },
+    {
+      "label": {
+        "en": "About",
+        "es": "Acerca"
+      },
+      "href": "#about"
+    },
+    {
+      "label": {
+        "en": "Contact",
+        "es": "Contacto"
+      },
+      "href": "#contact"
+    }
+  ],
+  "footer": {
+    "copyright": {
+      "en": "© 2026 Alga.e. All rights reserved.",
+      "es": "© 2026 Alga.e. Todos los derechos reservados."
+    },
+    "socialLinks": [
+      {
+        "platform": "linkedin",
+        "url": "https://es.linkedin.com/company/alga-e-company",
+        "icon": "Linkedin"
+      }
+    ]
+  },
+  "meta": {
+    "titleTemplate": {
+      "en": "%s | Alga.e",
+      "es": "%s | Alga.e"
+    },
+    "description": {
+      "en": "Alga.e helps beachfront hotels process sargassum on-site, cutting disposal costs and converting biomass into a reusable resource. Zero CAPEX. Pilot program open.",
+      "es": "Alga.e ayuda a hoteles costeros a procesar el sargazo in situ, reduciendo costos de disposición y convirtiendo la biomasa en un recurso reutilizable. Sin inversión inicial."
+    }
+  }
+}
