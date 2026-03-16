@@ -72,7 +72,7 @@ export default function BrandMoment() {
             <h2
               className="font-display font-black leading-[0.88] tracking-[-0.04em]"
               style={{
-                fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
+                fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
                 color: "#063D57",
               }}
             >
@@ -116,9 +116,9 @@ export default function BrandMoment() {
               <Image
                 src="/logo-white.png"
                 alt="Alga.e"
-                width={160}
-                height={60}
-                className="h-12 w-auto object-contain invert opacity-80"
+                width={260}
+                height={100}
+                className="h-20 w-auto object-contain invert"
                 priority={false}
               />
             </div>
