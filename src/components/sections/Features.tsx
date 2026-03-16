@@ -11,92 +11,112 @@ export default function Features() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
-  };
-
   return (
-    <section id="features" ref={ref} className="bg-cool py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header — left-aligned on md+ */}
+    <section id="features" ref={ref} className="bg-cool py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+
+        {/* Section header — 2-col split on lg+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="mb-16 md:flex md:items-end md:justify-between"
+          className="mb-16 lg:mb-20 lg:grid lg:grid-cols-12 lg:gap-10 lg:items-end"
         >
-          <div>
+          <div className="lg:col-span-5">
             <span className="section-label">
               {t({ en: 'Key Benefits', es: 'Beneficios Clave' })}
             </span>
-            <h2 className="font-display text-4xl font-black leading-[1.0] tracking-[-0.03em] sm:text-5xl max-w-xl">
+            <h2
+              className="font-display font-black leading-[1.0] tracking-[-0.03em]"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#063D57' }}
+            >
               {t(homeContent.features.sectionTitle)}
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
-            {t({
-              en: 'Six reasons beachfront hotels choose Alga.e for sargassum management.',
-              es: 'Seis razones por las que los hoteles costeros eligen Alga.e.',
-            })}
-          </p>
+
+          {/* Connecting line + description */}
+          <div className="lg:col-span-7 mt-6 lg:mt-0 lg:flex lg:items-end lg:gap-6">
+            <div
+              className="hidden lg:block shrink-0 h-px flex-1"
+              style={{ background: 'linear-gradient(90deg, #0897B330, transparent)', marginBottom: '0.35rem' }}
+            />
+            <p className="text-sm leading-relaxed lg:text-right lg:max-w-[280px] shrink-0" style={{ color: '#5a7a8a' }}>
+              {t({
+                en: 'Six reasons beachfront hotels choose Alga.e for sargassum management.',
+                es: 'Seis razones por las que los hoteles costeros eligen Alga.e.',
+              })}
+            </p>
+          </div>
         </motion.div>
 
-        {/* Grid */}
+        {/* Editorial row list */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/30"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.15 }}
         >
-          {homeContent.features.items.map((feature, index) => {
+          {homeContent.features.items.map((feature, i) => {
             const IconComponent =
               LucideIcons[feature.icon as keyof typeof LucideIcons] as LucideIcons.LucideIcon;
 
             return (
-              <motion.div key={index} variants={itemVariants}>
-                <motion.div
-                  whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                  className="group relative h-full bg-background p-7 flex flex-col gap-5 hover:bg-cool transition-colors duration-200"
+              <motion.div
+                key={i}
+                className="group flex items-center gap-6 lg:gap-10 py-7 border-t cursor-default"
+                style={{ borderColor: '#0897B315' }}
+                initial={{ opacity: 0, x: -12 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.18 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ x: 6 }}
+              >
+                {/* Ghost numeral */}
+                <span
+                  className="font-display font-black leading-none select-none shrink-0 w-16 lg:w-20"
+                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#47AECC18' }}
                 >
-                  {/* Accent line on hover */}
-                  <div
-                    className="absolute top-0 left-0 w-full h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ backgroundImage: 'linear-gradient(90deg, #0897B3, #47AECC)' }}
-                  />
+                  {String(i + 1).padStart(2, '0')}
+                </span>
 
-                  {/* Icon */}
-                  <motion.div
-                    className="inline-flex w-fit rounded-xl p-3"
-                    style={{
-                      backgroundImage: 'linear-gradient(135deg, #0897B3, #47AECC)',
-                      boxShadow: '0 4px 14px #0897B340',
-                    }}
-                    whileHover={{ scale: 1.12, boxShadow: '0 0 22px #0897B355' }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 22 }}
+                {/* Icon */}
+                <div
+                  className="shrink-0"
+                  style={{ color: '#0897B3' }}
+                >
+                  {IconComponent && <IconComponent size={22} />}
+                </div>
+
+                {/* Title + mobile description */}
+                <div className="flex-1 min-w-0">
+                  <p
+                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200 group-hover:text-[#0897B3]"
+                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: '#093349' }}
                   >
-                    {IconComponent && <IconComponent className="h-5 w-5 text-white" />}
-                  </motion.div>
+                    {t(feature.title)}
+                  </p>
+                  {/* Mobile-only description below title */}
+                  <p
+                    className="lg:hidden mt-1 text-sm leading-relaxed"
+                    style={{ color: '#5a7a8a' }}
+                  >
+                    {t(feature.description)}
+                  </p>
+                </div>
 
-                  {/* Content */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-display text-lg font-black tracking-[-0.02em] leading-tight">
-                      {t(feature.title)}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {t(feature.description)}
-                    </p>
-                  </div>
-                </motion.div>
+                {/* Description — desktop only, right side */}
+                <p
+                  className="hidden lg:block text-sm leading-relaxed text-right max-w-[260px] shrink-0"
+                  style={{ color: '#5a7a8a' }}
+                >
+                  {t(feature.description)}
+                </p>
               </motion.div>
             );
           })}
+
+          {/* Bottom border */}
+          <div className="border-t" style={{ borderColor: '#0897B315' }} />
         </motion.div>
+
       </div>
     </section>
   );

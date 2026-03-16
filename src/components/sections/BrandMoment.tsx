@@ -46,6 +46,24 @@ export default function BrandMoment() {
         }}
       />
 
+      {/* Decorative background quote mark */}
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <span
+          className="font-display font-black leading-none"
+          style={{
+            fontSize: 'clamp(18rem, 40vw, 36rem)',
+            color: '#0897B308',
+            lineHeight: 1,
+            userSelect: 'none',
+          }}
+        >
+          &ldquo;
+        </span>
+      </div>
+
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
 
         {/* Logo */}
@@ -54,7 +72,7 @@ export default function BrandMoment() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-7"
+          className="mb-10"
         >
           <Image
             src="/logo-white.png"
@@ -72,8 +90,13 @@ export default function BrandMoment() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display text-3xl font-black leading-[1.05] tracking-[-0.03em] sm:text-4xl lg:text-5xl max-w-2xl"
-          style={{ color: "#063D57" }}
+          className="font-display font-black max-w-2xl"
+          style={{
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+            lineHeight: 0.92,
+            letterSpacing: '-0.04em',
+            color: "#063D57",
+          }}
         >
           {t({
             en: "Sargassum, Reimagined as a Resource.",
@@ -92,7 +115,7 @@ export default function BrandMoment() {
             opacity: { duration: 0.5, delay: 0.22 },
             backgroundPosition: { duration: 5, repeat: Infinity, ease: 'linear' },
           }}
-          className="my-5 h-[2px] w-16 origin-left"
+          className="my-6 h-[2px] w-16 origin-left"
           style={{
             backgroundSize: '200% 100%',
             background: 'linear-gradient(90deg, #FF751F, #F4AE5B, #FF751F, #F4AE5B)',
@@ -105,8 +128,8 @@ export default function BrandMoment() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.55, delay: 0.18 }}
-          className="text-base leading-relaxed max-w-xl"
-          style={{ color: "#2E769C" }}
+          className="text-base leading-relaxed"
+          style={{ color: "#2E769C", maxWidth: '520px' }}
         >
           {t({
             en: "Alga.e develops on-site systems that transform coastal sargassum accumulation into a manageable and reusable biomass stream.",
