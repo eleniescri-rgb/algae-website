@@ -14,6 +14,7 @@ import FAQ from "@/components/sections/FAQ";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import BrandMoment from "@/components/sections/BrandMoment";
+import Recognition from "@/components/sections/Recognition";
 
 export default function Home() {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <StatsStrip />
+      <Recognition />
       <BrandMoment />
       <Features />
       <HowItWorks />
