@@ -40,7 +40,7 @@ export default function CircularLoop() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-cool py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-cool py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
@@ -49,14 +49,14 @@ export default function CircularLoop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12"
+          className="mb-14"
         >
           <span className="section-label">
             {t({ en: "The Full Loop", es: "El Ciclo Completo" })}
           </span>
           <h2
-            className="font-display font-black leading-[1.0] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--section-heading)" }}
+            className="font-display font-black leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(2.6rem, 5.5vw, 4.5rem)", color: "var(--section-heading)" }}
           >
             {t({ en: "Circular from the Start", es: "Circular Desde el Principio" })}
           </h2>
@@ -71,53 +71,69 @@ export default function CircularLoop() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 pb-8 pr-8"
+                className="relative flex-1 pb-10 pr-8 overflow-hidden"
               >
+                {/* Ghost numeral — large background watermark */}
+                <div
+                  className="pointer-events-none absolute -top-4 -right-2 font-display font-black leading-none select-none"
+                  style={{
+                    fontSize: "clamp(6rem, 13vw, 9.5rem)",
+                    color: node.accent,
+                    opacity: 0.07,
+                    lineHeight: 0.85,
+                    letterSpacing: "-0.05em",
+                  }}
+                  aria-hidden="true"
+                >
+                  {node.n}
+                </div>
+
                 {/* Animated accent border — scaleX reveal */}
                 <motion.div
-                  className="h-[3px] origin-left mb-6"
+                  className="h-[3px] origin-left mb-7"
                   style={{ backgroundColor: node.accent }}
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.55, delay: 0.06 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 />
+
                 {/* Number + label */}
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-5">
                   <span
-                    className="font-display text-xs font-black tracking-[0.18em]"
-                    style={{ color: node.accent }}
+                    className="font-display font-black tracking-[0.12em]"
+                    style={{ fontSize: "clamp(0.8rem, 1.2vw, 1rem)", color: node.accent }}
                   >
                     {node.n}
                   </span>
                   <span
                     className="text-xs font-bold uppercase tracking-[0.14em]"
-                    style={{ color: node.accent, opacity: 0.6 }}
+                    style={{ color: node.accent, opacity: 0.65 }}
                   >
                     {t(node.label)}
                   </span>
                 </div>
 
                 <h3
-                  className="font-display font-black tracking-[-0.025em] leading-tight mb-3"
-                  style={{ fontSize: "clamp(1.1rem, 2vw, 1.3rem)", color: "var(--section-heading)" }}
+                  className="font-display font-black tracking-[-0.03em] leading-tight mb-4 relative z-10"
+                  style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.7rem)", color: "var(--section-heading)" }}
                 >
                   {t(node.title)}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground relative z-10">
                   {t(node.description)}
                 </p>
               </motion.div>
 
-              {/* Arrow between nodes — desktop: right → / mobile: ↓ */}
+              {/* Arrow between nodes — desktop only */}
               {i < 2 && (
                 <motion.div
-                  className="hidden lg:flex items-start pt-10 px-3 shrink-0 text-lg font-black select-none"
-                  style={{ color: "#0897B326" }}
+                  className="hidden lg:flex items-start pt-8 px-1 shrink-0 select-none"
+                  style={{ color: "#47AECC55", fontSize: "1.6rem", lineHeight: 1 }}
                   initial={{ opacity: 0, x: -6 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
@@ -137,7 +153,7 @@ export default function CircularLoop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.45, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 text-xs leading-relaxed max-w-lg"
+          className="mt-10 text-xs leading-relaxed max-w-lg"
           style={{ color: "var(--section-body)", borderTop: "1px solid var(--section-border)", paddingTop: "1rem" }}
         >
           {t({

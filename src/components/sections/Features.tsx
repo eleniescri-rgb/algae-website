@@ -31,7 +31,7 @@ export default function Features() {
             </span>
             <h2
               className="font-display font-black leading-[1.0] tracking-[-0.03em]"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--section-heading)' }}
+              style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', color: 'var(--section-heading)' }}
             >
               {t(homeContent.features.sectionTitle)}
             </h2>
@@ -63,66 +63,77 @@ export default function Features() {
           {homeContent.features.items.map((feature, i) => {
             const IconComponent =
               LucideIcons[feature.icon as keyof typeof LucideIcons] as LucideIcons.LucideIcon;
+            const accent = featureAccents[i];
 
             return (
-              <motion.div
-                key={i}
-                className="group flex items-center gap-4 lg:gap-8 py-4 cursor-default"
-                style={{ borderTop: '1px solid var(--section-border)' }}
-                initial={{ opacity: 0, x: -12 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.45, delay: 0.18 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ x: 6 }}
-              >
-                {/* Ghost numeral */}
-                <span
-                  className="font-display font-black leading-none select-none shrink-0 w-10 lg:w-14"
-                  style={{
-                    fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)',
-                    color: featureAccents[i],
-                    opacity: 0.18,
-                  }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                {/* Icon */}
+              <div key={i} className="relative">
+                {/* Animated accent border — scaleX reveal */}
                 <motion.div
-                  className="shrink-0"
-                  style={{ color: featureAccents[i] }}
-                  whileHover={{ scale: 1.18 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                >
-                  {IconComponent && <IconComponent size={20} />}
-                </motion.div>
+                  className="h-px origin-left"
+                  style={{ backgroundColor: accent }}
+                  initial={{ scaleX: 0 }}
+                  animate={isInView ? { scaleX: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                />
 
-                {/* Title + mobile description */}
-                <div className="flex-1 min-w-0">
-                  <p
-                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200"
-                    style={{ fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', color: 'var(--section-heading)', transition: `color 0.2s ease` }}
+                <motion.div
+                  className="group flex items-center gap-4 lg:gap-8 py-5 lg:py-6 cursor-default"
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.45, delay: 0.18 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ x: 8 }}
+                >
+                  {/* Ghost numeral */}
+                  <span
+                    className="font-display font-black leading-none select-none shrink-0 w-12 lg:w-16"
+                    style={{
+                      fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
+                      color: accent,
+                      opacity: 0.25,
+                    }}
                   >
-                    {t(feature.title)}
-                  </p>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  {/* Icon badge */}
+                  <motion.div
+                    className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${accent}18`, color: accent }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                  >
+                    {IconComponent && <IconComponent size={22} />}
+                  </motion.div>
+
+                  {/* Title + mobile description */}
+                  <div className="flex-1 min-w-0">
+                    <p
+                      className="font-display font-black tracking-[-0.025em]"
+                      style={{ fontSize: 'clamp(1.05rem, 2.2vw, 1.35rem)', color: 'var(--section-heading)' }}
+                    >
+                      {t(feature.title)}
+                    </p>
+                    <p
+                      className="lg:hidden mt-1 text-sm leading-relaxed"
+                      style={{ color: 'var(--section-body)' }}
+                    >
+                      {t(feature.description)}
+                    </p>
+                  </div>
+
+                  {/* Description — desktop right */}
                   <p
-                    className="lg:hidden mt-1 text-sm leading-relaxed"
+                    className="hidden lg:block text-sm leading-relaxed text-right max-w-[260px] shrink-0"
                     style={{ color: 'var(--section-body)' }}
                   >
                     {t(feature.description)}
                   </p>
-                </div>
-
-                {/* Description — desktop right */}
-                <p
-                  className="hidden lg:block text-sm leading-relaxed text-right max-w-[260px] shrink-0"
-                  style={{ color: 'var(--section-body)' }}
-                >
-                  {t(feature.description)}
-                </p>
-              </motion.div>
+                </motion.div>
+              </div>
             );
           })}
 
+          {/* Bottom border */}
           <div style={{ borderTop: '1px solid var(--section-border)' }} />
         </motion.div>
 
