@@ -5,6 +5,9 @@ import { motion, useInView } from "framer-motion";
 import { useTranslation } from "@/hooks/useTranslation";
 import homeContent from "@/content/home.json";
 
+// Distinct accent per step — matches the brand cycling pattern
+const stepAccents = ["#FF751F", "#0897B3", "#47AECC", "#FF751F"];
+
 export default function HowItWorks() {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
@@ -46,47 +49,53 @@ export default function HowItWorks() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.stepNumber}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              whileHover={{ x: 4, transition: { duration: 0.2 } }}
-              transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="relative group"
-            >
-              {/* Ghost numeral — editorial depth */}
-              <div
-                className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none opacity-[0.07] group-hover:opacity-[0.14] transition-opacity duration-300"
-                style={{ fontSize: "6.5rem", color: "#47AECC", lineHeight: 1 }}
-                aria-hidden="true"
+          {steps.map((step, index) => {
+            const accent = stepAccents[index];
+            return (
+              <motion.div
+                key={step.stepNumber}
+                initial={{ opacity: 0, y: 24 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="relative group"
               >
-                {step.stepNumber}
-              </div>
-
-              {/* Content */}
-              <div
-                className="relative pt-12 pr-4 pb-7 pl-0 border-t"
-                style={{ borderColor: "#47AECC2a" }}
-              >
-                {/* Step label */}
-                <span className="section-label-light mb-4">
-                  {t({ en: `Step ${step.stepNumber}`, es: `Paso ${step.stepNumber}` })}
-                </span>
-
-                <h3
-                  className="font-display text-xl font-black leading-tight tracking-[-0.02em] mb-3"
-                  style={{ color: "#CCE6EA" }}
+                {/* Ghost numeral — distinct accent per step */}
+                <div
+                  className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none opacity-[0.08] group-hover:opacity-[0.16] transition-opacity duration-300"
+                  style={{ fontSize: "6.5rem", color: accent, lineHeight: 1 }}
+                  aria-hidden="true"
                 >
-                  {t(step.title)}
-                </h3>
+                  {step.stepNumber}
+                </div>
 
-                <p className="text-sm leading-relaxed" style={{ color: "#729DB9" }}>
-                  {t(step.description)}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                {/* Content */}
+                <div
+                  className="relative pt-12 pr-4 pb-7 pl-0 border-t-2"
+                  style={{ borderColor: accent }}
+                >
+                  {/* Step label */}
+                  <span
+                    className="text-xs font-bold uppercase tracking-[0.18em] block mb-4"
+                    style={{ color: accent }}
+                  >
+                    {t({ en: `Step ${step.stepNumber}`, es: `Paso ${step.stepNumber}` })}
+                  </span>
+
+                  <h3
+                    className="font-display text-xl font-black leading-tight tracking-[-0.02em] mb-3"
+                    style={{ color: "#CCE6EA" }}
+                  >
+                    {t(step.title)}
+                  </h3>
+
+                  <p className="text-sm leading-relaxed" style={{ color: "#729DB9" }}>
+                    {t(step.description)}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
