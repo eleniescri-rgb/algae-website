@@ -9,134 +9,141 @@ export default function BrandMoment() {
 
   return (
     <section
-      className="relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8"
-      style={{ backgroundColor: "#ffffff" }}
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "#fafcfd" }}
     >
-      {/* SVG grain texture */}
-      <svg className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.025]" aria-hidden="true">
-        <filter id="brand-noise">
+      {/* SVG grain */}
+      <svg className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.018]" aria-hidden="true">
+        <filter id="bm-noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
         </filter>
-        <rect width="100%" height="100%" filter="url(#brand-noise)" />
+        <rect width="100%" height="100%" filter="url(#bm-noise)" />
       </svg>
 
-      {/* Radial glow — top center */}
+      {/* Ghost numeral — far right, low opacity */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0"
+        className="pointer-events-none absolute right-0 top-0 select-none leading-none font-display font-black"
         style={{
-          height: "60%",
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, #47AECC0a 0%, transparent 70%)",
+          fontSize: "clamp(14rem, 32vw, 28rem)",
+          color: "#0897B306",
+          lineHeight: 0.8,
+          letterSpacing: "-0.06em",
         }}
-      />
-
-      {/* Thin top accent line */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent, #0897B326, transparent)",
-        }}
-      />
-
-      {/* Thin bottom accent line */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent, #0897B320, transparent)",
-        }}
-      />
-
-      {/* Decorative background quote mark */}
-      <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none overflow-hidden"
         aria-hidden="true"
       >
-        <span
-          className="font-display font-black leading-none"
-          style={{
-            fontSize: 'clamp(18rem, 40vw, 36rem)',
-            color: '#0897B308',
-            lineHeight: 1,
-            userSelect: 'none',
-          }}
-        >
-          &ldquo;
-        </span>
+        alg
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
+      {/* Top rule */}
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+        style={{ background: "linear-gradient(90deg, #0897B322, transparent 60%)" }}
+      />
 
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10"
-        >
-          <Image
-            src="/logo-white.png"
-            alt="Alga.e"
-            width={260}
-            height={100}
-            className="h-20 w-auto sm:h-24 lg:h-28 object-contain invert"
-            priority={false}
-          />
-        </motion.div>
+      {/* Bottom rule */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
+        style={{ background: "linear-gradient(90deg, #0897B318, transparent 50%)" }}
+      />
 
-        {/* Brand statement */}
-        <motion.h2
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-black max-w-2xl"
-          style={{
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            lineHeight: 0.92,
-            letterSpacing: '-0.04em',
-            color: "#063D57",
-          }}
-        >
-          {t({
-            en: "Sargassum, Reimagined as a Resource.",
-            es: "El Sargazo, Reimaginado como un Recurso.",
-          })}
-        </motion.h2>
+      {/* Main content — asymmetric 2-col */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 items-end">
 
-        {/* Accent bar */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-          transition={{
-            scaleX: { duration: 0.5, delay: 0.22 },
-            opacity: { duration: 0.5, delay: 0.22 },
-            backgroundPosition: { duration: 5, repeat: Infinity, ease: 'linear' },
-          }}
-          className="my-6 h-[2px] w-16 origin-left"
-          style={{
-            backgroundSize: '200% 100%',
-            background: 'linear-gradient(90deg, #FF751F, #F4AE5B, #FF751F, #F4AE5B)',
-          }}
-        />
+          {/* LEFT — oversized headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 lg:pr-12"
+          >
+            {/* Vertical orange bar + label */}
+            <div className="flex items-center gap-3 mb-7">
+              <div className="w-px h-8 shrink-0" style={{ background: "#FF751F" }} />
+              <span
+                className="text-[0.62rem] font-bold uppercase tracking-[0.22em]"
+                style={{ color: "#FF751F" }}
+              >
+                {t({ en: "Our Mission", es: "Nuestra Misión" })}
+              </span>
+            </div>
 
-        {/* Body copy */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55, delay: 0.18 }}
-          className="text-base leading-relaxed"
-          style={{ color: "#2E769C", maxWidth: '520px' }}
-        >
-          {t({
-            en: "Alga.e develops on-site systems that transform coastal sargassum accumulation into a manageable and reusable biomass stream.",
-            es: "Alga.e desarrolla sistemas in situ que transforman la acumulación costera de sargazo en una corriente de biomasa manejable y reutilizable.",
-          })}
-        </motion.p>
+            <h2
+              className="font-display font-black leading-[0.88] tracking-[-0.04em]"
+              style={{
+                fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
+                color: "#063D57",
+              }}
+            >
+              {t({ en: "Sargassum,", es: "El Sargazo," })}<br />
+              <span style={{ color: "#0897B3" }}>
+                {t({ en: "Reimagined", es: "Reimaginado" })}
+              </span><br />
+              {t({ en: "as a Resource.", es: "como un Recurso." })}
+            </h2>
 
+            {/* Animated accent bar — left-aligned */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{
+                scaleX: { duration: 0.5, delay: 0.3 },
+                opacity: { duration: 0.5, delay: 0.3 },
+                backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" },
+              }}
+              className="mt-8 h-[2px] w-20 origin-left"
+              style={{
+                backgroundSize: "200% 100%",
+                background: "linear-gradient(90deg, #FF751F, #F4AE5B, #FF751F, #F4AE5B)",
+              }}
+            />
+          </motion.div>
+
+          {/* RIGHT — logo + description */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 lg:pl-12 flex flex-col"
+            style={{ borderLeft: "1px solid #0897B314" }}
+          >
+            {/* Logo */}
+            <div className="mb-7">
+              <Image
+                src="/logo-white.png"
+                alt="Alga.e"
+                width={160}
+                height={60}
+                className="h-12 w-auto object-contain invert opacity-80"
+                priority={false}
+              />
+            </div>
+
+            {/* Body copy */}
+            <p
+              className="text-base leading-[1.75]"
+              style={{ color: "#2E6E8A", maxWidth: "380px" }}
+            >
+              {t({
+                en: "Alga.e develops on-site systems that turn coastal sargassum from an operational burden into a recoverable resource — processed at the property, collected by our industrial partners.",
+                es: "Alga.e desarrolla sistemas in situ que convierten el sargazo costero de una carga operativa en un recurso recuperable — procesado en la propiedad y recogido por nuestros socios industriales.",
+              })}
+            </p>
+
+            {/* Small brand note */}
+            <p
+              className="mt-6 text-xs font-semibold uppercase tracking-[0.16em]"
+              style={{ color: "#47AECC" }}
+            >
+              {t({ en: "Circular resource recovery", es: "Recuperación circular de recursos" })}
+            </p>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
