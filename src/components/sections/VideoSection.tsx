@@ -119,8 +119,7 @@ export default function VideoSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.4, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex gap-5 py-4 group"
-                  style={{ borderTop: "1px solid #0897B326" }}
+                  className="flex gap-5 py-4 group border-t border-[#0897B326] dark:border-[#47AECC30]"
                 >
                   <div className="shrink-0 pt-0.5 w-6">
                     <span
@@ -149,7 +148,7 @@ export default function VideoSection() {
                   </div>
                 </motion.div>
               ))}
-              <div style={{ borderTop: "1px solid #0897B326" }} />
+              <div className="border-t border-[#0897B326] dark:border-[#47AECC30]" />
             </div>
 
             {/* Watch CTA — directs attention down to the video */}
@@ -223,11 +222,10 @@ export default function VideoSection() {
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-6 right-2 lg:right-0 px-3 py-2.5 rounded-xl"
+                className="absolute bottom-6 right-2 lg:right-0 px-3 py-2.5 rounded-xl bg-white dark:bg-[#0D3D57]"
                 style={{
-                  background: "#ffffff",
-                  border: "1px solid #0897B31e",
-                  boxShadow: "0 6px 20px #0897B312",
+                  border: "1px solid #0897B32a",
+                  boxShadow: "0 6px 20px #0897B322",
                 }}
               >
                 <div
@@ -253,21 +251,21 @@ export default function VideoSection() {
         >
           {/* Divider with label */}
           <div className="flex items-center gap-4 mb-6">
-            <div className="h-px flex-1" style={{ background: "#0897B31e" }} />
+            <div className="h-px flex-1 bg-[#0897B31e] dark:bg-[#47AECC26]" />
             <span
               className="text-xs font-bold uppercase tracking-[0.16em]"
               style={{ color: "#47AECC" }}
             >
               {t({ en: "Explainer Video", es: "Video Explicativo" })}
             </span>
-            <div className="h-px flex-1" style={{ background: "#0897B31e" }} />
+            <div className="h-px flex-1 bg-[#0897B31e] dark:bg-[#47AECC26]" />
           </div>
 
           {/* Video heading */}
           <h3
             id="video-player"
             className="font-display text-xl font-black tracking-[-0.03em] mb-3"
-            style={{ color: "#CCE6EA" }}
+            style={{ color: "var(--section-heading)" }}
           >
             {t({ en: "See it in 90 seconds", es: "Míralo en 90 segundos" })}
           </h3>
