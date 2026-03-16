@@ -26,14 +26,14 @@ export default function Home() {
       <Navbar />
       <Hero />
       <StatsStrip />
+      <Recognition />
       <BrandMoment />
       <Features />
       <HowItWorks />
       <VideoSection />
       <PilotSection />
-      <FAQ />
       <About />
-      <Recognition />
+      <FAQ />
       <Contact />
       <Footer />
     </main>

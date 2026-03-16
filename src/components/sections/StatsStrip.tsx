@@ -29,7 +29,7 @@ const stats: Stat[] = [
     value: 3,
     suffix: " days",
     label: { en: "To Deploy", es: "Para Desplegar" },
-    sublabel: { en: "typical installation timeline", es: "tiempo de instalación típico" },
+    sublabel: { en: "average pilot setup time", es: "tiempo promedio de configuración del piloto" },
   },
   {
     value: 12,
