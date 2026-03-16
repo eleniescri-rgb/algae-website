@@ -167,7 +167,7 @@ export default function VideoSection() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 70% 60% at 50% 55%, #FF751F0e 0%, #0897B308 50%, transparent 80%)",
+                    "radial-gradient(ellipse 80% 70% at 50% 55%, #0897B348 0%, #0897B318 50%, transparent 80%)",
                   transform: "scale(1.2)",
                 }}
               />
@@ -175,7 +175,7 @@ export default function VideoSection() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 50% 40% at 50% 45%, #47AECC08 0%, transparent 70%)",
+                    "radial-gradient(ellipse 50% 40% at 50% 45%, #47AECC22 0%, transparent 70%)",
                 }}
               />
 
@@ -187,8 +187,8 @@ export default function VideoSection() {
                   height={330}
                   className="w-full h-auto"
                   style={{
-                    filter:
-                      "drop-shadow(0 10px 28px #0897B31e) drop-shadow(0 2px 6px #00000010)",
+                    filter: "invert(1) brightness(0.95) sepia(0.2) hue-rotate(175deg) saturate(0.8)",
+                    mixBlendMode: "screen",
                     maxHeight: "380px",
                     objectFit: "contain",
                   }}
