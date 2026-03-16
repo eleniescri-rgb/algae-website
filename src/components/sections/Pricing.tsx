@@ -35,11 +35,12 @@ export default function Pricing() {
       {/* Background photo — replace src with a Caribbean beachfront hotel photo */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="https://placehold.co/1920x1080/041c2c/0897B3?text=Caribbean+Beach+Hotel"
+          src="/images/caribbean-resort.jpg"
           alt=""
+          aria-hidden="true"
           fill
           className="object-cover object-center"
-          unoptimized
+          priority={false}
         />
         {/* Heavy dark overlay so text remains legible */}
         <div

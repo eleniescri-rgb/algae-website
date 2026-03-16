@@ -94,15 +94,13 @@ export default function About() {
                 boxShadow: "0 24px 64px #00000059, 0 0 0 1px #47AECC18",
               }}
             >
-              {/* TODO: replace src with a wide-angle beach photo showing sargassum accumulation at scale */}
               <Image
-                src="https://placehold.co/800x1000/0a2e1a/1a6b3a?text=Sargassum+Beach"
-                alt="Sargassum accumulation on a Caribbean beach"
+                src="/images/sargassum-beach.jpg"
+                alt="Sargassum seaweed covering a Caribbean beach, showing the scale of the problem for beachfront hotels"
                 fill
-                className="object-cover object-bottom"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={false}
-                unoptimized
               />
 
               {/* Dark gradient overlay — bottom to top */}
