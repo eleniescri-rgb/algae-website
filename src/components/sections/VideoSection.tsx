@@ -32,26 +32,26 @@ function detectEmbedType(url: string): EmbedType {
 const steps = [
   {
     n: "01",
-    title: { en: "Collect", es: "Recolectar" },
+    title: { en: "No Logistics", es: "Sin Logística" },
     description: {
-      en: "Beach cleaning teams gather wet sargassum during their regular routine.",
-      es: "Los equipos de limpieza recogen el sargazo húmedo durante su rutina habitual.",
+      en: "No third-party pickups, no trucking schedules, no coordination. Everything stays on your property.",
+      es: "Sin recolecciones externas, sin horarios de camiones, sin coordinación. Todo se gestiona en tu propiedad.",
     },
   },
   {
     n: "02",
-    title: { en: "Process", es: "Procesar" },
+    title: { en: "Odor Eliminated", es: "Olor Eliminado" },
     description: {
-      en: "The Alga.e unit washes and dehydrates the biomass directly on-site.",
-      es: "La unidad Alga.e lava y deshidrata la biomasa directamente in situ.",
+      en: "Processed biomass doesn't rot or smell. Guest complaints about beach odor disappear.",
+      es: "La biomasa procesada no se pudre ni huele. Las quejas de huéspedes por el olor en la playa desaparecen.",
     },
   },
   {
     n: "03",
-    title: { en: "Reduce", es: "Reducir" },
+    title: { en: "Cost Becomes Value", es: "El Costo Se Convierte en Valor" },
     description: {
-      en: "Up to 95% volume reduction — producing stable, reusable dry biomass.",
-      es: "Hasta un 95% de reducción de volumen — produciendo biomasa seca estable y reutilizable.",
+      en: "What used to be a disposal problem becomes a recoverable resource — collected by Alga.e's industrial partners.",
+      es: "Lo que antes era un problema de eliminación se convierte en un recurso recuperable, recogido por los socios industriales de Alga.e.",
     },
   },
 ];
@@ -100,14 +100,14 @@ export default function VideoSection() {
               style={{ color: "#093349" }}
             >
               {t({
-                en: "How the Alga.e Processing Unit Works",
-                es: "Cómo Funciona la Unidad de Procesamiento Alga.e",
+                en: "What Changes for Your Property",
+                es: "Qué Cambia para Tu Propiedad",
               })}
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground mb-8 max-w-md">
               {t({
-                en: "A compact on-site system designed to wash and dehydrate sargassum directly at beachfront properties.",
-                es: "Un sistema compacto in situ diseñado para lavar y deshidratar el sargazo directamente en propiedades costeras.",
+                en: "The Alga.e system fits seamlessly into your existing operations — removing cost, odor, and complexity from your sargassum problem.",
+                es: "El sistema Alga.e se integra perfectamente en tus operaciones existentes — eliminando el costo, el olor y la complejidad de tu problema de sargazo.",
               })}
             </p>
 
@@ -187,8 +187,7 @@ export default function VideoSection() {
                   height={330}
                   className="w-full h-auto"
                   style={{
-                    filter: "invert(1) brightness(0.95) sepia(0.2) hue-rotate(175deg) saturate(0.8)",
-                    mixBlendMode: "screen",
+                    filter: "sepia(1) saturate(4) hue-rotate(152deg) brightness(0.48)",
                     maxHeight: "380px",
                     objectFit: "contain",
                   }}
