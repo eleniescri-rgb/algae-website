@@ -55,11 +55,11 @@ export default function BrandMoment() {
             </div>
 
             <h2
-              className="font-display font-black leading-[0.88] tracking-[-0.04em] text-[#063D57] dark:text-[#CCE6EA]"
+              className="font-display font-black leading-[0.88] tracking-[-0.04em] text-[#063D57] dark:text-[#E8F4F7]"
               style={{ fontSize: "clamp(2.2rem, 5vw, 4.2rem)" }}
             >
               {t({ en: "Sargassum,", es: "El Sargazo," })}<br />
-              <span className="text-[#0897B3] dark:text-[#47AECC]">
+              <span className="text-[#0897B3] dark:text-[#FF751F]">
                 {t({ en: "Reimagined", es: "Reimaginado" })}
               </span><br />
               {t({ en: "as a Resource.", es: "como un Recurso." })}
@@ -106,7 +106,7 @@ export default function BrandMoment() {
 
             {/* Body copy */}
             <p
-              className="text-base leading-[1.75] text-[#5a7a8a] dark:text-[#729DB9]"
+              className="text-base leading-[1.75] text-[#5a7a8a] dark:text-[#A8CEDC]"
               style={{ maxWidth: "380px" }}
             >
               {t({
