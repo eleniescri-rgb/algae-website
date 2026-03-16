@@ -73,7 +73,7 @@ export default function VideoSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12"
         >
           <span className="section-label">
@@ -92,7 +92,7 @@ export default function VideoSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-6 flex flex-col"
           >
             <h3
@@ -118,7 +118,7 @@ export default function VideoSection() {
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.4, delay: i * 0.09 }}
+                  transition={{ duration: 0.4, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                   className="flex gap-5 py-4 group"
                   style={{ borderTop: "1px solid #0897B326" }}
                 >
@@ -249,7 +249,7 @@ export default function VideoSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Divider with label */}
           <div className="flex items-center gap-4 mb-6">

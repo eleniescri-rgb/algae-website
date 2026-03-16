@@ -14,13 +14,13 @@ export default function FAQ() {
   const { t } = useTranslation();
 
   return (
-    <section id="faq" className="bg-cool py-24 px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14"
         >
           <span className="section-label">
@@ -35,7 +35,7 @@ export default function FAQ() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <Accordion type="single" collapsible className="w-full">
             {faqContent.questions.map((item, index) => (

@@ -62,8 +62,8 @@ export default function BrandMoment() {
             <div className="flex items-center gap-3 mb-7">
               <div className="w-px h-8 shrink-0" style={{ background: "#FF751F" }} />
               <span
-                className="text-[0.62rem] font-bold uppercase tracking-[0.22em]"
-                style={{ color: "#FF751F" }}
+                className="section-label"
+                style={{ color: "#FF751F", marginBottom: 0 }}
               >
                 {t({ en: "Our Mission", es: "Nuestra Misión" })}
               </span>
@@ -126,7 +126,7 @@ export default function BrandMoment() {
             {/* Body copy */}
             <p
               className="text-base leading-[1.75]"
-              style={{ color: "#2E6E8A", maxWidth: "380px" }}
+              style={{ color: "#5a7a8a", maxWidth: "380px" }}
             >
               {t({
                 en: "Alga.e develops on-site systems that turn coastal sargassum from an operational burden into a recoverable resource — processed at the property, collected by our industrial partners.",

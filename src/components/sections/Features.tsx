@@ -12,14 +12,14 @@ export default function Features() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="features" ref={ref} className="bg-cool py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <section id="features" ref={ref} className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
 
         {/* Section header — 2-col split on lg+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 lg:mb-20 lg:grid lg:grid-cols-12 lg:gap-10 lg:items-end"
         >
           <div className="lg:col-span-5">
@@ -53,7 +53,7 @@ export default function Features() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.15 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           {homeContent.features.items.map((feature, i) => {
             const IconComponent =

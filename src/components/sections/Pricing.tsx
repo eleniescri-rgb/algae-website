@@ -28,7 +28,7 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pilot" className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
+    <section id="pilot" className="relative overflow-hidden py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
       {/* Dark ocean background — brand #063D57 */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "#063D57" }} />
 
@@ -67,10 +67,7 @@ export default function Pricing() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 text-center"
         >
-          <span
-            className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.16em]"
-            style={{ color: "#47AECC" }}
-          >
+          <span className="section-label-light">
             {t({ en: "Pilot Program", es: "Programa Piloto" })}
           </span>
           <h2

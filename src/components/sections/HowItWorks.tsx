@@ -16,7 +16,7 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       ref={ref}
-      className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#063D57" }}
     >
       {/* Subtle radial glow */}
@@ -25,12 +25,12 @@ export default function HowItWorks() {
         style={{ background: "radial-gradient(ellipse 60% 50% at 50% 100%, #0897B3, transparent)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-20"
         >
           <span className="section-label-light">
@@ -70,10 +70,7 @@ export default function HowItWorks() {
                 style={{ borderColor: "#47AECC2a" }}
               >
                 {/* Step label */}
-                <span
-                  className="block text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-4"
-                  style={{ color: "#47AECC" }}
-                >
+                <span className="section-label-light mb-4">
                   {t({ en: `Step ${step.stepNumber}`, es: `Paso ${step.stepNumber}` })}
                 </span>
 

@@ -11,7 +11,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#093349" }}
     >
       {/* Subtle top glow */}
@@ -26,7 +26,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16"
         >
           <span className="section-label-light">
@@ -51,7 +51,7 @@ export default function About() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-2xl font-black tracking-[-0.03em] leading-tight mb-7"
               style={{ color: "#47AECC" }}
             >
@@ -66,7 +66,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   className={index === 0 ? "text-lg leading-relaxed font-medium" : "text-base leading-relaxed"}
                   style={{ color: index === 0 ? "#CCE6EA" : "#729DB9" }}
                 >
@@ -157,7 +157,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10"
         >
           <span className="section-label-light">
@@ -179,7 +179,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               whileHover={{ y: -4, boxShadow: "0 8px 28px #0897B322", transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="p-7 group"
               style={{ backgroundColor: "#063D57" }}
             >

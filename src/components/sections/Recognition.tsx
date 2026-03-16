@@ -44,21 +44,21 @@ export default function Recognition() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
 
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8"
         >
           <div className="flex items-center gap-3">
             <div className="h-px w-10" style={{ background: "#FF751F" }} />
             <span
-              className="text-[0.65rem] font-bold uppercase tracking-[0.22em]"
-              style={{ color: "#FF751F" }}
+              className="section-label-light"
+              style={{ color: "#FF751F", marginBottom: 0 }}
             >
               {t({ en: "Recognition", es: "Reconocimiento" })}
             </span>
@@ -104,7 +104,7 @@ export default function Recognition() {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="my-7 h-px origin-left"
             style={{ background: "linear-gradient(to right, #47AECC60, transparent)" }}
           />
@@ -147,7 +147,7 @@ export default function Recognition() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 text-sm max-w-sm leading-relaxed"
           style={{ color: "#729DB9" }}
         >
