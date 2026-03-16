@@ -17,15 +17,9 @@ export default function About() {
       className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#093349" }}
     >
-      {/* Subtle top glow */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, #47AECC40, transparent)" }}
-      />
-
       <div className="max-w-6xl mx-auto">
 
-        {/* ── Section header — bolder scale ── */}
+        {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +32,7 @@ export default function About() {
           </span>
           <h2
             className="font-display font-black leading-[0.9] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#CCE6EA" }}
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#CCE6EA" }}
           >
             {t(aboutContent.sectionTitle)}
           </h2>
@@ -107,27 +101,9 @@ export default function About() {
               />
               <div
                 className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(to top, #093349ee 0%, #09334966 40%, transparent 70%)" }}
+                style={{ background: "linear-gradient(to top, #093349cc 0%, transparent 60%)" }}
               />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(135deg, #0897B314 0%, transparent 50%)" }}
-              />
-              <div
-                className="absolute top-4 right-4 px-3 py-1.5 rounded-full"
-                style={{ background: "#00000059", backdropFilter: "blur(8px)", border: "1px solid #47AECC26" }}
-              >
-                <span className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "#47AECC" }}>
-                  {t({ en: "The Problem", es: "El Problema" })}
-                </span>
-              </div>
             </div>
-            <p className="mt-3 text-xs leading-relaxed" style={{ color: "#47AECC66" }}>
-              {t({
-                en: "Seasonal sargassum arrivals affecting beachfront hotels across the Caribbean.",
-                es: "Las llegadas estacionales de sargazo afectan a los hoteles de playa en todo el Caribe.",
-              })}
-            </p>
           </motion.div>
         </div>
 

@@ -119,7 +119,7 @@ export default function VideoSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.4, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex gap-5 py-4 group border-t border-[#0897B326] dark:border-[#47AECC30]"
+                  className="flex gap-5 py-4 border-t border-[#0897B326] dark:border-[#47AECC30]"
                 >
                   <div className="shrink-0 pt-0.5 w-6">
                     <span
@@ -139,12 +139,6 @@ export default function VideoSection() {
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {t(step.description)}
                     </p>
-                  </div>
-                  <div className="shrink-0 pt-1.5">
-                    <div
-                      className="w-1.5 h-1.5 rounded-full transition-transform duration-300 group-hover:scale-150"
-                      style={{ backgroundColor: "#FF751F" }}
-                    />
                   </div>
                 </motion.div>
               ))}
@@ -187,15 +181,8 @@ export default function VideoSection() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 80% 70% at 50% 55%, #0897B348 0%, #0897B318 50%, transparent 80%)",
-                  transform: "scale(1.2)",
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 50% 40% at 50% 45%, #47AECC22 0%, transparent 70%)",
+                    "radial-gradient(ellipse 70% 60% at 50% 55%, #0897B338 0%, transparent 75%)",
+                  transform: "scale(1.15)",
                 }}
               />
 
@@ -211,7 +198,7 @@ export default function VideoSection() {
                   height={330}
                   className="w-full h-auto"
                   style={{
-                    filter: "sepia(1) saturate(4) hue-rotate(152deg) brightness(0.48)",
+                    filter: "sepia(1) saturate(3.5) hue-rotate(152deg) brightness(0.62)",
                     maxHeight: "380px",
                     objectFit: "contain",
                   }}
