@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
 import content from "@/content/home.json";
@@ -42,10 +43,10 @@ const Hero = () => {
 
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20"
+      className="relative flex min-h-screen items-center overflow-hidden px-4 py-20 lg:px-8"
       style={{ backgroundColor: "#063D57" }}
     >
-      {/* Slow-pulsing ambient glows using brand colors */}
+      {/* ── Ambient glows ── */}
       <motion.div
         className="pointer-events-none absolute inset-0"
         animate={{ opacity: [0.55, 0.80, 0.55] }}
@@ -73,8 +74,16 @@ const Hero = () => {
           background: "radial-gradient(ellipse 30% 40% at 5% 70%, #47AECC18, transparent 60%)",
         }}
       />
+      {/* Right-side atmosphere — reinforces machine image */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(ellipse 50% 60% at 90% 50%, #0897B322, transparent 70%)",
+        }}
+      />
 
-      {/* Grid overlay — brand sky blue */}
+      {/* Grid overlay */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         aria-hidden="true"
@@ -100,171 +109,210 @@ const Hero = () => {
         <rect width="100%" height="100%" filter="url(#hero-noise)" />
       </svg>
 
-      {/* Content */}
+      {/* ── Content grid ── */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto w-full max-w-5xl text-center"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8"
       >
-        {/* Pill badge */}
-        <motion.div variants={itemVariants} className="mb-8 flex justify-center">
-          <span
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium uppercase"
-            style={{
-              letterSpacing: "0.14em",
-              color: "#CCE6EA",
-              border: "1px solid #47AECC2e",
-              background: "#47AECC0f",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <motion.span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ backgroundColor: "#FF751F" }}
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            {t({ en: "Pilot Program Open", es: "Programa Piloto Abierto" })}
-          </span>
-        </motion.div>
+        {/* ── Left column: text ── */}
+        <div className="lg:col-span-7">
 
-        {/* Headline */}
-        <motion.h1
-          variants={itemVariants}
-          className="font-display mb-6 text-5xl font-black italic leading-[0.9] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl"
-          style={{
-            backgroundImage: "linear-gradient(135deg, #FF751F 0%, #F4AE5B 40%, #47AECC 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          {t(content.hero.headline)}
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p
-          variants={itemVariants}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed sm:text-lg"
-          style={{ color: "#729DB9" }}
-        >
-          {t(content.hero.subheadline)}
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <Button
-            size="lg"
-            onClick={handleScrollToContact}
-            className="w-full text-base sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
-            style={{
-              backgroundColor: "#FF751F",
-              color: "white",
-              boxShadow: "0 4px 28px #FF751F73",
-              transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 36px #FF751F8c";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 28px #FF751F73";
-            }}
-          >
-            {t(content.hero.ctaText)}
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={handleScrollToHowItWorks}
-            className="w-full text-base sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
-            style={{
-              borderColor: "#47AECC40",
-              backgroundColor: "#47AECC0d",
-              color: "#CCE6EA",
-              backdropFilter: "blur(8px)",
-              transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#47AECC1f";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "#47AECC66";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#47AECC0d";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "#47AECC40";
-            }}
-          >
-            {t(content.hero.ctaSecondaryText)}
-          </Button>
-        </motion.div>
-
-        {/* Metric chips */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-16 flex flex-wrap items-center justify-center gap-3"
-        >
-          {metricChips.map((chip, i) => (
-            <motion.div
-              key={i}
-              className="flex items-center gap-2 rounded-full px-4 py-2"
+          {/* Pill badge */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium uppercase"
               style={{
-                background: "#09334933",
-                border: "1px solid #47AECC24",
+                letterSpacing: "0.14em",
+                color: "#CCE6EA",
+                border: "1px solid #47AECC2e",
+                background: "#47AECC0f",
                 backdropFilter: "blur(8px)",
               }}
-              whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
             >
-              <span
-                className="font-display text-sm font-black tracking-tight"
-                style={{ color: "#FF751F" }}
-              >
-                {chip.value}
-              </span>
-              <span className="text-xs" style={{ color: "#729DB9" }}>
-                {t(chip.label)}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+              <motion.span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: "#FF751F" }}
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {t({ en: "Pilot Program Open", es: "Programa Piloto Abierto" })}
+            </span>
+          </motion.div>
 
-        {/* Machine illustration */}
+          {/* Headline — two lines with typographic contrast */}
+          <motion.h1
+            variants={itemVariants}
+            className="font-display mb-6 text-5xl font-black leading-[0.9] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl"
+          >
+            <span
+              className="block italic"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #FF751F 0%, #F4AE5B 60%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              {t({ en: "Turn Sargassum", es: "Convierte el Sargazo" })}
+            </span>
+            <span
+              className="block"
+              style={{ color: "#CCE6EA" }}
+            >
+              {t({ en: "Into a Resource", es: "en un Recurso" })}
+            </span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            variants={itemVariants}
+            className="mb-8 max-w-md text-base leading-relaxed sm:text-lg"
+            style={{ color: "#729DB9" }}
+          >
+            {t(content.hero.subheadline)}
+          </motion.p>
+
+          {/* Metric chips */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-10 flex flex-wrap gap-3"
+            style={{ borderTop: "1px solid #47AECC1a", paddingTop: "1.5rem" }}
+          >
+            {metricChips.map((chip, i) => (
+              <motion.div
+                key={i}
+                className="flex items-center gap-2 rounded-full px-4 py-2"
+                style={{
+                  background: "#09334933",
+                  border: "1px solid #47AECC24",
+                  backdropFilter: "blur(8px)",
+                }}
+                whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
+              >
+                <span
+                  className="font-display text-sm font-black tracking-tight"
+                  style={{ color: "#FF751F" }}
+                >
+                  {chip.value}
+                </span>
+                <span className="text-xs" style={{ color: "#729DB9" }}>
+                  {t(chip.label)}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col gap-4 sm:flex-row"
+          >
+            <Button
+              size="lg"
+              onClick={handleScrollToContact}
+              className="w-full text-base sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
+              style={{
+                backgroundColor: "#FF751F",
+                color: "white",
+                boxShadow: "0 4px 28px #FF751F73",
+                transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 36px #FF751F8c";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 28px #FF751F73";
+              }}
+            >
+              {t(content.hero.ctaText)}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={handleScrollToHowItWorks}
+              className="w-full text-base sm:w-auto sm:px-8 sm:py-6 sm:text-lg"
+              style={{
+                borderColor: "#47AECC40",
+                backgroundColor: "#47AECC0d",
+                color: "#CCE6EA",
+                backdropFilter: "blur(8px)",
+                transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#47AECC1f";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "#47AECC66";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#47AECC0d";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "#47AECC40";
+              }}
+            >
+              {t(content.hero.ctaSecondaryText)}
+            </Button>
+          </motion.div>
+        </div>
+
+        {/* ── Right column: machine image ── */}
         <motion.div
           variants={itemVariants}
-          className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg"
+          className="relative lg:col-span-5"
         >
           {/* Teal glow behind machine */}
           <div
             className="pointer-events-none absolute inset-0 rounded-3xl blur-3xl"
-            style={{ background: "#0897B340", transform: "scale(0.8) translateY(10%)" }}
-          />
-          <div
-            className="relative rounded-2xl p-6"
             style={{
-              background: "#09334966",
-              border: "1px solid #47AECC1f",
-              backdropFilter: "blur(12px)",
+              background: "radial-gradient(ellipse 80% 70% at 50% 60%, #0897B350, transparent 70%)",
+              transform: "scale(1.1)",
             }}
+          />
+          {/* Orange accent glow at base */}
+          <div
+            className="pointer-events-none absolute bottom-0 left-1/2 h-1/3 w-3/4 blur-2xl"
+            style={{
+              background: "radial-gradient(ellipse 100% 60% at 50% 100%, #FF751F18, transparent 70%)",
+              transform: "translateX(-50%)",
+            }}
+          />
+
+          {/* Floating machine image */}
+          <motion.div
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
           >
             <Image
               src="/machine.png"
               alt="Alga.e on-site sargassum processing system"
-              width={520}
-              height={340}
-              className="w-full rounded-lg"
+              width={640}
+              height={420}
+              className="w-full"
               style={{
                 filter: "invert(1) brightness(0.95) sepia(0.2) hue-rotate(175deg) saturate(0.8)",
                 mixBlendMode: "screen",
               }}
+              priority
             />
-          </div>
+          </motion.div>
         </motion.div>
+      </motion.div>
+
+      {/* ── Scroll indicator ── */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
+      >
+        <ChevronDown
+          size={24}
+          style={{ color: "#47AECC", opacity: 0.35 }}
+        />
       </motion.div>
     </section>
   );
