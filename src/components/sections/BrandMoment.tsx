@@ -86,14 +86,18 @@ export default function BrandMoment() {
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.22 }}
-          className="my-5 h-[2px] w-16 origin-left relative overflow-hidden"
-          style={{
-            backgroundImage: "linear-gradient(90deg, #FF751F, #F4AE5B)",
+          animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+          transition={{
+            scaleX: { duration: 0.5, delay: 0.22 },
+            opacity: { duration: 0.5, delay: 0.22 },
+            backgroundPosition: { duration: 5, repeat: Infinity, ease: 'linear' },
           }}
-        >
-          <div className="bar-shimmer" />
-        </motion.div>
+          className="my-5 h-[2px] w-16 origin-left"
+          style={{
+            backgroundSize: '200% 100%',
+            background: 'linear-gradient(90deg, #FF751F, #F4AE5B, #FF751F, #F4AE5B)',
+          }}
+        />
 
         {/* Body copy */}
         <motion.p

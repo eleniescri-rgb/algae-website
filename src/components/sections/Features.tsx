@@ -78,7 +78,7 @@ export default function Features() {
                       boxShadow: '0 4px 14px #0897B340',
                     }}
                     whileHover={{ scale: 1.12, boxShadow: '0 0 22px #0897B355' }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 22 }}
                   >
                     {IconComponent && <IconComponent className="h-5 w-5 text-white" />}
                   </motion.div>

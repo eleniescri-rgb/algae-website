@@ -91,7 +91,7 @@ export function Navbar() {
                 >
                   <span className="relative">
                     {t(link.label)}
-                    <span className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full bg-[#0897B3] transition-[width] duration-300" />
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full bg-[#0897B3]" style={{ transition: 'width 0.25s cubic-bezier(0.22,1,0.36,1)' }} />
                   </span>
                 </a>
               ))}

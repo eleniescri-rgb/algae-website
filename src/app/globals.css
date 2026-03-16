@@ -244,3 +244,20 @@
     outline-offset: 2px;
   }
 }
+
+/* FAQ chevron rotation */
+.faq-chevron {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+[data-state=open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
