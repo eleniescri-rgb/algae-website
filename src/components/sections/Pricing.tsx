@@ -3,36 +3,34 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { ClipboardList, BookOpen, Users2, Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Button } from "@/components/ui/button";
 import pilotContent from "@/content/pilot.json";
-
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  ClipboardList,
-  BookOpen,
-  Users2,
-};
 
 export default function Pricing() {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-80px" });
 
-  const handleScrollToContact = (interestValue: string) => {
+  const pilot = pilotContent.tiers.find((tier) => tier.id === "pilot")!;
+
+  const handleScrollToContact = () => {
     const el = document.querySelector("#contact");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
-      window.dispatchEvent(new CustomEvent("pilot:interest", { detail: { interest: interestValue } }));
+      window.dispatchEvent(
+        new CustomEvent("pilot:interest", { detail: { interest: pilot.interestValue } })
+      );
     }
   };
 
   return (
     <section id="pilot" className="relative overflow-hidden py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
-      {/* Dark ocean background — brand #063D57 */}
+      {/* Dark ocean background */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "#063D57" }} />
 
-      {/* Background photo — replace src with a Caribbean beachfront hotel photo */}
+      {/* Background photo */}
       <div className="pointer-events-none absolute inset-0">
         <Image
           src="/images/caribbean-resort.jpg"
@@ -42,202 +40,153 @@ export default function Pricing() {
           className="object-cover object-center"
           priority={false}
         />
-        {/* Heavy dark overlay so text remains legible */}
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(to bottom, #063D57e8 0%, #063D57cc 50%, #063D57f0 100%)" }}
         />
       </div>
 
-      {/* Subtle grid */}
+      {/* Top edge rule */}
       <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: `linear-gradient(#47AECC 1px, transparent 1px), linear-gradient(90deg, #47AECC 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-          opacity: 0.03,
-        }}
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, #47AECC30, transparent)" }}
       />
 
       <div ref={ref} className="relative z-10 mx-auto max-w-6xl">
-        {/* Section header */}
+
+        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14"
         >
-          <span className="section-label-light">
-            {t({ en: "Pilot Program", es: "Programa Piloto" })}
-          </span>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px w-10" style={{ background: "#FF751F" }} />
+            <span className="section-label-light" style={{ color: "#FF751F", marginBottom: 0 }}>
+              {t({ en: "Pilot Program", es: "Programa Piloto" })}
+            </span>
+          </div>
           <h2
-            className="font-display mb-4 text-4xl font-black leading-[0.95] tracking-[-0.04em] sm:text-5xl lg:text-6xl"
-            style={{ color: "#CCE6EA" }}
+            className="font-display font-black leading-[0.92] tracking-[-0.04em] max-w-2xl"
+            style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", color: "#CCE6EA" }}
           >
             {t(pilotContent.sectionTitle)}
           </h2>
-          <p
-            className="mx-auto max-w-2xl text-base leading-relaxed sm:text-lg"
-            style={{ color: "#729DB9" }}
-          >
-            {t(pilotContent.sectionDescription)}
-          </p>
         </motion.div>
 
-        {/* Tier cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {pilotContent.tiers.map((tier, i) => {
-            const Icon = iconMap[tier.icon] ?? ClipboardList;
-            const hl = tier.highlighted;
+        {/* Two-column offer */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-            const cardInner = (
-              <div
-                className="flex h-full flex-col rounded-2xl p-6"
-                style={{
-                  background: hl ? "#093349" : "#07304A",
-                  ...(hl ? {} : { border: "1px solid #47AECC1f" }),
-                }}
+          {/* LEFT — offer context */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5"
+          >
+            <h3
+              className="font-display text-3xl font-black tracking-[-0.03em] leading-tight mb-5"
+              style={{ color: "#CCE6EA" }}
+            >
+              {t(pilot.title)}
+            </h3>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#729DB9" }}>
+              {t(pilot.description)}
+            </p>
+
+            {/* Key metric callout */}
+            <div
+              className="inline-flex flex-col py-5 px-6 rounded-2xl"
+              style={{
+                background: "#09334966",
+                border: "1px solid #47AECC20",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              <span
+                className="font-display text-5xl font-black tracking-[-0.04em] leading-none"
+                style={{ color: "#FF751F" }}
               >
-                {/* Badge + icon row */}
-                <div className="mb-5 flex items-center justify-between">
-                  <span
-                    className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em]"
-                    style={
-                      hl
-                        ? { background: "#FF751F26", color: "#FF9A4D" }
-                        : { background: "#47AECC1f", color: "#47AECC" }
-                    }
+                €0
+              </span>
+              <span className="text-sm mt-1.5 font-medium" style={{ color: "#47AECC" }}>
+                {t({ en: "upfront investment required", es: "inversión inicial requerida" })}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* RIGHT — features + CTA */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
+          >
+            {/* Feature list */}
+            <div className="mb-10">
+              {pilot.features.map((feature, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex items-start gap-4 py-4"
+                  style={{ borderTop: "1px solid #47AECC18" }}
+                >
+                  <div
+                    className="shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                    style={{ background: "#FF751F1a", border: "1px solid #FF751F40" }}
                   >
-                    {t(tier.badge)}
+                    <Check size={11} style={{ color: "#FF751F" }} />
+                  </div>
+                  <span className="text-sm leading-snug" style={{ color: "#A8C8D8" }}>
+                    {t(feature)}
                   </span>
-                  <div
-                    className="inline-flex rounded-xl p-2.5"
-                    style={{
-                      backgroundImage: hl
-                        ? "linear-gradient(135deg, #FF751F, #F4AE5B)"
-                        : "linear-gradient(135deg, #0897B3, #47AECC)",
-                      boxShadow: hl
-                        ? "0 4px 14px #FF751F66"
-                        : "0 4px 14px #0897B359",
-                    }}
-                  >
-                    <Icon size={18} className="text-white" />
-                  </div>
-                </div>
+                </motion.div>
+              ))}
+              <div style={{ borderTop: "1px solid #47AECC18" }} />
+            </div>
 
-                {/* Title */}
-                <h3
-                  className="font-display mb-2 text-xl font-black leading-tight tracking-[-0.02em]"
-                  style={{ color: "#CCE6EA" }}
-                >
-                  {t(tier.title)}
-                </h3>
-
-                {/* Description */}
-                <p className="mb-6 text-sm leading-relaxed" style={{ color: "#729DB9" }}>
-                  {t(tier.description)}
-                </p>
-
-                {/* Divider */}
-                <div
-                  className="mb-6 h-px w-full"
-                  style={{ background: hl ? "#FF751F33" : "#47AECC1a" }}
-                />
-
-                {/* Feature list */}
-                <ul className="mb-8 flex-1 space-y-3">
-                  {tier.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <Check
-                        size={14}
-                        className="mt-0.5 flex-shrink-0"
-                        style={{ color: hl ? "#FF751F" : "#47AECC" }}
-                      />
-                      <span className="text-sm leading-snug" style={{ color: "#A8C8D8" }}>
-                        {t(feature)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <Button
-                  size="sm"
-                  className="group w-full gap-2 active:scale-[0.97]"
-                  style={
-                    hl
-                      ? {
-                          backgroundColor: "#FF751F",
-                          color: "white",
-                          boxShadow: "0 4px 20px #FF751F66",
-                          transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
-                        }
-                      : {
-                          backgroundColor: "transparent",
-                          border: "1px solid #47AECC4d",
-                          color: "#47AECC",
-                          transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background-color 0.2s ease",
-                        }
-                  }
-                  onMouseEnter={(e) => {
-                    const b = e.currentTarget as HTMLButtonElement;
-                    b.style.transform = "scale(1.02)";
-                    if (hl) b.style.boxShadow = "0 6px 28px #FF751F8c";
-                    else b.style.backgroundColor = "#47AECC14";
-                  }}
-                  onMouseLeave={(e) => {
-                    const b = e.currentTarget as HTMLButtonElement;
-                    b.style.transform = "scale(1)";
-                    if (hl) b.style.boxShadow = "0 4px 20px #FF751F66";
-                    else b.style.backgroundColor = "transparent";
-                  }}
-                  onClick={() => handleScrollToContact(tier.interestValue)}
-                >
-                  {t(tier.ctaText)}
-                  <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-                </Button>
-              </div>
-            );
-
-            return (
-              <motion.div
-                key={tier.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: hl ? -6 : -4, transition: { duration: 0.25 } }}
-                className="relative"
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Button
+                size="lg"
+                className="group gap-3 active:scale-[0.97]"
+                style={{
+                  backgroundColor: "#FF751F",
+                  color: "white",
+                  boxShadow: "0 4px 28px #FF751F59",
+                  transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
+                  paddingLeft: "2rem",
+                  paddingRight: "2rem",
+                }}
+                onMouseEnter={(e) => {
+                  const b = e.currentTarget as HTMLButtonElement;
+                  b.style.transform = "scale(1.03)";
+                  b.style.boxShadow = "0 6px 36px #FF751F7a";
+                }}
+                onMouseLeave={(e) => {
+                  const b = e.currentTarget as HTMLButtonElement;
+                  b.style.transform = "scale(1)";
+                  b.style.boxShadow = "0 4px 28px #FF751F59";
+                }}
+                onClick={handleScrollToContact}
               >
-                {hl ? (
-                  /* Gradient border wrapper for highlighted */
-                  <div
-                    className="h-full rounded-2xl p-[1.5px]"
-                    style={{
-                      backgroundImage: "linear-gradient(135deg, #FF751F, #F4AE5B 50%, #47AECC)",
-                      boxShadow: "0 0 40px #FF751F26, 0 8px 32px #00000050",
-                    }}
-                  >
-                    {cardInner}
-                  </div>
-                ) : (
-                  cardInner
-                )}
-
-                {/* "Recommended" pill on highlighted */}
-                {hl && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <span
-                      className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
-                      style={{ backgroundImage: "linear-gradient(135deg, #FF751F, #47AECC)" }}
-                    >
-                      {t({ en: "Recommended", es: "Recomendado" })}
-                    </span>
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
+                {t(pilot.ctaText)}
+                <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Button>
+              <p className="mt-4 text-xs" style={{ color: "#47AECC66" }}>
+                {t({ en: "Limited pilot slots available.", es: "Cupos piloto limitados." })}
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
+
       </div>
     </section>
   );

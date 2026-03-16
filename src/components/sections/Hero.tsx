@@ -46,7 +46,7 @@ const Hero = () => {
       className="relative flex min-h-screen items-center overflow-hidden px-4 py-20 lg:px-8"
       style={{ backgroundColor: "#063D57" }}
     >
-      {/* ── Ambient glows ── */}
+      {/* ── Ambient glow ── */}
       <motion.div
         className="pointer-events-none absolute inset-0"
         animate={{ opacity: [0.55, 0.80, 0.55] }}
@@ -56,43 +56,12 @@ const Hero = () => {
           background: "radial-gradient(ellipse 75% 50% at 50% -5%, #0897B388, transparent 70%)",
         }}
       />
-      <motion.div
-        className="pointer-events-none absolute inset-0"
-        animate={{ opacity: [0.3, 0.55, 0.3] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        aria-hidden="true"
-        style={{
-          background: "radial-gradient(ellipse 40% 40% at 88% 75%, #FF751F12, transparent 60%)",
-        }}
-      />
-      <motion.div
-        className="pointer-events-none absolute inset-0"
-        animate={{ opacity: [0.4, 0.65, 0.4] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        aria-hidden="true"
-        style={{
-          background: "radial-gradient(ellipse 30% 40% at 5% 70%, #47AECC18, transparent 60%)",
-        }}
-      />
       {/* Right-side atmosphere — reinforces machine image */}
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden="true"
         style={{
           background: "radial-gradient(ellipse 50% 60% at 90% 50%, #0897B322, transparent 70%)",
-        }}
-      />
-
-      {/* Grid overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `
-            linear-gradient(#47AECC 1px, transparent 1px),
-            linear-gradient(90deg, #47AECC 1px, transparent 1px)
-          `,
-          backgroundSize: "60px 60px",
         }}
       />
 

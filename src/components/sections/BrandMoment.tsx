@@ -30,10 +30,6 @@ export default function BrandMoment() {
         alg
       </div>
 
-      {/* Top rule */}
-      <div className="absolute inset-x-0 top-0 h-px pointer-events-none bg-gradient-to-r from-[#0897B322] via-transparent to-transparent" />
-      {/* Bottom rule */}
-      <div className="absolute inset-x-0 bottom-0 h-px pointer-events-none bg-gradient-to-r from-[#0897B318] via-transparent to-transparent" />
 
       {/* Main content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
