@@ -116,9 +116,9 @@ export default function BrandMoment() {
               <Image
                 src="/logo-white.png"
                 alt="Alga.e"
-                width={260}
-                height={100}
-                className="h-20 w-auto object-contain invert"
+                width={320}
+                height={120}
+                className="h-28 w-auto object-contain invert"
                 priority={false}
               />
             </div>
