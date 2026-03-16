@@ -6,13 +6,16 @@ import * as LucideIcons from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import homeContent from '@/content/home.json';
 
+// Cycle distinct accents per feature row
+const featureAccents = ['#FF751F', '#0897B3', '#47AECC', '#FF751F', '#0897B3', '#47AECC'];
+
 export default function Features() {
   const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="features" ref={ref} className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="features" ref={ref} className="bg-cool py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Section header */}
@@ -20,7 +23,7 @@ export default function Features() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 lg:mb-20 lg:grid lg:grid-cols-12 lg:gap-10 lg:items-end"
+          className="mb-8 lg:mb-12 lg:grid lg:grid-cols-12 lg:gap-10 lg:items-end"
         >
           <div className="lg:col-span-5">
             <span className="section-label">
@@ -64,7 +67,7 @@ export default function Features() {
             return (
               <motion.div
                 key={i}
-                className="group flex items-center gap-6 lg:gap-10 py-7 cursor-default"
+                className="group flex items-center gap-4 lg:gap-8 py-4 cursor-default"
                 style={{ borderTop: '1px solid var(--section-border)' }}
                 initial={{ opacity: 0, x: -12 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -73,10 +76,11 @@ export default function Features() {
               >
                 {/* Ghost numeral */}
                 <span
-                  className="font-display font-black leading-none select-none shrink-0 w-16 lg:w-20"
+                  className="font-display font-black leading-none select-none shrink-0 w-10 lg:w-14"
                   style={{
-                    fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                    color: 'var(--section-ghost)',
+                    fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)',
+                    color: featureAccents[i],
+                    opacity: 0.18,
                   }}
                 >
                   {String(i + 1).padStart(2, '0')}
@@ -84,18 +88,19 @@ export default function Features() {
 
                 {/* Icon */}
                 <motion.div
-                  className="shrink-0 text-[#0897B3]"
+                  className="shrink-0"
+                  style={{ color: featureAccents[i] }}
                   whileHover={{ scale: 1.18 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  {IconComponent && <IconComponent size={22} />}
+                  {IconComponent && <IconComponent size={20} />}
                 </motion.div>
 
                 {/* Title + mobile description */}
                 <div className="flex-1 min-w-0">
                   <p
-                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200 group-hover:text-[#0897B3]"
-                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: 'var(--section-heading)' }}
+                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200"
+                    style={{ fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', color: 'var(--section-heading)', transition: `color 0.2s ease` }}
                   >
                     {t(feature.title)}
                   </p>
