@@ -5,6 +5,9 @@ import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import aboutContent from "@/content/about.json";
 
+// Distinct accent color per principle
+const valueAccents = ["#FF751F", "#0897B3", "#47AECC"];
+
 export default function About() {
   const { t } = useTranslation();
 
@@ -21,39 +24,40 @@ export default function About() {
       />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section header */}
+
+        {/* ── Section header — bolder scale ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16"
         >
           <span className="section-label-light">
             {t({ en: "Our Story", es: "Nuestra Historia" })}
           </span>
           <h2
-            className="font-display text-4xl font-black leading-[1.0] tracking-[-0.03em] sm:text-5xl max-w-xl"
-            style={{ color: "#CCE6EA" }}
+            className="font-display font-black leading-[0.9] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "#CCE6EA" }}
           >
             {t(aboutContent.sectionTitle)}
           </h2>
         </motion.div>
 
-        {/* Story + Image — two-column editorial layout */}
-        <div className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        {/* ── Story + Image ── */}
+        <div className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          {/* LEFT — text content (desktop: 6 cols, mobile: below image) */}
+          {/* LEFT — text */}
           <div className="order-2 lg:order-1 lg:col-span-6 flex flex-col justify-start">
 
-            {/* Story title */}
+            {/* Story title — bigger, more editorial */}
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-2xl font-black tracking-[-0.03em] leading-tight mb-7"
-              style={{ color: "#47AECC" }}
+              className="font-display font-black tracking-[-0.03em] leading-tight mb-7"
+              style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "#47AECC" }}
             >
               {t(aboutContent.story.title)}
             </motion.h3>
@@ -76,7 +80,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* RIGHT — image (desktop: 6 cols, mobile: above text) */}
+          {/* RIGHT — image */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +88,6 @@ export default function About() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="order-1 lg:order-2 lg:col-span-6 flex flex-col"
           >
-            {/* Image container */}
             <div
               className="relative w-full overflow-hidden rounded-xl flex-1"
               style={{
@@ -102,48 +105,24 @@ export default function About() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={false}
               />
-
-              {/* Dark gradient overlay — bottom to top */}
               <div
                 className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to top, #093349ee 0%, #09334966 40%, transparent 70%)",
-                }}
+                style={{ background: "linear-gradient(to top, #093349ee 0%, #09334966 40%, transparent 70%)" }}
               />
-
-              {/* Teal top-left corner accent */}
               <div
                 className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #0897B314 0%, transparent 50%)",
-                }}
+                style={{ background: "linear-gradient(135deg, #0897B314 0%, transparent 50%)" }}
               />
-
-              {/* Inline badge — top right */}
               <div
                 className="absolute top-4 right-4 px-3 py-1.5 rounded-full"
-                style={{
-                  background: "#00000059",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid #47AECC26",
-                }}
+                style={{ background: "#00000059", backdropFilter: "blur(8px)", border: "1px solid #47AECC26" }}
               >
-                <span
-                  className="text-xs font-bold uppercase tracking-[0.14em]"
-                  style={{ color: "#47AECC" }}
-                >
+                <span className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "#47AECC" }}>
                   {t({ en: "The Problem", es: "El Problema" })}
                 </span>
               </div>
             </div>
-
-            {/* Caption */}
-            <p
-              className="mt-3 text-xs leading-relaxed"
-              style={{ color: "#47AECC66" }}
-            >
+            <p className="mt-3 text-xs leading-relaxed" style={{ color: "#47AECC66" }}>
               {t({
                 en: "Seasonal sargassum arrivals affecting beachfront hotels across the Caribbean.",
                 es: "Las llegadas estacionales de sargazo afectan a los hoteles de playa en todo el Caribe.",
@@ -152,54 +131,102 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Values */}
+        {/* ── Values header ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10"
+          className="mb-2"
         >
           <span className="section-label-light">
             {t({ en: "Our Values", es: "Nuestros Valores" })}
           </span>
           <h3
-            className="font-display text-2xl font-black tracking-[-0.03em]"
-            style={{ color: "#CCE6EA" }}
+            className="font-display font-black tracking-[-0.04em]"
+            style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", color: "#CCE6EA" }}
           >
             {t(aboutContent.valuesTitle)}
           </h3>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: "#47AECC14" }}>
-          {aboutContent.values.map((value, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              whileHover={{ y: -4, boxShadow: "0 8px 28px #0897B322", transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="p-7 group"
-              style={{ backgroundColor: "#063D57" }}
-            >
-              {/* Accent line */}
-              <div
-                className="w-8 h-[2px] mb-5 transition-all duration-300 group-hover:w-14"
-                style={{ backgroundImage: "linear-gradient(90deg, #FF751F, #F4AE5B)" }}
-              />
-              <h4
-                className="font-display text-lg font-black tracking-[-0.02em] mb-3"
-                style={{ color: "#CCE6EA" }}
+        {/* ── Values — bold editorial stack with distinct accent colors ── */}
+        <div className="mt-10">
+          {aboutContent.values.map((value, index) => {
+            const accent = valueAccents[index];
+            return (
+              <motion.div
+                key={index}
+                className="relative overflow-hidden py-10 pl-7 cursor-default"
+                style={{ borderLeft: `3px solid ${accent}` }}
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ x: 5, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
               >
-                {t(value.title)}
-              </h4>
-              <p className="text-sm leading-relaxed" style={{ color: "#729DB9" }}>
-                {t(value.description)}
-              </p>
-            </motion.div>
-          ))}
+                {/* Ghost numeral — far right background */}
+                <motion.div
+                  className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 font-display font-black leading-none select-none"
+                  style={{
+                    fontSize: "clamp(6rem, 16vw, 14rem)",
+                    color: `${accent}`,
+                    opacity: 0.05,
+                    lineHeight: 0.85,
+                    letterSpacing: "-0.05em",
+                  }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.05 }}
+                  whileHover={{ opacity: 0.1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: 0.15 + index * 0.12 }}
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </motion.div>
+
+                {/* Step label */}
+                <motion.span
+                  className="text-xs font-bold uppercase tracking-[0.18em] block mb-3"
+                  style={{ color: accent }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.12 }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </motion.span>
+
+                {/* Value title — dramatic large display */}
+                <h4
+                  className="font-display font-black tracking-[-0.03em] leading-tight mb-4 relative z-10"
+                  style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#CCE6EA" }}
+                >
+                  {t(value.title)}
+                </h4>
+
+                {/* Description */}
+                <p
+                  className="text-base leading-relaxed max-w-xl relative z-10"
+                  style={{ color: "#729DB9" }}
+                >
+                  {t(value.description)}
+                </p>
+
+                {/* Animated bottom separator */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-px origin-left"
+                  style={{ background: `linear-gradient(to right, ${accent}40, transparent)` }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.2 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
