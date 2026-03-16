@@ -223,4 +223,24 @@
   /* Cool off-white tinted background for light sections */
   .bg-cool { background-color: #F0F8FA; }
   .dark .bg-cool { background-color: var(--color-background); }
+
+  /* Accent bar shimmer */
+  .bar-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+    animation: bar-shimmer-slide 2.8s ease-in-out 1.4s infinite;
+  }
+  @keyframes bar-shimmer-slide {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(300%); }
+  }
+
+  /* Focus-visible ring — brand teal for all inputs */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #0897B3;
+    outline-offset: 2px;
+  }
 }

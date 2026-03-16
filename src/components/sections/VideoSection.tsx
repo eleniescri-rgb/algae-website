@@ -179,7 +179,11 @@ export default function VideoSection() {
                 }}
               />
 
-              <div className="relative z-10 flex items-center justify-center px-2 py-4">
+              <motion.div
+                className="relative z-10 flex items-center justify-center px-2 py-4"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <Image
                   src="/machine.png"
                   alt="Alga.e on-site processing unit"
@@ -192,10 +196,12 @@ export default function VideoSection() {
                     objectFit: "contain",
                   }}
                 />
-              </div>
+              </motion.div>
 
               {/* Floating metric badge */}
-              <div
+              <motion.div
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute bottom-6 right-2 lg:right-0 px-3 py-2.5 rounded-xl"
                 style={{
                   background: "#ffffff",
@@ -212,7 +218,7 @@ export default function VideoSection() {
                 <div className="text-xs font-medium mt-0.5" style={{ color: "#729DB9" }}>
                   {t({ en: "volume reduction", es: "reducción de volumen" })}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

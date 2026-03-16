@@ -87,11 +87,13 @@ export default function BrandMoment() {
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: 0.22 }}
-          className="my-5 h-[2px] w-16 origin-left"
+          className="my-5 h-[2px] w-16 origin-left relative overflow-hidden"
           style={{
             backgroundImage: "linear-gradient(90deg, #FF751F, #F4AE5B)",
           }}
-        />
+        >
+          <div className="bar-shimmer" />
+        </motion.div>
 
         {/* Body copy */}
         <motion.p

@@ -51,13 +51,14 @@ export default function HowItWorks() {
               key={step.stepNumber}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
+              whileHover={{ x: 4, transition: { duration: 0.2 } }}
               transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative group"
             >
               {/* Ghost numeral — editorial depth */}
               <div
-                className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none"
-                style={{ fontSize: "6.5rem", color: "#47AECC12", lineHeight: 1 }}
+                className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none opacity-[0.07] group-hover:opacity-[0.14] transition-opacity duration-300"
+                style={{ fontSize: "6.5rem", color: "#47AECC", lineHeight: 1 }}
                 aria-hidden="true"
               >
                 {step.stepNumber}

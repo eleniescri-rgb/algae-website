@@ -87,9 +87,12 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="group relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
-                  {t(link.label)}
+                  <span className="relative">
+                    {t(link.label)}
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full bg-[#0897B3] transition-[width] duration-300" />
+                  </span>
                 </a>
               ))}
             </div>

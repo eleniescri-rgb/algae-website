@@ -80,8 +80,9 @@ export default function StatsStrip() {
               key={i}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
+              whileHover={{ y: -3, scale: 1.02, transition: { duration: 0.2 } }}
               transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center px-6 py-10 text-center"
+              className="flex flex-col items-center px-6 py-10 text-center cursor-default"
               style={{
                 borderRight: i < 3 ? "1px solid #47AECC1a" : "none",
                 borderBottom: i < 2 ? "1px solid #47AECC1a" : "none",

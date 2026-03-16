@@ -71,15 +71,17 @@ export default function Features() {
                   />
 
                   {/* Icon */}
-                  <div
+                  <motion.div
                     className="inline-flex w-fit rounded-xl p-3"
                     style={{
                       backgroundImage: 'linear-gradient(135deg, #0897B3, #47AECC)',
                       boxShadow: '0 4px 14px #0897B340',
                     }}
+                    whileHover={{ scale: 1.12, boxShadow: '0 0 22px #0897B355' }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                   >
                     {IconComponent && <IconComponent className="h-5 w-5 text-white" />}
-                  </div>
+                  </motion.div>
 
                   {/* Content */}
                   <div className="flex flex-col gap-2">
