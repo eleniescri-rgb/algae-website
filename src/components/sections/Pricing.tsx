@@ -62,7 +62,15 @@ export default function Pricing() {
           className="mb-14"
         >
           <div className="flex items-center gap-3 mb-5">
-            <div className="h-px w-10" style={{ background: "#FF751F" }} />
+            <motion.div
+              className="h-px origin-left"
+              style={{ background: "#FF751F" }}
+              initial={{ scaleX: 0 }}
+              animate={isInView ? { scaleX: 1 } : {}}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="w-10" />
+            </motion.div>
             <span className="section-label-light" style={{ color: "#FF751F", marginBottom: 0 }}>
               {t({ en: "Pilot Program", es: "Programa Piloto" })}
             </span>
@@ -95,14 +103,17 @@ export default function Pricing() {
               {t(pilot.description)}
             </p>
 
-            {/* Key metric callout */}
-            <div
-              className="inline-flex flex-col py-5 px-6 rounded-2xl"
+            {/* Key metric callout — floats + scales on hover */}
+            <motion.div
+              className="inline-flex flex-col py-5 px-6 rounded-2xl cursor-default"
               style={{
                 background: "#09334966",
                 border: "1px solid #47AECC20",
                 backdropFilter: "blur(8px)",
               }}
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.04, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
             >
               <span
                 className="font-display text-5xl font-black tracking-[-0.04em] leading-none"
@@ -113,7 +124,7 @@ export default function Pricing() {
               <span className="text-sm mt-1.5 font-medium" style={{ color: "#47AECC" }}>
                 {t({ en: "upfront investment required", es: "inversión inicial requerida" })}
               </span>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* RIGHT — features + CTA */}
@@ -131,15 +142,19 @@ export default function Pricing() {
                   initial={{ opacity: 0, x: 12 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex items-start gap-4 py-4"
+                  className="flex items-start gap-4 py-4 cursor-default"
                   style={{ borderTop: "1px solid #47AECC18" }}
+                  whileHover={{ x: 6, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
                 >
-                  <div
+                  <motion.div
                     className="shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: "#FF751F1a", border: "1px solid #FF751F40" }}
+                    initial={{ scale: 0 }}
+                    animate={isInView ? { scale: 1 } : {}}
+                    transition={{ duration: 0.35, delay: 0.3 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Check size={11} style={{ color: "#FF751F" }} />
-                  </div>
+                  </motion.div>
                   <span className="text-sm leading-snug" style={{ color: "#A8C8D8" }}>
                     {t(feature)}
                   </span>
