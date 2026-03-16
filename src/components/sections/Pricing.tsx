@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { ClipboardList, BookOpen, Users2, Check, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,23 @@ export default function Pricing() {
     <section id="pilot" className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
       {/* Dark ocean background — brand #063D57 */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "#063D57" }} />
+
+      {/* Background photo — replace src with a Caribbean beachfront hotel photo */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="https://placehold.co/1920x1080/041c2c/0897B3?text=Caribbean+Beach+Hotel"
+          alt=""
+          fill
+          className="object-cover object-center"
+          unoptimized
+        />
+        {/* Heavy dark overlay so text remains legible */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, #063D57e8 0%, #063D57cc 50%, #063D57f0 100%)" }}
+        />
+      </div>
+
       {/* Subtle grid */}
       <div
         className="pointer-events-none absolute inset-0"
