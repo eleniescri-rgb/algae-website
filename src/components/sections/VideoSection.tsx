@@ -32,18 +32,18 @@ function detectEmbedType(url: string): EmbedType {
 const steps = [
   {
     n: "01",
-    title: { en: "Reduced Logistics", es: "Logística Reducida" },
+    title: { en: "Reduced Logistics Complexity", es: "Menor Complejidad Logística" },
     description: {
-      en: "The system is designed to reduce the need to transport heavy, wet sargassum off-site. Processing happens at the property, cutting the volume before any logistics are needed.",
-      es: "El sistema está diseñado para reducir la necesidad de transportar el sargazo húmedo y pesado fuera de la propiedad. El procesamiento ocurre en el lugar, reduciendo el volumen antes de que se requiera cualquier logística.",
+      en: "Because the biomass is processed on-site, hotels may reduce the need for frequent transport and disposal operations.",
+      es: "Al procesar la biomasa in situ, los hoteles pueden reducir la necesidad de operaciones frecuentes de transporte y disposición.",
     },
   },
   {
     n: "02",
-    title: { en: "Reduced Decomposition Odor", es: "Olor de Descomposición Reducido" },
+    title: { en: "Odor Significantly Reduced", es: "Olor Significativamente Reducido" },
     description: {
-      en: "Drying sargassum on-site can significantly reduce decomposition odor — one of the main sources of guest complaints during peak arrival seasons.",
-      es: "Secar el sargazo in situ puede reducir significativamente el olor de descomposición — una de las principales fuentes de quejas de huéspedes durante las temporadas de mayor llegada.",
+      en: "Drying the biomass stabilizes the material and helps reduce the odor associated with decomposing sargassum.",
+      es: "Secar la biomasa estabiliza el material y ayuda a reducir el olor asociado a la descomposición del sargazo.",
     },
   },
   {

@@ -83,9 +83,13 @@ export default function Features() {
                 </span>
 
                 {/* Icon */}
-                <div className="shrink-0 text-[#0897B3]">
+                <motion.div
+                  className="shrink-0 text-[#0897B3]"
+                  whileHover={{ scale: 1.18 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                >
                   {IconComponent && <IconComponent size={22} />}
-                </div>
+                </motion.div>
 
                 {/* Title + mobile description */}
                 <div className="flex-1 min-w-0">
