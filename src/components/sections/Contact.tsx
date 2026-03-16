@@ -23,6 +23,7 @@ export default function Contact() {
 
   const [formData, setFormData] = useState<Record<string, string>>(buildInitialState(fields));
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -34,14 +35,15 @@ export default function Contact() {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setValidationError(null);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const missing = fields.filter((f) => f.required && !formData[f.name]?.trim()).map((f) => f.name);
-    if (missing.length > 0) { alert("Please fill in all required fields."); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) { alert("Please enter a valid email address."); return; }
+    if (missing.length > 0) { setValidationError(t({ en: "Please fill in all required fields.", es: "Por favor completa todos los campos obligatorios." })); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) { setValidationError(t({ en: "Please enter a valid email address.", es: "Por favor ingresa un correo electrónico válido." })); return; }
     setStatus("loading");
     try {
       await submitLead(formData);
@@ -130,6 +132,12 @@ export default function Contact() {
                 )}
               </div>
             ))}
+
+            {validationError && (
+              <p className="text-sm font-medium" style={{ color: "#FF751F" }}>
+                {validationError}
+              </p>
+            )}
 
             <Button
               type="submit"

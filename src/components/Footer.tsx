@@ -13,13 +13,9 @@ const navLinks = [
   { href: '#contact', label: { en: 'Contact', es: 'Contacto' } },
 ]
 
-const socialLinks = [
-  { icon: Linkedin, href: 'https://linkedin.com/company/algae-renewable', label: 'LinkedIn' },
-]
-
 const legalLinks = [
-  { href: '#privacy', label: { en: 'Privacy Policy', es: 'Política de Privacidad' } },
-  { href: '#terms', label: { en: 'Terms of Service', es: 'Términos de Servicio' } },
+  { href: '/privacy', label: { en: 'Privacy Policy', es: 'Política de Privacidad' } },
+  { href: '/terms', label: { en: 'Terms of Service', es: 'Términos de Servicio' } },
 ]
 
 export function Footer() {
@@ -47,7 +43,7 @@ export function Footer() {
                 alt={siteContent.brand.name}
                 width={120}
                 height={40}
-                className="h-10 w-auto dark:invert-0 invert"
+                className="h-10 w-auto"
               />
             </div>
             <p className="mb-4 max-w-md text-sm leading-relaxed" style={{ color: "#729DB9" }}>
@@ -55,24 +51,21 @@ export function Footer() {
             </p>
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg transition-all duration-200"
-                    style={{ color: "#729DB9" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#47AECC"; (e.currentTarget as HTMLAnchorElement).style.background = "#47AECC14"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#729DB9"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
-                    aria-label={social.label}
-                  >
-                    <Icon size={20} />
-                  </a>
-                )
-              })}
+              {siteContent.footer.socialLinks.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg transition-all duration-200"
+                  style={{ color: "#729DB9" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#47AECC"; (e.currentTarget as HTMLAnchorElement).style.background = "#47AECC14"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#729DB9"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+                  aria-label={social.platform}
+                >
+                  <Linkedin size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
