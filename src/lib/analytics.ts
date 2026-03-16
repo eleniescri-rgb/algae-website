@@ -13,15 +13,18 @@ function getOrCreateVisitorId(): string {
 }
 
 export async function trackVisit(): Promise<void> {
-  if (!isSupabaseConfigured()) return
   try {
     const visitorId = getOrCreateVisitorId()
     if (!visitorId) return
-    const supabase = createClient()
-    await supabase.from('visitors').insert({
-      visitor_id: visitorId,
-      referrer: document.referrer || null,
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    // POST to a server-side route so Vercel geo headers are available
+    await fetch('/api/track-visit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        visitor_id: visitorId,
+        referrer: document.referrer || null,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }),
     })
   } catch {
     // Silently fail — tracking should never break the page

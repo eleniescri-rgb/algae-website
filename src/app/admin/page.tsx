@@ -10,7 +10,7 @@ import {
   CardDescription,
 } from '@/components/ui/card'
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 interface Lead {
   id: string
@@ -30,10 +30,12 @@ interface Metrics {
   pilotLeads: number
   qualifiedLeads: number
   geography: { location: string; count: number }[]
+  propertyTypes: { type: string; count: number }[]
+  conversionByCountry: { country: string; visitors: number; leads: number; rate: number }[]
   leads: Lead[]
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function fmt(n: number) {
   return n.toLocaleString()
@@ -41,39 +43,112 @@ function fmt(n: number) {
 
 function pct(num: number, den: number) {
   if (!den) return '—'
-  return (((num / den) * 100).toFixed(1)) + '%'
+  return ((num / den) * 100).toFixed(1) + '%'
 }
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
+    day: '2-digit', month: 'short', year: 'numeric',
   })
 }
 
 function interestLabel(v: string | null) {
   const map: Record<string, string> = {
-    pilot: 'Pilot',
-    research: 'Research',
-    partnership: 'Partnership',
-    informed: 'Stay informed',
+    pilot: 'Pilot', research: 'Research', partnership: 'Partnership', informed: 'Stay informed',
   }
   return v ? (map[v] ?? v) : '—'
 }
 
-// ─── Stat Card ───────────────────────────────────────────────────────────────
+/** ISO 3166-1 alpha-2 → flag emoji */
+function flag(code: string): string {
+  if (!code || code.length !== 2) return ''
+  return code.toUpperCase().replace(/[A-Z]/g, (c) =>
+    String.fromCodePoint(127397 + c.charCodeAt(0))
+  )
+}
+
+/** ISO 3166-1 alpha-2 → human-readable country name */
+function countryName(code: string): string {
+  if (!code) return 'Unknown'
+  try {
+    return new Intl.DisplayNames(['en'], { type: 'region' }).of(code.toUpperCase()) ?? code
+  } catch {
+    return code
+  }
+}
+
+/** Supabase property_type value → display label */
+function propTypeLabel(type: string): string {
+  const map: Record<string, string> = {
+    boutique_hotel: 'Boutique Hotel',
+    mid_hotel:      'Mid-size Hotel',
+    large_resort:   'Large Resort',
+    hotel_group:    'Hotel Group',
+    other:          'Other',
+    unknown:        'Not specified',
+  }
+  return map[type] ?? type
+}
+
+// ─── Reusable: Horizontal bar chart ──────────────────────────────────────────
+
+function HorizontalBars({
+  items,
+  total,
+  labelFn = (k) => k,
+  colorFrom = '#0897B3',
+  colorTo = '#47AECC',
+  accentColor = '#0897B3',
+}: {
+  items: { key: string; count: number }[]
+  total: number
+  labelFn?: (key: string) => string
+  colorFrom?: string
+  colorTo?: string
+  accentColor?: string
+}) {
+  const max = items[0]?.count ?? 1
+  if (items.length === 0) {
+    return <p className="text-sm text-muted-foreground">No data yet</p>
+  }
+  return (
+    <div className="space-y-3">
+      {items.map(({ key, count }) => (
+        <div key={key}>
+          <div className="mb-1 flex items-center justify-between gap-2">
+            <span className="text-sm font-medium leading-none truncate">{labelFn(key)}</span>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs text-muted-foreground">{fmt(count)}</span>
+              <span
+                className="text-xs font-bold tabular-nums"
+                style={{ color: accentColor, minWidth: '3.5ch' }}
+              >
+                {total > 0 ? Math.round((count / total) * 100) + '%' : '—'}
+              </span>
+            </div>
+          </div>
+          <div className="h-1.5 w-full rounded-full" style={{ background: '#0897B314' }}>
+            <div
+              className="h-1.5 rounded-full"
+              style={{
+                width: `${(count / max) * 100}%`,
+                background: `linear-gradient(90deg, ${colorFrom}, ${colorTo})`,
+                transition: 'width 0.4s ease',
+              }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ─── Reusable: Stat card ──────────────────────────────────────────────────────
 
 function StatCard({
-  label,
-  value,
-  sub,
-  accent,
+  label, value, sub, accent,
 }: {
-  label: string
-  value: string
-  sub?: string
-  accent?: string
+  label: string; value: string; sub?: string; accent?: string
 }) {
   return (
     <Card className="gap-3 py-5">
@@ -95,11 +170,11 @@ function StatCard({
   )
 }
 
-// ─── Dashboard ───────────────────────────────────────────────────────────────
+// ─── Dashboard ────────────────────────────────────────────────────────────────
 
 function Dashboard({ adminKey }: { adminKey: string }) {
   const [metrics, setMetrics] = useState<Metrics | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError]     = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -134,7 +209,7 @@ function Dashboard({ adminKey }: { adminKey: string }) {
           <p className="font-display text-lg font-bold" style={{ color: '#CCE6EA' }}>Error loading metrics</p>
           <p className="mt-2 text-sm" style={{ color: '#729DB9' }}>{error}</p>
           <p className="mt-1 text-xs" style={{ color: '#47AECC80' }}>
-            Make sure SUPABASE_SERVICE_ROLE_KEY is set in your .env.local
+            Make sure SUPABASE_SERVICE_ROLE_KEY is set in your environment
           </p>
         </div>
       </div>
@@ -143,12 +218,14 @@ function Dashboard({ adminKey }: { adminKey: string }) {
 
   if (!metrics) return null
 
-  const convRate = pct(metrics.totalLeads, metrics.uniqueVisitors)
+  const convRate  = pct(metrics.totalLeads, metrics.uniqueVisitors)
   const pilotRate = pct(metrics.pilotLeads, metrics.totalLeads)
+  const maxConvRate = Math.max(...metrics.conversionByCountry.map((d) => d.rate), 1)
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f0f8fa' }}>
-      {/* Header */}
+
+      {/* ── Header ── */}
       <div style={{ backgroundColor: '#063D57', borderBottom: '1px solid #47AECC1a' }}>
         <div className="mx-auto max-w-7xl px-6 py-6">
           <div className="flex items-center gap-3">
@@ -156,10 +233,7 @@ function Dashboard({ adminKey }: { adminKey: string }) {
               className="h-2 w-2 rounded-full"
               style={{ backgroundColor: '#47AECC', boxShadow: '0 0 6px #47AECC' }}
             />
-            <span
-              className="text-xs font-bold uppercase tracking-[0.16em]"
-              style={{ color: '#47AECC' }}
-            >
+            <span className="text-xs font-bold uppercase tracking-[0.16em]" style={{ color: '#47AECC' }}>
               Alga.e — Private Analytics
             </span>
           </div>
@@ -175,8 +249,9 @@ function Dashboard({ adminKey }: { adminKey: string }) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl space-y-8 px-6 py-10">
-        {/* Top stat cards */}
+      <div className="mx-auto max-w-7xl space-y-6 px-6 py-8">
+
+        {/* ── Row 1: Stat cards ── */}
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <StatCard
             label="Unique Visitors"
@@ -204,16 +279,80 @@ function Dashboard({ adminKey }: { adminKey: string }) {
           />
         </div>
 
-        {/* Middle row */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {/* ── Row 2: Geography + Hotel Type ── */}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+
+          {/* Geography */}
+          <Card className="lg:col-span-7">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="font-display text-lg font-black tracking-[-0.02em]">
+                    Visitor Countries
+                  </CardTitle>
+                  <CardDescription className="mt-0.5">
+                    Auto-detected from all visitor sessions · top {metrics.geography.length}
+                  </CardDescription>
+                </div>
+                <span
+                  className="shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold"
+                  style={{ background: '#0897B314', color: '#0897B3' }}
+                >
+                  {fmt(metrics.uniqueVisitors)} visitors
+                </span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <HorizontalBars
+                items={metrics.geography.map((g) => ({ key: g.location, count: g.count }))}
+                total={metrics.uniqueVisitors}
+                labelFn={(code) => `${flag(code)}  ${countryName(code)}`}
+                colorFrom="#0897B3"
+                colorTo="#47AECC"
+                accentColor="#0897B3"
+              />
+              {metrics.geography.length === 0 && (
+                <p className="text-sm text-muted-foreground">
+                  Geo data appears after deployment on Vercel. Null in local dev.
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Hotel Type */}
+          <Card className="lg:col-span-5">
+            <CardHeader>
+              <CardTitle className="font-display text-lg font-black tracking-[-0.02em]">
+                Leads by Hotel Type
+              </CardTitle>
+              <CardDescription className="mt-0.5">
+                Property type from lead submissions
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <HorizontalBars
+                items={metrics.propertyTypes.map((p) => ({ key: p.type, count: p.count }))}
+                total={metrics.totalLeads}
+                labelFn={propTypeLabel}
+                colorFrom="#FF751F"
+                colorTo="#F4AE5B"
+                accentColor="#FF751F"
+              />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* ── Row 3: Qualified Leads + Conversion by Country ── */}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+
           {/* Qualified leads */}
-          <Card>
+          <Card className="lg:col-span-4">
             <CardHeader>
               <CardTitle className="font-display text-lg font-black tracking-[-0.02em]">
                 Qualified Leads
               </CardTitle>
               <CardDescription>
-                Roles matching: hotel, manager, operations, owner, director
+                Role matches: hotel, manager, operations, owner, director
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -229,45 +368,103 @@ function Dashboard({ adminKey }: { adminKey: string }) {
             </CardContent>
           </Card>
 
-          {/* Geography */}
-          <Card>
-            <CardHeader>
+          {/* Conversion by country */}
+          <Card className="lg:col-span-8 gap-0 overflow-hidden py-0">
+            <CardHeader className="border-b py-5" style={{ borderColor: 'var(--color-border)' }}>
               <CardTitle className="font-display text-lg font-black tracking-[-0.02em]">
-                Top Locations
+                Conversion by Country
               </CardTitle>
-              <CardDescription>Where leads are coming from</CardDescription>
+              <CardDescription>
+                Visitors vs leads per geography — green bar = ≥5% target
+              </CardDescription>
             </CardHeader>
-            <CardContent>
-              {metrics.geography.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No location data yet</p>
+            <CardContent className="p-0">
+              {metrics.conversionByCountry.length === 0 ? (
+                <div className="px-6 py-8">
+                  <p className="text-sm text-muted-foreground">
+                    No geo data yet — appears after Vercel deployment.
+                  </p>
+                </div>
               ) : (
-                <div className="space-y-2">
-                  {metrics.geography.map(({ location, count }) => (
-                    <div key={location} className="flex items-center gap-3">
-                      <div className="flex-1">
-                        <div className="mb-1 flex items-center justify-between">
-                          <span className="text-sm font-medium">{location}</span>
-                          <span className="text-xs text-muted-foreground">{count}</span>
-                        </div>
-                        <div className="h-1.5 w-full rounded-full" style={{ background: '#0897B314' }}>
-                          <div
-                            className="h-1.5 rounded-full"
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid var(--color-border)', background: '#0897B308' }}>
+                        {['Country', 'Visitors', 'Leads', 'Conv. Rate'].map((h) => (
+                          <th
+                            key={h}
+                            className="px-4 py-3 text-left text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground"
+                          >
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {metrics.conversionByCountry.map((row, i) => {
+                        const isGood = row.rate >= 5
+                        const barColor = isGood ? '#0897B3' : row.rate >= 2 ? '#F4AE5B' : '#FF751F40'
+                        return (
+                          <tr
+                            key={row.country}
                             style={{
-                              width: `${(count / metrics.geography[0].count) * 100}%`,
-                              background: 'linear-gradient(90deg, #0897B3, #47AECC)',
+                              borderBottom:
+                                i < metrics.conversionByCountry.length - 1
+                                  ? '1px solid var(--color-border)'
+                                  : 'none',
                             }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                            className="transition-colors duration-100 hover:bg-muted/40"
+                          >
+                            <td className="px-4 py-3 font-medium whitespace-nowrap">
+                              {flag(row.country)}&nbsp; {countryName(row.country)}
+                            </td>
+                            <td className="px-4 py-3 tabular-nums text-muted-foreground">
+                              {fmt(row.visitors)}
+                            </td>
+                            <td
+                              className="px-4 py-3 tabular-nums font-semibold"
+                              style={{ color: row.leads > 0 ? '#FF751F' : 'inherit' }}
+                            >
+                              {fmt(row.leads)}
+                            </td>
+                            <td className="px-4 py-3">
+                              <div className="flex items-center gap-3">
+                                <div
+                                  className="h-1.5 w-20 rounded-full"
+                                  style={{ background: '#0897B314' }}
+                                >
+                                  <div
+                                    className="h-1.5 rounded-full"
+                                    style={{
+                                      width: `${(row.rate / maxConvRate) * 100}%`,
+                                      background: barColor,
+                                      transition: 'width 0.4s ease',
+                                    }}
+                                  />
+                                </div>
+                                <span
+                                  className="text-xs font-bold tabular-nums"
+                                  style={{
+                                    color: isGood ? '#0897B3' : '#729DB9',
+                                    minWidth: '3.5ch',
+                                  }}
+                                >
+                                  {row.rate.toFixed(1)}%
+                                </span>
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               )}
             </CardContent>
           </Card>
         </div>
 
-        {/* Leads table */}
+        {/* ── Row 4: Leads table ── */}
         <Card className="gap-0 overflow-hidden py-0">
           <CardHeader className="border-b py-5" style={{ borderColor: 'var(--color-border)' }}>
             <CardTitle className="font-display text-lg font-black tracking-[-0.02em]">
@@ -278,7 +475,9 @@ function Dashboard({ adminKey }: { adminKey: string }) {
           <CardContent className="p-0">
             {metrics.leads.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-sm text-muted-foreground">No leads yet. Share your landing page to start collecting.</p>
+                <p className="text-sm text-muted-foreground">
+                  No leads yet. Share your landing page to start collecting.
+                </p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -350,7 +549,7 @@ function Dashboard({ adminKey }: { adminKey: string }) {
   )
 }
 
-// ─── Gate ────────────────────────────────────────────────────────────────────
+// ─── Auth gate ────────────────────────────────────────────────────────────────
 
 function AdminGate() {
   const params = useSearchParams()
@@ -383,7 +582,7 @@ function AdminGate() {
   return <Dashboard adminKey={key} />
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function AdminPage() {
   return (
