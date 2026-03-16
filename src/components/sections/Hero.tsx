@@ -117,10 +117,10 @@ const Hero = () => {
         className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8"
       >
         {/* ── Left column: text ── */}
-        <div className="lg:col-span-7">
+        <div className="text-left lg:col-span-7">
 
           {/* Pill badge */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <motion.div variants={itemVariants} className="mb-5">
             <span
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium uppercase"
               style={{
@@ -261,7 +261,7 @@ const Hero = () => {
         {/* ── Right column: machine image ── */}
         <motion.div
           variants={itemVariants}
-          className="relative lg:col-span-5"
+          className="relative overflow-hidden lg:col-span-5"
         >
           {/* Teal glow behind machine */}
           <div
@@ -273,10 +273,9 @@ const Hero = () => {
           />
           {/* Orange accent glow at base */}
           <div
-            className="pointer-events-none absolute bottom-0 left-1/2 h-1/3 w-3/4 blur-2xl"
+            className="pointer-events-none absolute inset-x-4 bottom-0 h-1/3 blur-2xl"
             style={{
               background: "radial-gradient(ellipse 100% 60% at 50% 100%, #FF751F18, transparent 70%)",
-              transform: "translateX(-50%)",
             }}
           />
 
