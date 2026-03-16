@@ -96,7 +96,8 @@ export default function VideoSection() {
             className="lg:col-span-6 flex flex-col"
           >
             <h3
-              className="font-display text-xl font-black tracking-[-0.03em] leading-tight mb-3 text-[#093349] dark:text-[#CCE6EA]"
+              className="font-display text-xl font-black tracking-[-0.03em] leading-tight mb-3"
+              style={{ color: 'var(--section-subheading)' }}
             >
               {t({
                 en: "What Changes for Your Property",
@@ -131,7 +132,8 @@ export default function VideoSection() {
                   </div>
                   <div className="flex-1">
                     <h4
-                      className="font-display text-base font-black tracking-[-0.02em] mb-0.5 text-[#063D57] dark:text-[#CCE6EA]"
+                      className="font-display text-base font-black tracking-[-0.02em] mb-0.5"
+                      style={{ color: 'var(--section-heading)' }}
                     >
                       {t(step.title)}
                     </h4>

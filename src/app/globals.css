@@ -50,6 +50,13 @@
 }
 
 :root {
+  /* Section text tokens — light mode */
+  --section-heading: #063D57;
+  --section-subheading: #093349;
+  --section-body: #5a7a8a;
+  --section-ghost: rgba(71, 174, 204, 0.12);
+  --section-border: rgba(8, 151, 179, 0.08);
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -104,6 +111,13 @@
 }
 
 .dark {
+  /* Section text tokens — dark mode */
+  --section-heading: #CCE6EA;
+  --section-subheading: #CCE6EA;
+  --section-body: #729DB9;
+  --section-ghost: rgba(71, 174, 204, 0.28);
+  --section-border: rgba(71, 174, 204, 0.12);
+
   /* #093349 deep navy as dark base */
   --background: oklch(0.22 0.05 237);
   --foreground: oklch(0.97 0.005 215);
