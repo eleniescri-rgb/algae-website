@@ -27,8 +27,8 @@ export default function Features() {
               {t({ en: 'Key Benefits', es: 'Beneficios Clave' })}
             </span>
             <h2
-              className="font-display font-black leading-[1.0] tracking-[-0.03em]"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#063D57' }}
+              className="font-display font-black leading-[1.0] tracking-[-0.03em] text-[#063D57] dark:text-[#CCE6EA]"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
             >
               {t(homeContent.features.sectionTitle)}
             </h2>
@@ -40,7 +40,7 @@ export default function Features() {
               className="hidden lg:block shrink-0 h-px flex-1"
               style={{ background: 'linear-gradient(90deg, #0897B330, transparent)', marginBottom: '0.35rem' }}
             />
-            <p className="text-sm leading-relaxed lg:text-right lg:max-w-[280px] shrink-0" style={{ color: '#5a7a8a' }}>
+            <p className="text-sm leading-relaxed lg:text-right lg:max-w-[280px] shrink-0 text-[#5a7a8a] dark:text-[#729DB9]">
               {t({
                 en: 'Six reasons beachfront hotels choose Alga.e for sargassum management.',
                 es: 'Seis razones por las que los hoteles costeros eligen Alga.e.',
@@ -62,8 +62,7 @@ export default function Features() {
             return (
               <motion.div
                 key={i}
-                className="group flex items-center gap-6 lg:gap-10 py-7 border-t cursor-default"
-                style={{ borderColor: '#0897B315' }}
+                className="group flex items-center gap-6 lg:gap-10 py-7 border-t border-[#0897B315] dark:border-[#47AECC18] cursor-default"
                 initial={{ opacity: 0, x: -12 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.18 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
@@ -71,42 +70,33 @@ export default function Features() {
               >
                 {/* Ghost numeral */}
                 <span
-                  className="font-display font-black leading-none select-none shrink-0 w-16 lg:w-20"
-                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#47AECC18' }}
+                  className="font-display font-black leading-none select-none shrink-0 w-16 lg:w-20 text-[#47AECC] opacity-[0.12] dark:opacity-[0.28]"
+                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
                 {/* Icon */}
-                <div
-                  className="shrink-0"
-                  style={{ color: '#0897B3' }}
-                >
+                <div className="shrink-0 text-[#0897B3] dark:text-[#47AECC]">
                   {IconComponent && <IconComponent size={22} />}
                 </div>
 
                 {/* Title + mobile description */}
                 <div className="flex-1 min-w-0">
                   <p
-                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200 group-hover:text-[#0897B3]"
-                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: '#093349' }}
+                    className="font-display font-black tracking-[-0.025em] transition-colors duration-200 group-hover:text-[#0897B3] dark:group-hover:text-[#47AECC] text-[#093349] dark:text-[#CCE6EA]"
+                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)' }}
                   >
                     {t(feature.title)}
                   </p>
                   {/* Mobile-only description below title */}
-                  <p
-                    className="lg:hidden mt-1 text-sm leading-relaxed"
-                    style={{ color: '#5a7a8a' }}
-                  >
+                  <p className="lg:hidden mt-1 text-sm leading-relaxed text-[#5a7a8a] dark:text-[#729DB9]">
                     {t(feature.description)}
                   </p>
                 </div>
 
                 {/* Description — desktop only, right side */}
-                <p
-                  className="hidden lg:block text-sm leading-relaxed text-right max-w-[260px] shrink-0"
-                  style={{ color: '#5a7a8a' }}
-                >
+                <p className="hidden lg:block text-sm leading-relaxed text-right max-w-[260px] shrink-0 text-[#5a7a8a] dark:text-[#729DB9]">
                   {t(feature.description)}
                 </p>
               </motion.div>
@@ -114,7 +104,7 @@ export default function Features() {
           })}
 
           {/* Bottom border */}
-          <div className="border-t" style={{ borderColor: '#0897B315' }} />
+          <div className="border-t border-[#0897B315] dark:border-[#47AECC18]" />
         </motion.div>
 
       </div>
