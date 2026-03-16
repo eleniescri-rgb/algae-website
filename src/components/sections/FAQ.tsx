@@ -1,61 +1,142 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { useTranslation } from '@/hooks/useTranslation';
-import faqContent from '@/content/faq.json';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
+import faqContent from "@/content/faq.json";
+
+// Distinct accent per question — cycles through brand palette
+const questionAccents = ["#FF751F", "#0897B3", "#47AECC", "#FF751F", "#0897B3"];
 
 export default function FAQ() {
   const { t } = useTranslation();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
+
+        {/* ── Section header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16"
         >
           <span className="section-label">
-            {t({ en: 'Common Questions', es: 'Preguntas Frecuentes' })}
+            {t({ en: "Common Questions", es: "Preguntas Frecuentes" })}
           </span>
-          <h2 className="font-display text-4xl font-black leading-[1.0] tracking-[-0.03em] sm:text-5xl max-w-md">
+          <h2
+            className="font-display font-black leading-[0.92] tracking-[-0.04em]"
+            style={{
+              fontSize: "clamp(2.8rem, 6vw, 5rem)",
+              color: "var(--section-heading)",
+            }}
+          >
             {t(faqContent.sectionTitle)}
           </h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Accordion type="single" collapsible className="w-full">
-            {faqContent.questions.map((item, index) => (
-              <AccordionItem
+        {/* ── Question list ── */}
+        <div>
+          {faqContent.questions.map((item, index) => {
+            const isOpen = openIndex === index;
+            const accent = questionAccents[index];
+
+            return (
+              <motion.div
                 key={index}
-                value={`item-${index}`}
-                className="border-b border-border/60 py-1"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.07,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
-                <AccordionTrigger className="font-display text-left text-lg font-bold tracking-[-0.02em] leading-snug hover:no-underline py-5 text-foreground hover:text-primary transition-colors duration-200 [&>svg]:text-muted-foreground [&>svg]:shrink-0">
-                  {t(item.question)}
-                </AccordionTrigger>
-                <AccordionContent className="pb-5 pt-0">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {t(item.answer)}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+                <div
+                  className="relative cursor-pointer border-t-2 transition-colors duration-300"
+                  style={{
+                    borderColor: isOpen ? accent : "#0897B322",
+                  }}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                >
+                  {/* ── Trigger row ── */}
+                  <motion.div
+                    className="flex items-start gap-5 py-7"
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {/* Number label */}
+                    <span
+                      className="font-display text-xs font-black tracking-[0.18em] shrink-0 pt-1.5 select-none"
+                      style={{ color: accent }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    {/* Question text */}
+                    <h3
+                      className="font-display font-black tracking-[-0.025em] leading-snug flex-1"
+                      style={{
+                        fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+                        color: isOpen ? accent : "var(--section-heading)",
+                        transition: "color 0.25s ease",
+                      }}
+                    >
+                      {t(item.question)}
+                    </h3>
+
+                    {/* Animated chevron */}
+                    <motion.div
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      className="shrink-0 mt-1"
+                      style={{ color: accent }}
+                    >
+                      <ChevronDown size={18} strokeWidth={2.5} />
+                    </motion.div>
+                  </motion.div>
+
+                  {/* ── Answer panel ── */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        key="answer"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-9 pb-8 pr-8">
+                          {/* Accent rule */}
+                          <div
+                            className="mb-4 h-px w-8"
+                            style={{ backgroundColor: accent, opacity: 0.5 }}
+                          />
+                          <p className="text-base leading-relaxed text-muted-foreground">
+                            {t(item.answer)}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
+
+          {/* Closing border */}
+          <div
+            className="border-t-2"
+            style={{ borderColor: "#0897B322" }}
+          />
+        </div>
+
       </div>
     </section>
   );
