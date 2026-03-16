@@ -32,10 +32,11 @@ const stats: Stat[] = [
     sublabel: { en: "average pilot setup time", es: "tiempo promedio de configuración del piloto" },
   },
   {
-    value: 12,
-    suffix: "+",
-    label: { en: "Properties", es: "Propiedades" },
-    sublabel: { en: "in active pilot evaluation", es: "en evaluación de piloto activa" },
+    value: 150,
+    prefix: "$",
+    suffix: "M",
+    label: { en: "Cleanup Costs", es: "Costos de Limpieza" },
+    sublabel: { en: "spent by QR hotels in 2025 alone", es: "gastados por hoteles de QR solo en 2025" },
   },
 ];
 

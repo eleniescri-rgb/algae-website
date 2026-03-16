@@ -8,8 +8,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import content from "@/content/home.json";
 
 const metricChips = [
-  { value: "95%", label: { en: "volume reduction", es: "reducción de volumen" } },
-  { value: "€0", label: { en: "upfront cost", es: "costo inicial" } },
+  { value: "37.5M t", label: { en: "sargassum bloom (2025)", es: "bloom de sargazo (2025)" } },
+  { value: "87%", label: { en: "water in raw sargassum", es: "agua en sargazo crudo" } },
   { value: "3 days", label: { en: "to deploy", es: "para desplegar" } },
 ];
 

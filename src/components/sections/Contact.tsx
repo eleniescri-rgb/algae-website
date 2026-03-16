@@ -83,6 +83,12 @@ export default function Contact() {
           <p className="mt-4 text-muted-foreground max-w-lg leading-relaxed">
             {t(contactContent.sectionDescription)}
           </p>
+          <p className="mt-3 text-xs leading-relaxed max-w-lg" style={{ color: "var(--section-body)" }}>
+            {t({
+              en: "Hotel operators: apply for the pilot program below. Industrial partners and press: use the same form and tell us about your interest.",
+              es: "Operadores hoteleros: solicita el programa piloto a continuación. Socios industriales y prensa: usa el mismo formulario e indícanos tu interés.",
+            })}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">

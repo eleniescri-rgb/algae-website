@@ -152,8 +152,8 @@ export default function Recognition() {
           style={{ color: "#729DB9" }}
         >
           {t({
-            en: "Recognised at IE University's annual competition for innovation, venture viability, and sustainability impact.",
-            es: "Reconocidos en la competición anual de IE University por innovación, viabilidad empresarial e impacto en sostenibilidad.",
+            en: "Selected from over 200 teams across 40 countries at IE University's annual venture competition, 2024.",
+            es: "Seleccionados entre más de 200 equipos de 40 países en la competición anual de emprendimiento de IE University, 2024.",
           })}
         </motion.p>
       </div>

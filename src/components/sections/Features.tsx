@@ -47,8 +47,8 @@ export default function Features() {
               style={{ color: 'var(--section-body)' }}
             >
               {t({
-                en: 'Six reasons beachfront hotels choose Alga.e for sargassum management.',
-                es: 'Seis razones por las que los hoteles costeros eligen Alga.e.',
+                en: 'Three reasons beachfront hotel operations teams choose Alga.e.',
+                es: 'Tres razones por las que los equipos de operaciones hoteleras eligen Alga.e.',
               })}
             </p>
           </div>

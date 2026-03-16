@@ -100,19 +100,8 @@ export default function BrandMoment() {
               />
             </div>
 
-            {/* Body copy */}
-            <p
-              className="text-base leading-[1.75] text-[#5a7a8a] dark:text-[#A8CEDC]"
-              style={{ maxWidth: "380px" }}
-            >
-              {t({
-                en: "Alga.e develops on-site systems that turn coastal sargassum from an operational burden into a recoverable resource — processed at the property, collected by our industrial partners.",
-                es: "Alga.e desarrolla sistemas in situ que convierten el sargazo costero de una carga operativa en un recurso recuperable — procesado en la propiedad y recogido por nuestros socios industriales.",
-              })}
-            </p>
-
             {/* Brand note */}
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#47AECC]">
+            <p className="mt-0 text-xs font-semibold uppercase tracking-[0.16em] text-[#47AECC]">
               {t({ en: "Circular resource recovery", es: "Recuperación circular de recursos" })}
             </p>
           </motion.div>

@@ -5,8 +5,8 @@
       "es": "Convierte el Sargazo en un Recurso"
     },
     "subheadline": {
-      "en": "Alga.e is developing an on-site processing concept for beachfront hotels — designed to reduce sargassum volume by up to 95% and ease disposal pressure, without disrupting your existing operations.",
-      "es": "Alga.e está desarrollando un concepto de procesamiento in situ para hoteles costeros — diseñado para reducir el volumen de sargazo hasta un 95% y aliviar la presión de disposición, sin alterar tus operaciones actuales."
+      "en": "The on-site processing system for beachfront hotels — cut your sargassum removal costs and turn your beach waste into a traceable industrial resource.",
+      "es": "El sistema de procesamiento in situ para hoteles costeros — reduce tus costos de limpieza de sargazo y convierte tu residuo de playa en un recurso industrial trazable."
     },
     "ctaText": {
       "en": "Request a Pilot",
@@ -19,74 +19,41 @@
   },
   "features": {
     "sectionTitle": {
-      "en": "Why Hotels Choose Alga.e",
-      "es": "Por Qué los Hoteles Eligen Alga.e"
+      "en": "Why Hotel Operations Teams Choose Alga.e",
+      "es": "Por Qué los Equipos de Operaciones Hoteleras Eligen Alga.e"
     },
     "items": [
       {
         "icon": "BadgeDollarSign",
         "title": {
-          "en": "Zero Upfront Investment",
-          "es": "Sin Inversión Inicial"
+          "en": "Cut Your Disposal Bill",
+          "es": "Reduce tu Factura de Disposición"
         },
         "description": {
-          "en": "The Alga.e system operates as a service partnership — no equipment purchase, no capital expenditure required from the hotel.",
-          "es": "El sistema Alga.e funciona como una alianza de servicio — sin compra de equipos ni inversión de capital requerida por parte del hotel."
+          "en": "Hotels in Quintana Roo spend $60–90K per month on sargassum cleanup. The Alga.e on-site model eliminates transport and disposal costs at the source.",
+          "es": "Los hoteles en Quintana Roo gastan $60–90K al mes en limpieza de sargazo. El modelo in situ de Alga.e elimina los costes de transporte y disposición en origen."
         }
       },
       {
-        "icon": "TrendingDown",
+        "icon": "Wind",
         "title": {
-          "en": "95% Volume Reduction",
-          "es": "95% de Reducción de Volumen"
+          "en": "No More Odour",
+          "es": "Sin Más Olor"
         },
         "description": {
-          "en": "On-site washing and drying converts wet sargassum into a compact, stable dry material — drastically cutting logistics and disposal pressure.",
-          "es": "El lavado y secado in situ convierte el sargazo húmedo en un material seco y compacto, reduciendo drásticamente la presión logística y de disposición."
+          "en": "Dried, stabilised biomass has no hydrogen sulfide gas. Your guests stop noticing the smell — and stop writing about it in reviews.",
+          "es": "La biomasa seca y estabilizada no emite sulfuro de hidrógeno. Tus huéspedes dejan de notar el olor — y de escribir sobre ello en sus reseñas."
         }
       },
       {
-        "icon": "Truck",
+        "icon": "ShieldCheck",
         "title": {
-          "en": "Lower Disposal Costs",
-          "es": "Menores Costos de Disposición"
+          "en": "Turn Compliance into a Story",
+          "es": "Convierte el Cumplimiento en una Historia"
         },
         "description": {
-          "en": "Processed sargassum weighs and occupies far less than raw sargassum. Fewer collection runs, lower transport fees, less operational burden.",
-          "es": "El sargazo procesado pesa y ocupa mucho menos que el sargazo crudo. Menos viajes de recolección, menores costos de transporte y menor carga operativa."
-        }
-      },
-      {
-        "icon": "Leaf",
-        "title": {
-          "en": "Strengthen Your ESG Profile",
-          "es": "Fortalece tu Perfil ESG"
-        },
-        "description": {
-          "en": "Transform a recurring waste challenge into a potential circular resource opportunity. The dry material produced may support future downstream reuse — enabling measurable sustainability impact for guests, investors, and certification bodies.",
-          "es": "Transforma un desafío de residuos recurrente en una posible oportunidad de recurso circular. El material seco producido podría facilitar futura reutilización en industrias, permitiendo un impacto de sostenibilidad medible ante huéspedes, inversores y certificadoras."
-        }
-      },
-      {
-        "icon": "FlaskConical",
-        "title": {
-          "en": "Pathway to Circular Reuse",
-          "es": "Vía hacia la Reutilización Circular"
-        },
-        "description": {
-          "en": "The dry material the system produces is designed to enable future downstream reuse — in applications such as agriculture inputs, bio-based materials, or other circular economy sectors. Reuse pathways are currently being explored.",
-          "es": "El material seco que produce el sistema está diseñado para facilitar futura reutilización — en aplicaciones como insumos agrícolas, materiales de base biológica u otros sectores de la economía circular. Las vías de reutilización están siendo exploradas actualmente."
-        }
-      },
-      {
-        "icon": "CircleDollarSign",
-        "title": {
-          "en": "Potential Revenue Share",
-          "es": "Potencial de Ingresos Compartidos"
-        },
-        "description": {
-          "en": "As the model scales and downstream reuse pathways develop, hotels participating in the pilot program may be positioned to share in value generated from the processed material. Terms would be defined as the model matures.",
-          "es": "A medida que el modelo escale y se desarrollen las vías de reutilización, los hoteles participantes en el piloto podrían estar posicionados para compartir el valor generado por el material procesado. Los términos se definirán conforme el modelo madure."
+          "en": "ZOFEMAT mandates beach cleanup within 72 hours. Alga.e satisfies the regulation — and gives you measurable ESG impact to report to guests, investors, and certification bodies.",
+          "es": "La normativa ZOFEMAT exige limpieza de playa en 72 horas. Alga.e cumple la regulación y te da impacto ESG medible para reportar ante huéspedes, inversores y certificadoras."
         }
       }
     ]
