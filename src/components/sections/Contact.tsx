@@ -101,8 +101,20 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="lg:col-span-2 space-y-5"
           >
-            {fields.map((field) => (
-              <div key={field.name} className="space-y-2">
+            {fields.map((field, index) => {
+              const groupLabel =
+                index === 0 ? t({ en: "About You", es: "Sobre Ti" }) :
+                index === 4 ? t({ en: "Your Property", es: "Tu Propiedad" }) :
+                index === 7 ? t({ en: "Your Goals", es: "Tus Objetivos" }) :
+                null;
+              return (
+              <div key={field.name}>
+                {groupLabel && (
+                  <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] pt-4 pb-1 first:pt-0" style={{ color: "#0897B3" }}>
+                    {groupLabel}
+                  </p>
+                )}
+              <div className="space-y-2">
                 <Label htmlFor={field.name} className="text-sm font-semibold text-foreground">
                   {t(field.label)}
                   {field.required && <span className="text-primary ml-1">*</span>}
@@ -146,7 +158,9 @@ export default function Contact() {
                   />
                 )}
               </div>
-            ))}
+              </div>
+              );
+            })}
 
             {validationError && (
               <p className="text-sm font-medium" style={{ color: "#FF751F" }}>

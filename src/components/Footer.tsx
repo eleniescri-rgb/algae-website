@@ -7,6 +7,7 @@ import siteContent from '@/content/site.json'
 
 const navLinks = [
   { href: '#features', label: { en: 'Benefits', es: 'Beneficios' } },
+  { href: '#how-it-works', label: { en: 'How It Works', es: 'Cómo Funciona' } },
   { href: '#pilot', label: { en: 'Pilot Program', es: 'Programa Piloto' } },
   { href: '#faq', label: { en: 'FAQ', es: 'FAQ' } },
   { href: '#about', label: { en: 'About', es: 'Acerca' } },

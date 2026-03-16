@@ -186,7 +186,7 @@ const Hero = () => {
                 backgroundColor: "#FF751F",
                 color: "white",
                 boxShadow: "0 4px 28px #FF751F73",
-                transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease",
+                transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
@@ -209,7 +209,7 @@ const Hero = () => {
                 backgroundColor: "#47AECC0d",
                 color: "#CCE6EA",
                 backdropFilter: "blur(8px)",
-                transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease",
+                transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, border-color 0.2s ease",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.04)";
@@ -259,6 +259,7 @@ const Hero = () => {
               alt="Alga.e on-site sargassum processing system"
               width={640}
               height={420}
+              sizes="(max-width: 1024px) 100vw, 42vw"
               className="w-full"
               style={{
                 filter: "invert(1) brightness(0.95) sepia(0.2) hue-rotate(175deg) saturate(0.8)",

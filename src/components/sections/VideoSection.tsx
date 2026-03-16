@@ -159,8 +159,8 @@ export default function VideoSection() {
                 {t({ en: "Watch how it works", es: "Ver cómo funciona" })}
               </span>
               <span
-                className="text-base"
-                style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1)" }}
+                className="text-base inline-block transition-transform duration-200 group-hover:translate-x-1"
+                style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
               >
                 →
               </span>

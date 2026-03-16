@@ -103,18 +103,21 @@ export default function Pricing() {
               {t(pilot.description)}
             </p>
 
-            {/* Key metric callout — floats + scales on hover */}
+            {/* Key metric callout — float (outer) + hover scale (inner) */}
             <motion.div
-              className="inline-flex flex-col py-5 px-6 rounded-2xl cursor-default"
-              style={{
-                background: "#09334966",
-                border: "1px solid #47AECC20",
-                backdropFilter: "blur(8px)",
-              }}
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.04, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+              className="inline-block"
             >
+              <motion.div
+                className="inline-flex flex-col py-5 px-6 rounded-2xl cursor-default"
+                style={{
+                  background: "#09334966",
+                  border: "1px solid #47AECC20",
+                  backdropFilter: "blur(8px)",
+                }}
+                whileHover={{ scale: 1.04, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+              >
               <span
                 className="font-display text-5xl font-black tracking-[-0.04em] leading-none"
                 style={{ color: "#FF751F" }}
@@ -124,6 +127,7 @@ export default function Pricing() {
               <span className="text-sm mt-1.5 font-medium" style={{ color: "#47AECC" }}>
                 {t({ en: "upfront investment required", es: "inversión inicial requerida" })}
               </span>
+            </motion.div>
             </motion.div>
           </motion.div>
 
@@ -176,7 +180,7 @@ export default function Pricing() {
                   backgroundColor: "#FF751F",
                   color: "white",
                   boxShadow: "0 4px 28px #FF751F59",
-                  transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
+                  transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease",
                   paddingLeft: "2rem",
                   paddingRight: "2rem",
                 }}
@@ -197,6 +201,9 @@ export default function Pricing() {
               </Button>
               <p className="mt-4 text-xs" style={{ color: "#47AECC66" }}>
                 {t({ en: "Limited pilot slots available.", es: "Cupos piloto limitados." })}
+              </p>
+              <p className="mt-1 text-xs" style={{ color: "#47AECC55" }}>
+                {t({ en: "Fill out the short form below — we'll review and respond within 48 hours.", es: "Completa el breve formulario — revisaremos y responderemos en 48 horas." })}
               </p>
             </motion.div>
           </motion.div>
