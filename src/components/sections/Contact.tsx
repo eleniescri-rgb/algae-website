@@ -65,6 +65,15 @@ export default function Contact() {
           transition={{ duration: 0.55 }}
           className="mb-14"
         >
+          <p
+            className="text-base font-medium italic mb-3"
+            style={{ color: "#0897B3" }}
+          >
+            {t({
+              en: "Ready to stop hauling sargassum and start recovering value from it?",
+              es: "¿Listo para dejar de transportar sargazo y empezar a recuperar su valor?",
+            })}
+          </p>
           <span className="section-label">
             {t({ en: "Get In Touch", es: "Contáctanos" })}
           </span>

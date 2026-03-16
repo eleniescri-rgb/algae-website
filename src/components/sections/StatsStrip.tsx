@@ -17,7 +17,7 @@ const stats: Stat[] = [
     value: 95,
     suffix: "%",
     label: { en: "Volume Reduction", es: "Reducción de Volumen" },
-    sublabel: { en: "in sargassum biomass, on-site", es: "en biomasa, procesado in situ" },
+    sublabel: { en: "of sargassum volume, dried on-site", es: "del volumen de sargazo, secado in situ" },
   },
   {
     value: 0,

@@ -42,8 +42,8 @@ const steps = [
     n: "02",
     title: { en: "Odor Eliminated", es: "Olor Eliminado" },
     description: {
-      en: "Processed biomass doesn't rot or smell. Guest complaints about beach odor disappear.",
-      es: "La biomasa procesada no se pudre ni huele. Las quejas de huéspedes por el olor en la playa desaparecen.",
+      en: "Dried sargassum doesn't rot or smell. Guest complaints about beach odor disappear.",
+      es: "El sargazo seco no se pudre ni huele. Las quejas de huéspedes por el olor en la playa desaparecen.",
     },
   },
   {
@@ -151,6 +151,27 @@ export default function VideoSection() {
               ))}
               <div style={{ borderTop: "1px solid #0897B326" }} />
             </div>
+
+            {/* Watch CTA — directs attention down to the video */}
+            <a
+              href="#video-player"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("video-player")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-flex items-center gap-2 mt-6 text-sm font-semibold group"
+              style={{ color: "#0897B3" }}
+            >
+              <span style={{ transition: "opacity 0.2s ease" }} className="group-hover:opacity-80">
+                {t({ en: "Watch how it works", es: "Ver cómo funciona" })}
+              </span>
+              <span
+                className="text-base"
+                style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1)" }}
+              >
+                →
+              </span>
+            </a>
           </motion.div>
 
           {/* RIGHT — machine illustration */}
@@ -241,6 +262,15 @@ export default function VideoSection() {
             </span>
             <div className="h-px flex-1" style={{ background: "#0897B31e" }} />
           </div>
+
+          {/* Video heading */}
+          <h3
+            id="video-player"
+            className="font-display text-xl font-black tracking-[-0.03em] mb-3"
+            style={{ color: "#CCE6EA" }}
+          >
+            {t({ en: "See it in 90 seconds", es: "Míralo en 90 segundos" })}
+          </h3>
 
           {/* Video container — auto-switches when videoUrl is set */}
           <div
