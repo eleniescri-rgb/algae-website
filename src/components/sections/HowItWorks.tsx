@@ -69,11 +69,17 @@ export default function HowItWorks() {
                   {step.stepNumber}
                 </div>
 
+                {/* Animated accent border — scaleX reveal */}
+                <motion.div
+                  className="h-[2px] origin-left"
+                  style={{ backgroundColor: accent }}
+                  initial={{ scaleX: 0 }}
+                  animate={isInView ? { scaleX: 1 } : {}}
+                  transition={{ duration: 0.55, delay: 0.08 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                />
+
                 {/* Content */}
-                <div
-                  className="relative pt-12 pr-4 pb-7 pl-0 border-t-2"
-                  style={{ borderColor: accent }}
-                >
+                <div className="relative pt-10 pr-4 pb-7 pl-0">
                   {/* Step label */}
                   <span
                     className="text-xs font-bold uppercase tracking-[0.18em] block mb-4"

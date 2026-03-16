@@ -71,11 +71,20 @@ export default function CircularLoop() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 pt-6 pb-8 pr-8"
-                style={{ borderTop: `3px solid ${node.accent}` }}
+                className="flex-1 pb-8 pr-8"
               >
+                {/* Animated accent border — scaleX reveal */}
+                <motion.div
+                  className="h-[3px] origin-left mb-6"
+                  style={{ backgroundColor: node.accent }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.55, delay: 0.06 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                />
                 {/* Number + label */}
                 <div className="flex items-center gap-3 mb-4">
                   <span
@@ -106,13 +115,17 @@ export default function CircularLoop() {
 
               {/* Arrow between nodes — desktop: right → / mobile: ↓ */}
               {i < 2 && (
-                <div
+                <motion.div
                   className="hidden lg:flex items-start pt-10 px-3 shrink-0 text-lg font-black select-none"
                   style={{ color: "#0897B326" }}
+                  initial={{ opacity: 0, x: -6 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   aria-hidden="true"
                 >
                   →
-                </div>
+                </motion.div>
               )}
             </div>
           ))}
