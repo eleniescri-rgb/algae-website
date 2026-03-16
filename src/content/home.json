@@ -5,8 +5,8 @@
       "es": "Convierte el Sargazo en un Recurso"
     },
     "subheadline": {
-      "en": "On-site processing at your beachfront property. We reduce sargassum volume by up to 95% — your staff keeps their routine, we handle the rest.",
-      "es": "Procesamiento in situ en tu propiedad costera. Reducimos el volumen de sargazo hasta un 95% — tu personal mantiene su rutina, nosotros hacemos el resto."
+      "en": "Alga.e is developing an on-site processing concept for beachfront hotels — designed to reduce sargassum volume by up to 95% and ease disposal pressure, without disrupting your existing operations.",
+      "es": "Alga.e está desarrollando un concepto de procesamiento in situ para hoteles costeros — diseñado para reducir el volumen de sargazo hasta un 95% y aliviar la presión de disposición, sin alterar tus operaciones actuales."
     },
     "ctaText": {
       "en": "Request a Pilot",
@@ -63,19 +63,19 @@
           "es": "Fortalece tu Perfil ESG"
         },
         "description": {
-          "en": "Transform a waste problem into a resource loop — the dry sargassum material is collected and reused by our industrial partners. Demonstrate measurable sustainability impact to guests, investors, and certification bodies.",
-          "es": "Transforma un problema de residuos en un ciclo de recursos: el material seco de sargazo es recogido y reutilizado por nuestros socios industriales. Demuestra impacto de sostenibilidad medible ante huéspedes, inversores y certificadoras."
+          "en": "Transform a recurring waste challenge into a potential circular resource opportunity. The dry material produced may support future downstream reuse — enabling measurable sustainability impact for guests, investors, and certification bodies.",
+          "es": "Transforma un desafío de residuos recurrente en una posible oportunidad de recurso circular. El material seco producido podría facilitar futura reutilización en industrias, permitiendo un impacto de sostenibilidad medible ante huéspedes, inversores y certificadoras."
         }
       },
       {
         "icon": "FlaskConical",
         "title": {
-          "en": "Dry Material Collected by Our Partners",
-          "es": "Material Seco Recogido por Nuestros Socios"
+          "en": "Pathway to Circular Reuse",
+          "es": "Vía hacia la Reutilización Circular"
         },
         "description": {
-          "en": "The dry sargassum material our system produces is collected directly by our industrial partners for reuse in agriculture and materials production — closing the loop at no extra effort from your team.",
-          "es": "El material seco de sargazo que produce nuestro sistema es recogido directamente por nuestros socios industriales para reutilizarlo en agricultura y producción de materiales, sin esfuerzo adicional para tu equipo."
+          "en": "The dry material the system produces is designed to enable future downstream reuse — in applications such as agriculture inputs, bio-based materials, or other circular economy sectors. Reuse pathways are currently being explored.",
+          "es": "El material seco que produce el sistema está diseñado para facilitar futura reutilización — en aplicaciones como insumos agrícolas, materiales de base biológica u otros sectores de la economía circular. Las vías de reutilización están siendo exploradas actualmente."
         }
       },
       {
@@ -85,8 +85,8 @@
           "es": "Potencial de Ingresos Compartidos"
         },
         "description": {
-          "en": "As the model scales, hotels participating in the partnership may share in the revenue generated when the dry sargassum material is sold to industrial buyers.",
-          "es": "A medida que escala el modelo, los hoteles participantes podrían compartir los ingresos generados cuando el material seco de sargazo se vende a compradores industriales."
+          "en": "As the model scales and downstream reuse pathways develop, hotels participating in the pilot program may be positioned to share in value generated from the processed material. Terms would be defined as the model matures.",
+          "es": "A medida que el modelo escale y se desarrollen las vías de reutilización, los hoteles participantes en el piloto podrían estar posicionados para compartir el valor generado por el material procesado. Los términos se definirán conforme el modelo madure."
         }
       }
     ]
@@ -133,12 +133,12 @@
       {
         "stepNumber": 4,
         "title": {
-          "en": "Dry Material Collected by Our Partners",
-          "es": "Material Seco Recogido por Nuestros Socios"
+          "en": "Enable Potential Downstream Reuse",
+          "es": "Habilitar Potencial Reutilización Industrial"
         },
         "description": {
-          "en": "Alga.e's industrial partners collect the dry sargassum material directly from your property for reuse in agriculture and materials production.",
-          "es": "Los socios industriales de Alga.e recogen el material seco de sargazo directamente de tu propiedad para reutilizarlo en agricultura y producción de materiales."
+          "en": "The dry, stable material produced is designed to support future collection and reuse — with potential applications in agriculture, bio-based materials, and other circular economy sectors currently being explored.",
+          "es": "El material seco y estable producido está diseñado para facilitar futura recolección y reutilización, con potenciales aplicaciones en agricultura, materiales de base biológica y otros sectores de economía circular actualmente en exploración."
         }
       }
     ]

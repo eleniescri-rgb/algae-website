@@ -2,13 +2,13 @@
   "brand": {
     "name": "Alga.e",
     "description": {
-      "en": "Compact on-site system that processes sargassum directly at beachfront hotels, reducing volume by up to 95% and creating reusable biomass for downstream industries.",
-      "es": "Sistema compacto de procesamiento in situ que trata el sargazo directamente en hoteles costeros, reduciendo el volumen hasta un 95% y generando biomasa reutilizable para industrias."
+      "en": "Compact on-site processing concept designed for beachfront hotels — aimed at reducing sargassum volume by up to 95% and enabling potential circular reuse of the dried biomass.",
+      "es": "Concepto de procesamiento in situ diseñado para hoteles costeros — orientado a reducir el volumen de sargazo hasta un 95% y facilitar la potencial reutilización circular de la biomasa seca."
     }
   },
   "tagline": {
-    "en": "Turn sargassum from a hotel cost into a usable resource.",
-    "es": "Convierte el sargazo de un costo hotelero en un recurso aprovechable."
+    "en": "Designed to turn sargassum from a hotel cost into a potential resource.",
+    "es": "Diseñado para convertir el sargazo de un costo hotelero en un potencial recurso."
   },
   "navigation": [
     {
@@ -73,8 +73,8 @@
       "es": "%s | Alga.e"
     },
     "description": {
-      "en": "Alga.e helps beachfront hotels process sargassum on-site, cutting disposal costs and converting biomass into a reusable resource. Zero CAPEX. Pilot program open.",
-      "es": "Alga.e ayuda a hoteles costeros a procesar el sargazo in situ, reduciendo costos de disposición y convirtiendo la biomasa en un recurso reutilizable. Sin inversión inicial."
+      "en": "Alga.e is developing an on-site sargassum processing concept for beachfront hotels — designed to cut disposal pressure and explore circular reuse of dried biomass. Pilot program open.",
+      "es": "Alga.e está desarrollando un concepto de procesamiento in situ de sargazo para hoteles costeros — diseñado para reducir la presión de disposición y explorar la reutilización circular de biomasa seca."
     }
   }
 }

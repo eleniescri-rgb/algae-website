@@ -32,26 +32,26 @@ function detectEmbedType(url: string): EmbedType {
 const steps = [
   {
     n: "01",
-    title: { en: "No Logistics", es: "Sin Logística" },
+    title: { en: "Reduced Logistics", es: "Logística Reducida" },
     description: {
-      en: "No third-party pickups, no trucking schedules, no coordination. Everything stays on your property.",
-      es: "Sin recolecciones externas, sin horarios de camiones, sin coordinación. Todo se gestiona en tu propiedad.",
+      en: "The system is designed to reduce the need to transport heavy, wet sargassum off-site. Processing happens at the property, cutting the volume before any logistics are needed.",
+      es: "El sistema está diseñado para reducir la necesidad de transportar el sargazo húmedo y pesado fuera de la propiedad. El procesamiento ocurre en el lugar, reduciendo el volumen antes de que se requiera cualquier logística.",
     },
   },
   {
     n: "02",
-    title: { en: "Odor Eliminated", es: "Olor Eliminado" },
+    title: { en: "Reduced Decomposition Odor", es: "Olor de Descomposición Reducido" },
     description: {
-      en: "Dried sargassum doesn't rot or smell. Guest complaints about beach odor disappear.",
-      es: "El sargazo seco no se pudre ni huele. Las quejas de huéspedes por el olor en la playa desaparecen.",
+      en: "Drying sargassum on-site can significantly reduce decomposition odor — one of the main sources of guest complaints during peak arrival seasons.",
+      es: "Secar el sargazo in situ puede reducir significativamente el olor de descomposición — una de las principales fuentes de quejas de huéspedes durante las temporadas de mayor llegada.",
     },
   },
   {
     n: "03",
-    title: { en: "Cost Becomes Value", es: "El Costo Se Convierte en Valor" },
+    title: { en: "Path to Value Recovery", es: "Vía hacia la Recuperación de Valor" },
     description: {
-      en: "What used to be a disposal problem becomes a recoverable resource — collected by Alga.e's industrial partners.",
-      es: "Lo que antes era un problema de eliminación se convierte en un recurso recuperable, recogido por los socios industriales de Alga.e.",
+      en: "What was a costly disposal burden may become a manageable, stable material with potential for future reuse — currently being explored with circular economy and industrial partners.",
+      es: "Lo que era una carga costosa de disposición puede convertirse en un material manejable y estable con potencial de reutilización futura, actualmente en exploración con socios de economía circular e industria.",
     },
   },
 ];
