@@ -33,8 +33,8 @@ export default function Home() {
       <VideoSection />
       <CircularLoop />
       <Features />
-      <About />
       <PilotSection />
+      <About />
       <FAQ />
       <Contact />
       <Footer />
