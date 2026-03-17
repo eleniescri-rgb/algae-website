@@ -179,11 +179,6 @@ export default function VideoSection() {
             className="lg:col-span-6 flex items-center justify-center"
           >
             <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-none">
-              {/* Glow behind machine */}
-              <div
-                className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_70%_60%_at_50%_55%,#FF751F28_0%,transparent_75%)] dark:[background:radial-gradient(ellipse_70%_60%_at_50%_55%,#FF751F28_0%,transparent_75%)]"
-                style={{ transform: "scale(1.15)" }}
-              />
 
               <motion.div
                 className="relative z-10 flex items-center justify-center px-2 py-4"

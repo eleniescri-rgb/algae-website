@@ -103,6 +103,38 @@ export default function HowItWorks() {
             );
           })}
         </div>
+
+        {/* Cross-link to video */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 pt-8"
+          style={{ borderTop: "1px solid #47AECC18" }}
+        >
+          <a
+            href="#video"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("video")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="inline-flex items-center gap-2 text-sm font-semibold group"
+            style={{ color: "#FF751F" }}
+          >
+            <span style={{ transition: "opacity 0.2s ease" }} className="group-hover:opacity-70">
+              {t({ en: "Watch it happen", es: "Míralo en acción" })}
+            </span>
+            <motion.span
+              className="text-base"
+              initial={false}
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              →
+            </motion.span>
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -31,7 +31,7 @@ export default function FAQ() {
           <h2
             className="font-display font-black leading-[0.92] tracking-[-0.04em]"
             style={{
-              fontSize: "clamp(2.8rem, 6vw, 5rem)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
               color: "var(--section-heading)",
             }}
           >
