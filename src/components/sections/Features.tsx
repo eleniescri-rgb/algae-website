@@ -31,7 +31,7 @@ export default function Features() {
             </span>
             <h2
               className="font-display font-black leading-[1.0] tracking-[-0.03em]"
-              style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', color: 'var(--section-heading)' }}
+              style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)', color: 'var(--section-heading)' }}
             >
               {t(homeContent.features.sectionTitle)}
             </h2>

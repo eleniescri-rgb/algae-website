@@ -101,7 +101,7 @@ export default function CircularLoop() {
           </span>
           <h2
             className="font-display font-black leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.6rem, 5.5vw, 4.5rem)", color: "var(--section-heading)" }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "var(--section-heading)" }}
           >
             {t({ en: "Circular from the Start", es: "Circular Desde el Principio" })}
           </h2>
@@ -124,9 +124,9 @@ export default function CircularLoop() {
             <circle
               cx="250" cy="250" r="150"
               stroke="#0897B3"
-              strokeWidth="44"
+              strokeWidth="28"
               fill="none"
-              opacity="0.04"
+              opacity="0.05"
             />
             {/* Thin guide track */}
             <circle
