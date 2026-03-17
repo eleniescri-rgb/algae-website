@@ -60,7 +60,7 @@ export default function HowItWorks() {
               >
                 {/* Ghost numeral — distinct accent per step */}
                 <div
-                  className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none opacity-[0.08] group-hover:opacity-[0.16] transition-opacity duration-300"
+                  className="absolute -top-3 -left-2 font-display font-black leading-none select-none pointer-events-none opacity-[0.22] group-hover:opacity-[0.38] transition-opacity duration-300"
                   style={{ fontSize: "6.5rem", color: accent, lineHeight: 1 }}
                   aria-hidden="true"
                 >
