@@ -190,7 +190,7 @@ export default function VideoSection() {
                   alt="Alga.e on-site processing unit"
                   width={500}
                   height={330}
-                  className="w-full h-auto [filter:sepia(1)_saturate(4)_hue-rotate(10deg)_brightness(0.72)] dark:[filter:sepia(1)_saturate(5)_hue-rotate(10deg)_brightness(0.8)]"
+                  className="w-full h-auto [filter:invert(0)] dark:[filter:invert(1)_brightness(0.8)_sepia(1)_saturate(3)_hue-rotate(155deg)]"
                   style={{ maxHeight: "380px", objectFit: "contain" }}
                 />
               </motion.div>
