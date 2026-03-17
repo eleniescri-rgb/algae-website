@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import aboutContent from "@/content/about.json";
-
-// Distinct accent color per principle
-const valueAccents = ["#FF751F", "#0897B3", "#47AECC"];
+import { EASE, BRAND_ACCENTS, VIEWPORT } from "@/lib/brand";
+import { SectionHeader } from "@/components/SectionHeader";
 
 export default function About() {
   const { t } = useTranslation();
@@ -20,23 +19,13 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
 
         {/* ── Section header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16"
-        >
-          <span className="section-label-light">
-            {t({ en: "Our Story", es: "Nuestra Historia" })}
-          </span>
-          <h2
-            className="font-display font-black leading-[0.9] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#CCE6EA" }}
-          >
-            {t(aboutContent.sectionTitle)}
-          </h2>
-        </motion.div>
+        <SectionHeader
+          label={t({ en: "Our Story", es: "Nuestra Historia" })}
+          heading={t(aboutContent.sectionTitle)}
+          variant="light"
+          fontSize="clamp(2.4rem, 5vw, 4.5rem)"
+          mb="mb-16"
+        />
 
         {/* ── Story + Image ── */}
         <div className="mb-14 lg:mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -44,12 +33,12 @@ export default function About() {
           {/* LEFT — text */}
           <div className="order-2 lg:order-1 lg:col-span-6 flex flex-col justify-start">
 
-            {/* Story title — bigger, more editorial */}
+            {/* Story title */}
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              viewport={VIEWPORT.default}
+              transition={{ duration: 0.55, ease: EASE }}
               className="font-display font-black tracking-[-0.03em] leading-tight mb-7"
               style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "#47AECC" }}
             >
@@ -63,8 +52,8 @@ export default function About() {
                   key={index}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={VIEWPORT.tight}
+                  transition={{ duration: 0.5, delay: index * 0.08, ease: EASE }}
                   className={index === 0 ? "text-lg leading-relaxed font-medium" : "text-base leading-relaxed"}
                   style={{ color: index === 0 ? "#CCE6EA" : "#729DB9" }}
                 >
@@ -78,8 +67,8 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            viewport={VIEWPORT.default}
+            transition={{ duration: 0.65, ease: EASE }}
             className="order-1 lg:order-2 lg:col-span-6 flex flex-col"
           >
             <div
@@ -108,28 +97,18 @@ export default function About() {
         </div>
 
         {/* ── Values header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6"
-        >
-          <span className="section-label-light">
-            {t({ en: "Our Values", es: "Nuestros Valores" })}
-          </span>
-          <h3
-            className="font-display font-black tracking-[-0.03em]"
-            style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: "#CCE6EA" }}
-          >
-            {t(aboutContent.valuesTitle)}
-          </h3>
-        </motion.div>
+        <SectionHeader
+          label={t({ en: "Our Values", es: "Nuestros Valores" })}
+          heading={t(aboutContent.valuesTitle)}
+          variant="light"
+          fontSize="clamp(0.95rem, 1.4vw, 1.1rem)"
+          mb="mb-6"
+        />
 
         {/* ── Values — compact quiet rows ── */}
         <div>
           {aboutContent.values.map((value, index) => {
-            const accent = valueAccents[index];
+            const accent = BRAND_ACCENTS[index % BRAND_ACCENTS.length];
             return (
               <motion.div
                 key={index}
@@ -137,9 +116,9 @@ export default function About() {
                 style={{ borderTop: `1px solid ${accent}22` }}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.45, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ x: 4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={VIEWPORT.flush}
+                transition={{ duration: 0.45, delay: index * 0.09, ease: EASE }}
+                whileHover={{ x: 4, transition: { duration: 0.2, ease: EASE } }}
               >
                 {/* Accent dot + number */}
                 <div className="shrink-0 pt-0.5 flex flex-col items-center gap-1.5">

@@ -5,9 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import faqContent from "@/content/faq.json";
-
-// Distinct accent per question — cycles through brand palette
-const questionAccents = ["#FF751F", "#0897B3", "#47AECC", "#FF751F", "#0897B3"];
+import { EASE, BRAND_ACCENTS } from "@/lib/brand";
 
 export default function FAQ() {
   const { t } = useTranslation();
@@ -22,7 +20,7 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, ease: EASE }}
           className="mb-16"
         >
           <span className="section-label">
@@ -43,7 +41,7 @@ export default function FAQ() {
         <div>
           {faqContent.questions.map((item, index) => {
             const isOpen = openIndex === index;
-            const accent = questionAccents[index];
+            const accent = BRAND_ACCENTS[index % BRAND_ACCENTS.length];
 
             return (
               <motion.div
@@ -54,7 +52,7 @@ export default function FAQ() {
                 transition={{
                   duration: 0.5,
                   delay: index * 0.07,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: EASE,
                 }}
               >
                 <div
@@ -68,7 +66,7 @@ export default function FAQ() {
                   <motion.div
                     className="flex items-start gap-5 py-7"
                     whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.2, ease: EASE }}
                   >
                     {/* Number label */}
                     <span
@@ -93,7 +91,7 @@ export default function FAQ() {
                     {/* Animated chevron */}
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.35, ease: EASE }}
                       className="shrink-0 mt-1"
                       style={{ color: accent }}
                     >
@@ -109,7 +107,7 @@ export default function FAQ() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.4, ease: EASE }}
                         className="overflow-hidden"
                       >
                         <div className="pl-9 pb-8 pr-8">

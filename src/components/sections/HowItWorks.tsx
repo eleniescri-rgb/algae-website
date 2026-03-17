@@ -4,9 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "@/hooks/useTranslation";
 import homeContent from "@/content/home.json";
-
-// Distinct accent per step — matches the brand cycling pattern
-const stepAccents = ["#FF751F", "#0897B3", "#47AECC", "#FF751F"];
+import { EASE, BRAND_ACCENTS } from "@/lib/brand";
 
 export default function HowItWorks() {
   const { t } = useTranslation();
@@ -33,7 +31,7 @@ export default function HowItWorks() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, ease: EASE }}
           className="mb-20"
         >
           <span className="section-label-light">
@@ -50,14 +48,14 @@ export default function HowItWorks() {
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {steps.map((step, index) => {
-            const accent = stepAccents[index];
+            const accent = BRAND_ACCENTS[index % BRAND_ACCENTS.length];
             return (
               <motion.div
                 key={step.stepNumber}
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: EASE }}
                 className="relative group"
               >
                 {/* Ghost numeral — distinct accent per step */}
@@ -75,7 +73,7 @@ export default function HowItWorks() {
                   style={{ backgroundColor: accent }}
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
-                  transition={{ duration: 0.55, delay: 0.08 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.55, delay: 0.08 + index * 0.12, ease: EASE }}
                 />
 
                 {/* Content */}
@@ -108,7 +106,7 @@ export default function HowItWorks() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, delay: 0.6, ease: EASE }}
           className="mt-12 pt-8"
           style={{ borderTop: "1px solid #47AECC18" }}
         >
@@ -128,7 +126,7 @@ export default function HowItWorks() {
               className="text-base"
               initial={false}
               whileHover={{ x: 4 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.2, ease: EASE }}
             >
               →
             </motion.span>
