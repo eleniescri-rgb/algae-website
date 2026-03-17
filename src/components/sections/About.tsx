@@ -90,10 +90,9 @@ export default function About() {
             className="lg:col-span-5"
           >
             <motion.div
-              className="relative w-full overflow-hidden rounded-2xl"
+              className="relative w-full overflow-hidden rounded-2xl max-h-[280px] sm:max-h-[520px]"
               style={{
                 aspectRatio: "3/4",
-                maxHeight: "520px",
                 boxShadow: "0 32px 80px #00000055, 0 0 0 1px #47AECC1a",
               }}
               whileHover={{ scale: 1.02, transition: { duration: 0.5, ease: EASE } }}

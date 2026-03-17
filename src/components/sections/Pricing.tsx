@@ -26,7 +26,7 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pilot" className="relative overflow-hidden py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="pilot" className="relative overflow-hidden py-12 lg:py-28 px-4 sm:px-6 lg:px-8">
       {/* Dark ocean background */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "#063D57" }} />
 
@@ -84,7 +84,7 @@ export default function Pricing() {
         </motion.div>
 
         {/* Two-column offer */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
           {/* LEFT — offer context */}
           <motion.div

@@ -55,7 +55,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="bg-cool py-14 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -91,7 +91,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           {/* Form */}
           <motion.form
             initial={{ opacity: 0, y: 20 }}

@@ -17,7 +17,7 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       ref={ref}
-      className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-12 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#063D57" }}
     >
       {/* Subtle radial glow */}

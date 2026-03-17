@@ -83,11 +83,12 @@ export default function StatsStrip() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               whileHover={{ y: -3, transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] } }}
               transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center px-6 py-10 text-center cursor-default"
-              style={{
-                borderRight: i < 3 ? "1px solid #47AECC1a" : "none",
-                borderBottom: i < 2 ? "1px solid #47AECC1a" : "none",
-              }}
+              className={[
+                "flex flex-col items-center px-6 py-8 text-center cursor-default border-[#47AECC1a]",
+                i === 0 ? "border-r border-b md:border-b-0" :
+                i === 1 ? "border-b md:border-r md:border-b-0" :
+                i === 2 ? "border-r" : "",
+              ].join(" ")}
             >
               {/* Stat number */}
               <span
