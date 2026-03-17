@@ -12,7 +12,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-cool py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="bg-cool py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
 
         {/* ── Section header ── */}
@@ -21,7 +21,7 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.65, ease: EASE }}
-          className="mb-16"
+          className="mb-10"
         >
           <span className="section-label">
             {t({ en: "Common Questions", es: "Preguntas Frecuentes" })}

@@ -23,7 +23,7 @@ export default function About() {
           label={t({ en: "Our Story", es: "Nuestra Historia" })}
           heading={t(aboutContent.sectionTitle)}
           variant="light"
-          fontSize="clamp(2.4rem, 5vw, 4.5rem)"
+          fontSize="clamp(1.6rem, 3vw, 2.6rem)"
           mb="mb-16"
         />
 
@@ -40,7 +40,7 @@ export default function About() {
               viewport={VIEWPORT.default}
               transition={{ duration: 0.55, ease: EASE }}
               className="font-display font-black tracking-[-0.03em] leading-tight mb-7"
-              style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "#47AECC" }}
+              style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.6rem)", color: "#47AECC" }}
             >
               {t(aboutContent.story.title)}
             </motion.h3>
