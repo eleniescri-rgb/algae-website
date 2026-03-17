@@ -12,7 +12,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#093349" }}
     >
       {/* SVG noise grain */}
@@ -49,7 +49,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT.loose}
           transition={{ duration: 0.5, ease: EASE }}
-          className="mb-5"
+          className="mb-2"
         >
           <span className="section-label-light">
             {t({ en: "Our Story", es: "Nuestra Historia" })}
@@ -62,11 +62,11 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT.loose}
           transition={{ duration: 0.75, ease: EASE }}
-          className="mb-14 lg:mb-20"
+          className="mb-8 lg:mb-10"
         >
           <h2
             className="font-display font-black leading-[0.9] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.6rem, 6.5vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(1.9rem, 4vw, 3.4rem)" }}
           >
             <span style={{ color: "#CCE6EA" }}>
               {t({ en: "A Crisis Turned", es: "Una Crisis Convertida" })}
@@ -79,7 +79,7 @@ export default function About() {
         </motion.div>
 
         {/* ── Image + Story ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 lg:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 lg:mb-14">
 
           {/* LEFT — image */}
           <motion.div
