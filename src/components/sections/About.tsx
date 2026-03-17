@@ -39,7 +39,7 @@ export default function About() {
         </motion.div>
 
         {/* ── Story + Image ── */}
-        <div className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="mb-14 lg:mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
           {/* LEFT — text */}
           <div className="order-2 lg:order-1 lg:col-span-6 flex flex-col justify-start">
@@ -109,98 +109,71 @@ export default function About() {
 
         {/* ── Values header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-2"
+          className="mb-6"
         >
           <span className="section-label-light">
             {t({ en: "Our Values", es: "Nuestros Valores" })}
           </span>
           <h3
-            className="font-display font-black tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", color: "#CCE6EA" }}
+            className="font-display font-black tracking-[-0.03em]"
+            style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", color: "#CCE6EA" }}
           >
             {t(aboutContent.valuesTitle)}
           </h3>
         </motion.div>
 
-        {/* ── Values — bold editorial stack with distinct accent colors ── */}
-        <div className="mt-10">
+        {/* ── Values — compact quiet rows ── */}
+        <div>
           {aboutContent.values.map((value, index) => {
             const accent = valueAccents[index];
             return (
               <motion.div
                 key={index}
-                className="relative overflow-hidden py-10 pl-7 cursor-default"
-                style={{ borderLeft: `3px solid ${accent}` }}
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ x: 5, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
+                className="flex gap-4 py-3 cursor-default"
+                style={{ borderTop: `1px solid ${accent}22` }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.45, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ x: 4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
               >
-                {/* Ghost numeral — far right background */}
-                <motion.div
-                  className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 font-display font-black leading-none select-none"
-                  style={{
-                    fontSize: "clamp(6rem, 16vw, 14rem)",
-                    color: `${accent}`,
-                    opacity: 0.05,
-                    lineHeight: 0.85,
-                    letterSpacing: "-0.05em",
-                  }}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 0.05 }}
-                  whileHover={{ opacity: 0.1 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: 0.15 + index * 0.12 }}
-                  aria-hidden="true"
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </motion.div>
+                {/* Accent dot + number */}
+                <div className="shrink-0 pt-0.5 flex flex-col items-center gap-1.5">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full mt-1"
+                    style={{ backgroundColor: accent }}
+                  />
+                  <span
+                    className="font-display font-black tabular-nums"
+                    style={{ fontSize: "0.65rem", letterSpacing: "0.08em", color: accent, opacity: 0.6 }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
-                {/* Step label */}
-                <motion.span
-                  className="text-xs font-bold uppercase tracking-[0.18em] block mb-3"
-                  style={{ color: accent }}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 + index * 0.12 }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </motion.span>
-
-                {/* Value title — dramatic large display */}
-                <h4
-                  className="font-display font-black tracking-[-0.03em] leading-tight mb-4 relative z-10"
-                  style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#CCE6EA" }}
-                >
-                  {t(value.title)}
-                </h4>
-
-                {/* Description */}
-                <p
-                  className="text-base leading-relaxed max-w-xl relative z-10"
-                  style={{ color: "#729DB9" }}
-                >
-                  {t(value.description)}
-                </p>
-
-                {/* Animated bottom separator */}
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-px origin-left"
-                  style={{ background: `linear-gradient(to right, ${accent}40, transparent)` }}
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: 0.2 + index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                />
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h4
+                    className="font-display font-black tracking-[-0.025em] leading-snug mb-1"
+                    style={{ fontSize: "clamp(0.8rem, 1.2vw, 0.9rem)", color: "#CCE6EA" }}
+                  >
+                    {t(value.title)}
+                  </h4>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: "#729DB9" }}
+                  >
+                    {t(value.description)}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
+          <div style={{ borderTop: "1px solid #47AECC18" }} />
         </div>
 
       </div>
