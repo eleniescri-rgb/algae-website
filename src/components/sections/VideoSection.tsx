@@ -65,7 +65,7 @@ export default function VideoSection() {
   const embedType = detectEmbedType(videoUrl);
 
   return (
-    <section id="video" className="bg-cool py-20 px-4 sm:px-6 lg:px-8">
+    <section id="video" className="bg-cool py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
 
         {/* ── Section header ── */}
@@ -74,18 +74,21 @@ export default function VideoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12"
+          className="mb-8 lg:mb-12"
         >
           <span className="section-label">
             {t({ en: "The System", es: "El Sistema" })}
           </span>
-          <h2 className="font-display text-4xl font-black leading-[1.0] tracking-[-0.03em] sm:text-5xl max-w-xl">
+          <h2
+            className="font-display font-black leading-[1.0] tracking-[-0.03em] max-w-xl"
+            style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--section-heading)" }}
+          >
             {t(content.sectionTitle)}
           </h2>
         </motion.div>
 
         {/* ── A. System explanation — always visible ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-10 lg:mb-16">
 
           {/* LEFT — 3-step process */}
           <motion.div
@@ -175,15 +178,11 @@ export default function VideoSection() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-6 flex items-center justify-center"
           >
-            <div className="relative w-full max-w-md lg:max-w-none">
+            <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-none">
               {/* Glow behind machine */}
               <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 70% 60% at 50% 55%, #0897B338 0%, transparent 75%)",
-                  transform: "scale(1.15)",
-                }}
+                className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_70%_60%_at_50%_55%,#FF751F28_0%,transparent_75%)] dark:[background:radial-gradient(ellipse_70%_60%_at_50%_55%,#FF751F28_0%,transparent_75%)]"
+                style={{ transform: "scale(1.15)" }}
               />
 
               <motion.div
@@ -196,12 +195,8 @@ export default function VideoSection() {
                   alt="Alga.e on-site processing unit"
                   width={500}
                   height={330}
-                  className="w-full h-auto"
-                  style={{
-                    filter: "sepia(1) saturate(3.5) hue-rotate(152deg) brightness(0.62)",
-                    maxHeight: "380px",
-                    objectFit: "contain",
-                  }}
+                  className="w-full h-auto [filter:sepia(1)_saturate(4)_hue-rotate(10deg)_brightness(0.72)] dark:[filter:sepia(1)_saturate(5)_hue-rotate(10deg)_brightness(0.8)]"
+                  style={{ maxHeight: "380px", objectFit: "contain" }}
                 />
               </motion.div>
 
@@ -259,8 +254,12 @@ export default function VideoSection() {
 
           {/* Video container — auto-switches when videoUrl is set */}
           <div
-            className="relative w-full aspect-video rounded-2xl overflow-hidden"
-            style={{ boxShadow: "0 8px 40px #0897B322, 0 2px 8px #00000010" }}
+            className="relative w-full rounded-2xl overflow-hidden"
+            style={{
+              aspectRatio: "16/9",
+              minHeight: "220px",
+              boxShadow: "0 8px 40px #0897B322, 0 2px 8px #00000010",
+            }}
           >
 
             {/* ── Real video embeds ── */}
@@ -319,7 +318,7 @@ export default function VideoSection() {
                 <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-lg">
                   {/* Play icon */}
                   <div
-                    className="mb-5 p-4 rounded-full"
+                    className="mb-3 sm:mb-5 p-3 sm:p-4 rounded-full"
                     style={{
                       background: "#FF751F18",
                       border: "1px solid #FF751F30",
@@ -327,23 +326,30 @@ export default function VideoSection() {
                     }}
                   >
                     <PlayCircle
+                      size={28}
+                      strokeWidth={1.5}
+                      className="sm:hidden"
+                      style={{ color: "#FF751F" }}
+                    />
+                    <PlayCircle
                       size={36}
                       strokeWidth={1.5}
+                      className="hidden sm:block"
                       style={{ color: "#FF751F" }}
                     />
                   </div>
 
                   {/* Title */}
                   <h3
-                    className="font-display text-xl font-black tracking-[-0.03em] leading-tight mb-3 sm:text-2xl"
-                    style={{ color: "#CCE6EA" }}
+                    className="font-display font-black tracking-[-0.03em] leading-tight mb-2 sm:mb-3"
+                    style={{ fontSize: "clamp(1rem, 3vw, 1.5rem)", color: "#CCE6EA" }}
                   >
                     {t(content.placeholderTitle)}
                   </h3>
 
-                  {/* Description */}
+                  {/* Description — hide on very small screens to avoid overflow */}
                   <p
-                    className="text-sm leading-relaxed max-w-sm"
+                    className="hidden sm:block text-sm leading-relaxed max-w-sm"
                     style={{ color: "#729DB9" }}
                   >
                     {t(content.placeholderDescription)}
@@ -351,7 +357,7 @@ export default function VideoSection() {
 
                   {/* Coming soon pill */}
                   <div
-                    className="mt-5 px-3 py-1 rounded-full"
+                    className="mt-3 sm:mt-5 px-3 py-1 rounded-full"
                     style={{
                       background: "#47AECC14",
                       border: "1px solid #47AECC26",
