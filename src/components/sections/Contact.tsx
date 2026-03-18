@@ -176,7 +176,7 @@ export default function Contact() {
                 backgroundColor: "#FF751F",
                 color: "white",
                 boxShadow: "0 4px 20px #FF751F40",
-                transition: "transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease",
+                transition: "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease",
                 opacity: status === "loading" || status === "success" ? 0.7 : 1,
               }}
               onMouseEnter={(e) => {

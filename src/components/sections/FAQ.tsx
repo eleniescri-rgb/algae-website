@@ -55,8 +55,10 @@ export default function FAQ() {
                   ease: EASE,
                 }}
               >
-                <div
-                  className="relative cursor-pointer border-t-2 transition-colors duration-300"
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  className="relative w-full text-left border-t-2 transition-colors duration-300"
                   style={{
                     borderColor: isOpen ? accent : "#0897B322",
                   }}
@@ -123,7 +125,7 @@ export default function FAQ() {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </button>
               </motion.div>
             );
           })}
