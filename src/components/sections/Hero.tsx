@@ -1,12 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion, type Variants } from "framer-motion";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
 import content from "@/content/home.json";
 import { trackCTAClick } from "@/lib/analytics";
+
+// Dynamic import — Three.js needs browser APIs, disable SSR
+const ModelViewer = dynamic(
+  () => import("@/components/ModelViewer").then((m) => ({ default: m.ModelViewer })),
+  { ssr: false, loading: () => <div className="w-full aspect-[4/3]" /> }
+);
 
 const metricChips = [
   { value: "37.5M t", label: { en: "sargassum bloom (2025)", es: "bloom de sargazo (2025)" } },
@@ -229,47 +235,25 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* ── Right column: machine image ── */}
+        {/* ── Right column: 3D model ── */}
         <motion.div
           variants={itemVariants}
-          className="relative overflow-hidden lg:col-span-5"
+          className="relative lg:col-span-5"
         >
-          {/* Teal glow behind machine */}
+          {/* Teal glow behind model */}
           <div
             className="pointer-events-none absolute inset-0 rounded-3xl blur-3xl"
             style={{
-              background: "radial-gradient(ellipse 80% 70% at 50% 60%, #0897B350, transparent 70%)",
+              background: "radial-gradient(ellipse 80% 70% at 50% 60%, #0897B340, transparent 70%)",
               transform: "scale(1.1)",
             }}
           />
-          {/* Orange accent glow at base */}
-          <div
-            className="pointer-events-none absolute inset-x-4 bottom-0 h-1/3 blur-2xl"
-            style={{
-              background: "radial-gradient(ellipse 100% 60% at 50% 100%, #FF751F18, transparent 70%)",
-            }}
-          />
 
-          {/* Floating machine image */}
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <Image
-              src="/machine.png"
-              alt="Alga.e on-site sargassum processing system"
-              width={640}
-              height={420}
-              sizes="(max-width: 1024px) 100vw, 42vw"
-              className="w-full"
-              style={{
-                filter: "invert(1) brightness(0.95) sepia(0.2) hue-rotate(175deg) saturate(0.8)",
-                mixBlendMode: "screen",
-              }}
-              priority
-            />
-          </motion.div>
+          <ModelViewer
+            className="w-full"
+            style={{ height: "clamp(320px, 45vw, 520px)" }}
+            autoRotateSpeed={0.35}
+          />
         </motion.div>
       </motion.div>
 
