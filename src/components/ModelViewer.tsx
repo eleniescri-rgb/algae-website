@@ -1,15 +1,35 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Environment, ContactShadows } from "@react-three/drei";
-import type * as THREE from "three";
+import { useGLTF, OrbitControls, ContactShadows } from "@react-three/drei";
+import * as THREE from "three";
 
 // ── Model ────────────────────────────────────────────────────────────────────
 
 function AlgaeModel({ autoRotateSpeed = 0.4 }: { autoRotateSpeed?: number }) {
   const { scene } = useGLTF("/model3d/machine.glb");
   const groupRef = useRef<THREE.Group>(null);
+
+  // Apply brand tint to all meshes — teal-ice palette matching the hero bg
+  useEffect(() => {
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        mats.forEach((mat) => {
+          if (mat instanceof THREE.MeshStandardMaterial) {
+            // Shift the base color toward ice-teal instead of pure white
+            mat.color.set("#8EC8D8");       // muted teal-ice
+            mat.roughness = 0.35;
+            mat.metalness = 0.55;
+            mat.envMapIntensity = 1.2;
+            mat.needsUpdate = true;
+          }
+        });
+      }
+    });
+  }, [scene]);
 
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -19,16 +39,11 @@ function AlgaeModel({ autoRotateSpeed = 0.4 }: { autoRotateSpeed?: number }) {
 
   return (
     <group ref={groupRef}>
-      <primitive
-        object={scene}
-        scale={1}
-        position={[0, -0.5, 0]}
-      />
+      <primitive object={scene} scale={1} position={[0, -0.5, 0]} />
     </group>
   );
 }
 
-// Preload so it starts loading before mount
 useGLTF.preload("/model3d/machine.glb");
 
 // ── Fallback ─────────────────────────────────────────────────────────────────
@@ -52,42 +67,47 @@ interface ModelViewerProps {
 
 export function ModelViewer({ className, style, autoRotateSpeed = 0.4 }: ModelViewerProps) {
   return (
-    <div className={className} style={style} aria-label="3D model of the Alga.e sargassum processing unit">
+    <div
+      className={className}
+      style={style}
+      aria-label="3D model of the Alga.e sargassum processing unit"
+    >
       <Canvas
-        camera={{ position: [0, 1.5, 4.5], fov: 38 }}
+        camera={{ position: [0, 1.8, 5], fov: 36 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
         dpr={[1, 2]}
       >
-        {/* Lighting — clinical/industrial feel matching cleantech brand */}
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[4, 6, 3]} intensity={1.4} color="#CCE6EA" castShadow />
-        <directionalLight position={[-3, 2, -2]} intensity={0.4} color="#0897B3" />
-        <pointLight position={[0, -1, 2]} intensity={0.3} color="#FF751F" />
+        {/* Low ambient — let directional lights do the work for depth */}
+        <ambientLight intensity={0.15} />
 
-        {/* Environment — studio feel, no background */}
-        <Environment preset="studio" />
+        {/* Key light — cool teal from upper-right */}
+        <directionalLight position={[5, 8, 4]} intensity={2.2} color="#A8D8E8" />
 
-        {/* Contact shadow on ground plane */}
+        {/* Fill light — very dim, orange warmth from lower-left */}
+        <directionalLight position={[-4, 1, -3]} intensity={0.5} color="#FF9B50" />
+
+        {/* Rim light — teal from behind for edge definition */}
+        <directionalLight position={[0, 3, -6]} intensity={0.8} color="#47AECC" />
+
+        {/* Contact shadow */}
         <ContactShadows
-          position={[0, -1.2, 0]}
-          opacity={0.35}
-          scale={5}
-          blur={2}
-          color="#063D57"
+          position={[0, -1.3, 0]}
+          opacity={0.5}
+          scale={6}
+          blur={2.5}
+          color="#031F2D"
         />
 
         <Suspense fallback={<Fallback />}>
           <AlgaeModel autoRotateSpeed={autoRotateSpeed} />
         </Suspense>
 
-        {/* User controls — orbit only, no pan, limited zoom */}
         <OrbitControls
           enablePan={false}
           enableZoom={false}
           minPolarAngle={Math.PI / 4}
           maxPolarAngle={Math.PI / 1.8}
-          autoRotate={false}
           makeDefault
         />
       </Canvas>
