@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackVisit } from "@/lib/analytics";
+import { trackVisit, trackScrollDepth, initSessionTracking } from "@/lib/analytics";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
@@ -20,6 +20,28 @@ import CircularLoop from "@/components/sections/CircularLoop";
 export default function Home() {
   useEffect(() => {
     trackVisit()
+    // Session duration — fires session_end on tab-hide / page unload
+    const cleanup = initSessionTracking()
+    return cleanup
+  }, [])
+
+  useEffect(() => {
+    // Scroll depth — track when user reaches key validation sections
+    const sectionIds = ['features', 'pilot'] // 'features' = Benefits, 'pilot' = Pilot Program
+    const observers: IntersectionObserver[] = []
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) trackScrollDepth(id) },
+        { threshold: 0.2 },
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((o) => o.disconnect())
   }, [])
 
   return (

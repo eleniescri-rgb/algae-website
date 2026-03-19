@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
 import content from "@/content/home.json";
+import { trackCTAClick } from "@/lib/analytics";
 
 const metricChips = [
   { value: "37.5M t", label: { en: "sargassum bloom (2025)", es: "bloom de sargazo (2025)" } },
@@ -34,6 +35,7 @@ const Hero = () => {
   };
 
   const handleScrollToContact = () => {
+    trackCTAClick();
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 

@@ -9,6 +9,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { Button } from '@/components/ui/button'
 import siteContent from '@/content/site.json'
+import { trackCTAClick } from '@/lib/analytics'
 
 const navLinks = [
   { href: '#features', label: { en: 'Benefits', es: 'Beneficios' } },
@@ -43,6 +44,7 @@ export function Navbar() {
   }
 
   const handleScrollToContact = () => {
+    trackCTAClick()
     const contactSection = document.querySelector('#contact')
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
