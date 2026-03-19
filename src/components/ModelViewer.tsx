@@ -20,9 +20,9 @@ function AlgaeModel({ autoRotateSpeed = 0.4 }: { autoRotateSpeed?: number }) {
         mats.forEach((mat) => {
           if (mat instanceof THREE.MeshStandardMaterial) {
             // Shift the base color toward ice-teal instead of pure white
-            mat.color.set("#8EC8D8");       // muted teal-ice
-            mat.roughness = 0.35;
-            mat.metalness = 0.55;
+            mat.color.set("#B8D8E4");       // light teal-ice — visible against dark bg
+            mat.roughness = 0.28;
+            mat.metalness = 0.35;
             mat.envMapIntensity = 1.2;
             mat.needsUpdate = true;
           }
@@ -78,17 +78,17 @@ export function ModelViewer({ className, style, autoRotateSpeed = 0.4 }: ModelVi
         style={{ background: "transparent" }}
         dpr={[1, 2]}
       >
-        {/* Low ambient — let directional lights do the work for depth */}
-        <ambientLight intensity={0.15} />
+        {/* Ambient — enough to lift shadows without flattening */}
+        <ambientLight intensity={0.55} color="#CCE6EA" />
 
-        {/* Key light — cool teal from upper-right */}
-        <directionalLight position={[5, 8, 4]} intensity={2.2} color="#A8D8E8" />
+        {/* Key light — bright, slightly cool, from upper-right front */}
+        <directionalLight position={[4, 7, 5]} intensity={2.0} color="#DDEEF5" />
 
-        {/* Fill light — very dim, orange warmth from lower-left */}
-        <directionalLight position={[-4, 1, -3]} intensity={0.5} color="#FF9B50" />
+        {/* Fill light — warm left side so it's not pitch black */}
+        <directionalLight position={[-5, 3, 2]} intensity={0.9} color="#C8E4ED" />
 
         {/* Rim light — teal from behind for edge definition */}
-        <directionalLight position={[0, 3, -6]} intensity={0.8} color="#47AECC" />
+        <directionalLight position={[0, 4, -5]} intensity={0.6} color="#47AECC" />
 
         {/* Contact shadow */}
         <ContactShadows
