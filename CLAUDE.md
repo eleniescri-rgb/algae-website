@@ -52,3 +52,45 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Design Context
+
+### Users
+Hotel operations directors and general managers at beachfront properties in Mexico and the Caribbean (primarily Quintana Roo). They are practical, data-oriented decision-makers who evaluate vendors on credibility, cost, and operational fit — not aesthetics. They encounter this site during a research phase, likely on desktop, while dealing with a real and expensive recurring problem (sargassum removal costing $60–90K/month). They are skeptical of startups and need to quickly trust that Alga.e is serious.
+
+### Brand Personality
+**Three words: Rigorous. Grounded. Credible.**
+
+Alga.e is a cleantech startup solving an industrial problem for a hospitality audience. The brand should feel like a well-funded engineering company, not a sustainability NGO or a SaaS pitch. The emotional goal is **confidence** — a hotel GM should leave feeling "this is a real company with a real solution," not "this looks cool."
+
+### Aesthetic Direction
+**Clean tech / scientific.** Precise, data-forward, structured. Feels like it was designed by people who understand operations and industrial processes — not a branding agency chasing trends.
+
+**Reference feel:** Think field instrumentation companies, industrial equipment manufacturers, or climate-tech firms that let their data do the work. Structured grids, clear typographic hierarchy, numbers given prominence.
+
+**Anti-references (avoid all of these):**
+- Generic SaaS startup — purple/blue gradients, floating 3D blobs, "The future of X" hero copy
+- NGO / charity site — stock beach photos, donation-adjacent tone, non-profit energy
+- Heavy corporate — dated navy-suit enterprise aesthetic, 2010 enterprise software feel
+- Trendy design studio — scroll-jacking, all-black maximalism, style-over-substance
+
+**Theme:** Both light and dark supported (toggle already built). Light mode is clean, cool-white with teal accents — feels like a lab report. Dark mode is the deep navy brand palette.
+
+### Design Principles
+
+1. **Data earns attention.** Numbers are Alga.e's strongest asset. Design frames them — it never competes with them. No gradient text on metrics. No decorative oversizing for its own sake.
+
+2. **Trust through restraint.** A hotel GM is skeptical of startups. Credibility comes from not overdesigning. Avoid glow effects, gradient text, glassmorphism, and neon accents — these read as "trying too hard."
+
+3. **Engineered, not decorated.** Spacing, grid alignment, and type scales should feel intentional and systematic — like a well-calibrated instrument. Asymmetry is allowed only when it's purposeful.
+
+4. **Hierarchy is function.** The most important information must be visually dominant. Secondary information recedes. Nothing fights for equal attention. Layout communicates priority.
+
+5. **No NGO energy.** Every design decision should reinforce that this is a B2B industrial product with a serious economic proposition, not an environmental cause asking for sympathy. Language and visuals stay operational and evidence-based.
+
+### Technical Context
+- **Stack:** Next.js 15, Tailwind CSS v4, Framer Motion
+- **Fonts:** Fraunces (display/serif, for headings) + Jost (sans, for body)
+- **Palette:** Orange `#FF751F`, Teal `#0897B3`, Sky `#47AECC`, Navy `#063D57` / `#093349`, Ice `#CCE6EA`
+- **Bilingual:** EN/ES via custom translation hook
+- **Accessibility:** WCAG AA target, `prefers-reduced-motion` already handled
