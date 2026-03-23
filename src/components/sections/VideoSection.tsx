@@ -252,7 +252,6 @@ export default function VideoSection() {
             className="relative w-full rounded-2xl overflow-hidden"
             style={{
               aspectRatio: "16/9",
-              minHeight: "220px",
               boxShadow: "0 8px 40px #0897B322, 0 2px 8px #00000010",
             }}
           >
@@ -280,7 +279,12 @@ export default function VideoSection() {
               <video
                 src={videoUrl}
                 controls
-                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                muted
+                playsInline
+                loop
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "cover", background: "#000" }}
               />
             )}
 
