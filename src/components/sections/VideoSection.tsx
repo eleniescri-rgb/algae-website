@@ -59,9 +59,19 @@ const steps = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function VideoSection() {
-  const { t } = useTranslation();
+  const { t, currentLang } = useTranslation();
   const content = homeContent.videoSection;
-  const videoUrl = content.videoUrl;
+
+  // Use language-specific video for html5 sources
+  const videoUrl = (() => {
+    const base = content.videoUrl;
+    if (!base || detectEmbedType(base) !== "html5") return base;
+    if (currentLang === "es") {
+      return base.replace(/(\.[^.]+)$/, "_es$1");
+    }
+    return base;
+  })();
+
   const embedType = detectEmbedType(videoUrl);
 
   return (
