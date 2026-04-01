@@ -22,7 +22,17 @@ const TARGET_REGIONS: { name: string; code: string; codes: string[] }[] = [
 
 const LINKEDIN_DOMAINS = ['linkedin.com', 'lnkd.in']
 
-function parseSource(referrer: string | null | undefined): 'linkedin' | 'direct' | 'other' {
+function parseSource(
+  utmSource: string | null | undefined,
+  referrer: string | null | undefined,
+): 'linkedin' | 'direct' | 'other' {
+  // UTM takes priority — solves LinkedIn mobile stripping referrer
+  if (utmSource) {
+    const lower = utmSource.toLowerCase()
+    if (lower === 'linkedin') return 'linkedin'
+    return 'other'
+  }
+  // Fallback to referrer
   if (!referrer) return 'direct'
   const lower = referrer.toLowerCase()
   if (LINKEDIN_DOMAINS.some((d) => lower.includes(d))) return 'linkedin'
@@ -53,7 +63,7 @@ export async function GET(request: NextRequest) {
 
     // ── Core queries (existing) ────────────────────────────────────────────────
     const [visitorsResult, leadsResult] = await Promise.all([
-      supabase.from('visitors').select('visitor_id, country, referrer'),
+      supabase.from('visitors').select('visitor_id, country, referrer, utm_source'),
       supabase
         .from('leads')
         .select('id, created_at, name, company, role, location, property_type, interest_type, email, visitor_id')
@@ -119,28 +129,31 @@ export async function GET(request: NextRequest) {
       .sort((a, b) => b.leads - a.leads || b.visitors - a.visitors)
       .slice(0, 15)
 
-    // ── NEW: Traffic sources (from referrer in visitors table) ─────────────────
-    // Build visitor_id → first-seen referrer map (one referrer per unique visitor)
-    const visitorFirstReferrer: Record<string, string | null> = {}
+    // ── NEW: Traffic sources (UTM-first, referrer fallback) ─────────────────────
+    // Build visitor_id → first-seen attribution map
+    const visitorFirstAttribution: Record<string, { referrer: string | null; utm_source: string | null }> = {}
     for (const v of visitors) {
       const vid = v.visitor_id as string | null
-      if (vid && !(vid in visitorFirstReferrer)) {
-        visitorFirstReferrer[vid] = (v.referrer as string | null) ?? null
+      if (vid && !(vid in visitorFirstAttribution)) {
+        visitorFirstAttribution[vid] = {
+          referrer: (v.referrer as string | null) ?? null,
+          utm_source: (v.utm_source as string | null) ?? null,
+        }
       }
     }
 
     const sourceVisitorCount: Record<string, number> = { linkedin: 0, direct: 0, other: 0 }
-    for (const referrer of Object.values(visitorFirstReferrer)) {
-      const src = parseSource(referrer)
+    for (const attr of Object.values(visitorFirstAttribution)) {
+      const src = parseSource(attr.utm_source, attr.referrer)
       sourceVisitorCount[src]++
     }
 
-    // Leads per source — map via visitor's first referrer
+    // Leads per source — map via visitor's first attribution
     const sourceLeadCount: Record<string, number> = { linkedin: 0, direct: 0, other: 0 }
     for (const l of leads) {
       const vid = l.visitor_id as string | null
-      const referrer = vid ? (visitorFirstReferrer[vid] ?? null) : null
-      const src = parseSource(referrer)
+      const attr = vid ? visitorFirstAttribution[vid] : null
+      const src = parseSource(attr?.utm_source ?? null, attr?.referrer ?? null)
       sourceLeadCount[src]++
     }
 
@@ -178,7 +191,7 @@ export async function GET(request: NextRequest) {
     let avgTimeOnPageSec: number | null        = null
     let eventsAvailable                        = false
 
-    const [ctaResult, scrollResult, sessionResult] = await Promise.all([
+    const [ctaResult, scrollResult, sessionResult, allEventsResult] = await Promise.all([
       supabase
         .from('events')
         .select('*', { count: 'exact', head: true })
@@ -191,7 +204,13 @@ export async function GET(request: NextRequest) {
         .from('events')
         .select('properties')
         .eq('event_type', 'session_end'),
+      supabase
+        .from('events')
+        .select('visitor_id, event_type, properties'),
     ])
+
+    let bounceRate: number | null       = null
+    let engagementRate: number | null   = null
 
     if (!ctaResult.error) {
       eventsAvailable = true
@@ -226,6 +245,42 @@ export async function GET(request: NextRequest) {
           )
         }
       }
+
+      // ── Bounce rate & engagement rate ────────────────────────────────────────
+      if (!allEventsResult.error && allEventsResult.data) {
+        const eventsByVisitor: Record<string, Array<{ event_type: string; properties: unknown }>> = {}
+        for (const e of allEventsResult.data) {
+          const vid = e.visitor_id as string
+          if (!eventsByVisitor[vid]) eventsByVisitor[vid] = []
+          eventsByVisitor[vid].push({ event_type: e.event_type, properties: e.properties })
+        }
+
+        const uniqueVisitorIds = new Set(visitors.map((v) => v.visitor_id as string))
+        let bouncedCount = 0
+        let engagedCount = 0
+
+        for (const vid of uniqueVisitorIds) {
+          const events = eventsByVisitor[vid] ?? []
+          const hasInteraction = events.some(
+            (e) => e.event_type === 'cta_click' || e.event_type === 'scroll_depth',
+          )
+          if (hasInteraction) {
+            engagedCount++
+          } else {
+            // Bounced = no interaction AND (no session_end OR session < 10s)
+            const sessionEnd = events.find((e) => e.event_type === 'session_end')
+            const dur = (sessionEnd?.properties as { duration_sec?: number })?.duration_sec ?? 0
+            if (!sessionEnd || dur < 10) bouncedCount++
+          }
+        }
+
+        bounceRate = uniqueVisitorIds.size > 0
+          ? parseFloat(((bouncedCount / uniqueVisitorIds.size) * 100).toFixed(1))
+          : 0
+        engagementRate = uniqueVisitorIds.size > 0
+          ? parseFloat(((engagedCount / uniqueVisitorIds.size) * 100).toFixed(1))
+          : 0
+      }
     }
 
     return NextResponse.json({
@@ -252,6 +307,9 @@ export async function GET(request: NextRequest) {
       targetRegionVisitors,
       targetRegionPct,
       regionBreakdown,
+      // ── New: bounce & engagement ───────────────────────────────────────────
+      bounceRate,
+      engagementRate,
     })
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'

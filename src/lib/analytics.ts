@@ -19,6 +19,13 @@ export async function trackVisit(): Promise<void> {
   try {
     const visitorId = getOrCreateVisitorId()
     if (!visitorId) return
+
+    // Parse UTM parameters — solves LinkedIn mobile stripping referrer
+    const params = new URLSearchParams(window.location.search)
+    const utm_source   = params.get('utm_source')   || null
+    const utm_medium   = params.get('utm_medium')   || null
+    const utm_campaign = params.get('utm_campaign') || null
+
     await fetch('/api/track-visit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -26,6 +33,9 @@ export async function trackVisit(): Promise<void> {
         visitor_id: visitorId,
         referrer: document.referrer || null,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        utm_source,
+        utm_medium,
+        utm_campaign,
       }),
     })
   } catch {

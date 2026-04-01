@@ -49,6 +49,9 @@ interface Metrics {
   targetRegionVisitors: number
   targetRegionPct: number
   regionBreakdown: { name: string; code: string; visitors: number; leads: number }[]
+  // ── New: bounce & engagement ──
+  bounceRate: number | null
+  engagementRate: number | null
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -329,6 +332,52 @@ function Dashboard({ adminKey }: { adminKey: string }) {
           <StatCard label="Conversion Rate" value={convRate} sub="visitor → lead" accent={metrics.totalLeads / (metrics.uniqueVisitors || 1) >= 0.05 ? '#0897B3' : '#FF751F'} />
           <StatCard label="Pilot Interest" value={pilotRate} sub={`${fmt(metrics.pilotLeads)} of ${fmt(metrics.totalLeads)} leads`} accent="#FF751F" />
         </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        {/* ── Non-Functional MVP Validation (Thesis) ── */}
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        <Card>
+          <CardHeader>
+            <SectionHeader
+              label="Non-Functional MVP Validation"
+              description="Key metrics for thesis defense — LinkedIn campaign + Website + Video"
+              accent="#FF751F"
+              tag="THESIS"
+            />
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <DemandCard label="Visitor → Lead" value={convRate} sub="market interest" accent="#FF751F" />
+              <DemandCard label="CTA Click Rate" value={`${metrics.ctaClickRate}%`} sub="intent signal" accent="#FF751F" />
+              <DemandCard label="Avg Session" value={fmtDuration(metrics.avgTimeOnPageSec)} sub="engagement quality" accent="#47AECC" />
+              <DemandCard
+                label="Scroll → Pilot"
+                value={metrics.scrollDepthPilot !== null ? `${metrics.scrollDepthPilot}%` : '—'}
+                sub="reached pilot section"
+                accent="#0897B3"
+              />
+              <DemandCard
+                label="LinkedIn Traffic"
+                value={`${metrics.trafficSources.find((s) => s.source === 'linkedin')?.pct ?? 0}%`}
+                sub="channel effectiveness"
+                accent="#47AECC"
+              />
+              <DemandCard label="Target Geo Match" value={`${metrics.targetRegionPct}%`} sub="MX / US / Caribbean" accent="#0897B3" />
+              <DemandCard
+                label="Bounce Rate"
+                value={metrics.bounceRate !== null ? `${metrics.bounceRate}%` : '—'}
+                sub="traffic quality"
+                accent="#FF751F"
+              />
+              <DemandCard
+                label="Engagement Rate"
+                value={metrics.engagementRate !== null ? `${metrics.engagementRate}%` : '—'}
+                sub="interaction rate"
+                accent="#0897B3"
+              />
+            </div>
+          </CardContent>
+        </Card>
 
         {/* ═══════════════════════════════════════════════════════════════════ */}
         {/* ── NEW: Early Demand Signals ── */}
@@ -711,16 +760,22 @@ function Dashboard({ adminKey }: { adminKey: string }) {
 
               <div className="rounded-xl p-4" style={{ background: '#0897B308', border: '1px solid #0897B314' }}>
                 <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">Bounce Rate</p>
-                <p className="font-display text-3xl font-black tracking-[-0.03em]" style={{ color: '#729DB9' }}>—</p>
-                {/* TODO: Implement bounce rate — a visitor that fires only one page load event and no scroll/CTA events */}
-                <p className="text-[11px] text-muted-foreground mt-1">Not yet implemented</p>
+                <p className="font-display text-3xl font-black tracking-[-0.03em]" style={{ color: metrics.bounceRate !== null ? '#FF751F' : '#729DB9' }}>
+                  {metrics.bounceRate !== null ? `${metrics.bounceRate}%` : '—'}
+                </p>
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  {metrics.bounceRate !== null ? 'no interaction within 10s' : 'Requires events table'}
+                </p>
               </div>
 
               <div className="rounded-xl p-4" style={{ background: '#0897B308', border: '1px solid #0897B314' }}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">Pages / Session</p>
-                <p className="font-display text-3xl font-black tracking-[-0.03em]" style={{ color: '#729DB9' }}>—</p>
-                {/* TODO: Pages/session — single-page app so always 1; implement if multi-page routes are added */}
-                <p className="text-[11px] text-muted-foreground mt-1">Single-page app · N/A</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">Engagement Rate</p>
+                <p className="font-display text-3xl font-black tracking-[-0.03em]" style={{ color: metrics.engagementRate !== null ? '#0897B3' : '#729DB9' }}>
+                  {metrics.engagementRate !== null ? `${metrics.engagementRate}%` : '—'}
+                </p>
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  {metrics.engagementRate !== null ? 'visitors with scroll or CTA interaction' : 'Requires events table'}
+                </p>
               </div>
             </div>
           </CardContent>

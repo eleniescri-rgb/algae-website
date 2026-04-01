@@ -19,6 +19,9 @@ export async function POST(request: NextRequest) {
       visitor_id: string
       referrer?: string | null
       timezone?: string | null
+      utm_source?: string | null
+      utm_medium?: string | null
+      utm_campaign?: string | null
     }
 
     if (!body.visitor_id) {
@@ -35,8 +38,11 @@ export async function POST(request: NextRequest) {
 
     await supabase.from('visitors').insert({
       visitor_id: body.visitor_id,
-      referrer:   body.referrer   ?? null,
-      timezone:   body.timezone   ?? null,
+      referrer:     body.referrer     ?? null,
+      timezone:     body.timezone     ?? null,
+      utm_source:   body.utm_source   ?? null,
+      utm_medium:   body.utm_medium   ?? null,
+      utm_campaign: body.utm_campaign ?? null,
       country,
       region,
       city,
